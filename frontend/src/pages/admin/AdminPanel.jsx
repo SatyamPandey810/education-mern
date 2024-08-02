@@ -7,6 +7,7 @@ import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUserStart } from '../../redux/actions/logoutUser.action';
 import ROLE from '../../common/role';
+import AllCategorySubcategory from './AllCategory-Subcategory';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -14,7 +15,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses);
+        setActiveComponent(TotalUser, AllCourses,AllCategorySubcategory);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -112,6 +113,14 @@ export default function AdminPanel() {
 
                     </li>
                     <li className="nav-item menu-items">
+                        <span className="nav-link" onClick={()=>handleMenuClick('AllCategorySubcategory')}>
+                            <span className="menu-icon">
+                                <i className="mdi mdi-chart-bar"></i>
+                            </span>
+                            <span className="menu-title"  style={{ cursor: "pointer" }}>Category-subcategory</span>
+                        </span>
+                    </li>
+                    <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('AllCourses')}>
                             <span className="menu-icon">
                                 <i className="mdi mdi-table-large"></i>
@@ -119,14 +128,7 @@ export default function AdminPanel() {
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
                         </span>
                     </li>
-                    <li className="nav-item menu-items">
-                        <a className="nav-link" href="pages/charts/chartjs.html">
-                            <span className="menu-icon">
-                                <i className="mdi mdi-chart-bar"></i>
-                            </span>
-                            <span className="menu-title">Charts</span>
-                        </a>
-                    </li>
+                    
                     <li className="nav-item menu-items">
                         <a className="nav-link" href="pages/icons/mdi.html">
                             <span className="menu-icon">
@@ -185,9 +187,13 @@ export default function AdminPanel() {
                 </nav>
                 <div className="main-panel">
                     <div className="content-wrapper">
+
                         {/* <h1>hello world</h1> */}
                         {activeComponent === 'TotalUser' && <TotalUser />}
                         {activeComponent === 'AllCourses' && <AllCourses />}
+                        {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
+
+
 
                     </div>
 
