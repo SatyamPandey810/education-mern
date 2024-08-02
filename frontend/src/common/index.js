@@ -9,9 +9,22 @@ const summaryApi = {
         url: `${backendDomain}/api/login`,
         method: "post"
     },
+    logout: {
+        url: `${backendDomain}/api/logout`,
+        method: "get"
+    },
     userDetails: {
         url: `${backendDomain}/api/user-details`,
         method: "get"
+    },
+    getAllUser: {
+        url: `${backendDomain}/api/all-user`,
+        method: "get"
+    },
+    updateUser: {
+        url: `${backendDomain}/api/update-user`,
+        method: "post"
     }
+
 }
 export default summaryApi

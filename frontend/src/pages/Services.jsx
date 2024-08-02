@@ -22,8 +22,6 @@ export default function Services() {
                     </div>
                 </div>
             </div>
-
-
             <div className="course-details-page pt-100 pb-70">
                 <div className="container">
                     <div className="row">
@@ -44,8 +42,6 @@ export default function Services() {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div id="curriculum" className="tab-pane">
                                     <div className="row">
                                         <div className="col-md-12">

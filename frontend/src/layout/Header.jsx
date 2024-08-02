@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import ROLE from '../common/role';
 
 export default function Header() {
 
-
+    const user = useSelector((state) => state.user.user);
+    const isAdmin = user?.role === ROLE.ADMIN;
 
     return (
         <header>
@@ -14,8 +17,8 @@ export default function Header() {
                             <div className="header-left">
                                 <ul>
                                     <li><i className="fa fa-phone"></i>+00 0123456789</li>
-                                    <li><i className="fa fa-envelope-o"></i><a href="#" className="__cf_email__"
-                                        data-cfemail="9af3f4fcf5daf6fffbe8fbeae8ffe9e9b4f9f5f7">admin@fmail.com</a></li>
+                                    <li><i className="fa fa-envelope-o"></i><Link to="/" className="__cf_email__"
+                                        data-cfemail="9af3f4fcf5daf6fffbe8fbeae8ffe9e9b4f9f5f7">admin@fmail.com</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -25,16 +28,16 @@ export default function Header() {
                                     <span className="social-title">Follow Us</span>
                                     <ul>
                                         <li>
-                                            <a href="javascript:;"><i className="fa fa-facebook"></i></a>
+                                            <Link to="/"><i className="fa fa-facebook"></i></Link>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i className="fa fa-twitter"></i></a>
+                                            <Link to="/"><i className="fa fa-twitter"></i></Link>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i className="fa fa-google"></i></a>
+                                            <Link to="/"><i className="fa fa-google"></i></Link>
                                         </li>
                                         <li>
-                                            <a href="javascript:;"><i className="fa fa-skype"></i></a>
+                                            <Link to="/"><i className="fa fa-skype"></i></Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -77,7 +80,9 @@ export default function Header() {
                                         <li><Link to="/contact-us">Contact</Link></li>
 
                                         <li><Link to="/sign-in">Login</Link></li>
-
+                                        {isAdmin && (
+                                            <li><Link to="/admin-dashboard">Admin panel</Link></li>
+                                        )}
                                     </ul>
                                 </nav>
                             </div>
