@@ -24,6 +24,18 @@ const summaryApi = {
     updateUser: {
         url: `${backendDomain}/api/update-user`,
         method: "post"
+    },
+    uploadCategory: {
+        url: `${backendDomain}/api/category`,
+        method: "post"
+    },
+    getCategory: {
+        url: `${backendDomain}/api/get-category`,
+        method: "get"
+    },
+    updateCategory: {
+        url: `${backendDomain}/api/update-category`,
+        method: "post"
     }
 
 }

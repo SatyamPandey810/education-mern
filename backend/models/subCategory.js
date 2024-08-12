@@ -4,9 +4,9 @@ const subCategorySchema = new mongoose.Schema({
     name: {
         type: String
     },
-    items: [{
+    category: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Courses'
+        ref: 'category'
     }]
 }, { timestamps: true })
 

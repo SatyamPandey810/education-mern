@@ -34,10 +34,6 @@ export default function Router() {
                     <Route path='' element={<AdminPanel />} />
                     {/* <Route path='total-user' element={<TotalUser />} /> */}
                 </Route>
-
-
-
-
                 <Route path='*' element={<PageNotFound />} />
             </Routes>
             {!noHeaderFooterRoutes.includes(location.pathname) && <Footer />}
