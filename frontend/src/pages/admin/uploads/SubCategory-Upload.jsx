@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { SUBCATEGORY_UPLOAD_START } from '../../../redux/constants/courses/subCategory-constants';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function SubCategoryUpload({onClose}) {
+export default function SubCategoryUpload({ onClose, onCategoryUploaded }) {
+    const [subCategoryName, setSubCategoryname] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const dispatch = useDispatch()
+    const allCategory = useSelector((state) => state.allCategory.allCategory)
+
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+
+    const inputChange = (event) => {
+        setSubCategoryname(event.target.value);
+    }
+
+    const SubCategoryHandleSubmit = (event) => {
+        event.preventDefault()
+        if (subCategoryName.trim()) {
+            dispatch({
+                type: SUBCATEGORY_UPLOAD_START,
+                payload: { name: subCategoryName, categoryIds: [selectedCategory] }
+            })
+            // onCategoryUploaded()
+            onClose()
+        }
+    }
     return (
         <>
             <div>
@@ -13,12 +39,41 @@ export default function SubCategoryUpload({onClose}) {
                     />
                 </div>
                 <div className='container border mb-4'>
-                    <form className='mb-4'>
+                    <form className='mb-4' onSubmit={SubCategoryHandleSubmit}>
 
                         <div className='row'>
                             <div className="col-sm-6 mb-3">
                                 <label for="exampleInputEmail1" className="form-label">Category name</label>
-                                <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="subCategoryName"
+                                    name="name"
+                                    value={subCategoryName}
+                                    onChange={inputChange}
+                                    aria-describedby="emailHelp"
+                                />
+                            </div>
+
+                            <div className="col-sm-6 mb-3">
+                                <label htmlFor="category" className="form-label">Category name</label>
+                                <select
+                                    className='form-control'
+                                    name='category'
+                                    onChange={handleCategoryChange}
+                                    value={selectedCategory}
+                                    required
+                                >
+                                    <option value=''>Select category</option>
+                                    {
+                                        allCategory.map((category) => {
+                                            return (
+                                                <option value={category._id} key={category._id}>{category.name}</option>
+                                            )
+                                        })
+                                    }
+
+                                </select>
                             </div>
                         </div>
                         <div className='row d-flex justify-content-center'>
@@ -27,8 +82,8 @@ export default function SubCategoryUpload({onClose}) {
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
+                </div >
+            </div >
 
 
         </>

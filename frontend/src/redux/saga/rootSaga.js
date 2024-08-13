@@ -5,6 +5,7 @@ import logoutSaga from "./logutUser.saga"
 import uploadCategorySaga from "./uploadCategory.saga"
 import getAllCategorySaga from "./getAllCategory.saga"
 import updateCategorySaga from "./updateCategory.saga"
+import uploadSubCategorySaga from "./uploadSubCategory.saga"
 
 
 export function* root() {
@@ -14,6 +15,7 @@ export function* root() {
         fork(logoutSaga),
         fork(uploadCategorySaga),
         fork(getAllCategorySaga),
-        fork(updateCategorySaga)
+        fork(updateCategorySaga),
+        fork(uploadSubCategorySaga)
     ])
 }

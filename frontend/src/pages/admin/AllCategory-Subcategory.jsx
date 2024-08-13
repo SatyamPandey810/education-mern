@@ -11,16 +11,26 @@ import { updateCategoryStart } from '../../redux/actions/updateCategory.action';
 export default function AllCategorySubcategory() {
     const [openUploadCategory, setOpenUploadCategory] = useState(false)
     const [openUploadSubCategory, setOpenUploadSubCategory] = useState(false)
-    const [editCategory, setEditCategory] = useState(null); // State to manage editing
+    const [editCategory, setEditCategory] = useState(null); 
     const [editCategoryName, setEditCategoryName] = useState('');
     const [categories, setCategories] = useState([]);
     const dispatch = useDispatch()
+    
     const allCategory = useSelector((state) => state.allCategory.allCategory)
+    const updateCategoryState = useSelector((state) => state.updateCategory);
+    
+
 
 
     useEffect(() => {
         dispatch(getAllCategoryStart())
     }, [dispatch])
+
+    useEffect(() => {
+        if (updateCategoryState.updatedCategory) {
+            dispatch(getAllCategoryStart()); 
+        }
+    }, [updateCategoryState.updatedCategory, dispatch])
 
     const handleCategoryUploaded = () => {
         dispatch(getAllCategoryStart());
@@ -34,10 +44,26 @@ export default function AllCategorySubcategory() {
         event.preventDefault();
         if (editCategoryName.trim()) {
             dispatch(updateCategoryStart({ id: editCategory._id, name: editCategoryName }));
-            setEditCategory(null); // Close the edit form
-            dispatch(getAllCategoryStart()); // Refresh the category list
+            setEditCategory(null);
+            dispatch(getAllCategoryStart()); 
         }
     };
+
+// subcategories functionalities
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <>
             <div className='row'>
@@ -73,7 +99,7 @@ export default function AllCategorySubcategory() {
                                         <td className='text-capitalize'>{category?.name}</td>
                                         <td>{moment(category?.createdAt).format('ll')}</td>
                                         <td className='text-light'><FontAwesomeIcon icon={faPenToSquare}
-                                         onClick={() => handleEditClick(category)}
+                                            onClick={() => handleEditClick(category)}
                                         /> &nbsp;  &nbsp;
                                             <FontAwesomeIcon icon={faTrashCan} /></td>
                                     </tr>
@@ -95,7 +121,7 @@ export default function AllCategorySubcategory() {
                         <h1 className='text-light'>All Sub category</h1>
                     </div>
                     <div className=''>
-                        <button onClick={() => setOpenUploadSubCategory(true)} className='btn btn-warning'>Upload Courses</button>
+                        <button onClick={() => setOpenUploadSubCategory(true)} className='btn btn-warning'>Upload Subcategory</button>
                     </div>
                 </div>
                 <div className=''>

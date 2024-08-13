@@ -5,10 +5,16 @@ import { UPDATE_CATEGORY_START } from "../constants/courses/category-constants";
 
 function* updateCategory(action) {
     try {
-        const data = yield call(updateCategoryServices, action.payload)
-        console.log(data);
-        
-        yield put(updateCategorySuccess(data))
+        console.log("Saga received action:", action);
+        const response  = yield call(updateCategoryServices, action.payload)
+        console.log("Saga received response:", response );
+        // yield put(updateCategorySuccess(data))
+        if (response && response.success) {
+            const categoryData = response.data !== null ? response.data : {}; // Handle null by substituting with an empty object
+            yield put(updateCategorySuccess(categoryData));
+        } else {
+            yield put(updateCategoryError(response?.message || "Failed to update category"));
+        }
     } catch (error) {
         yield put(updateCategoryError(error))
     }

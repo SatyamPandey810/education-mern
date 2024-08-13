@@ -4,6 +4,8 @@ import allUserReducer from "./allUser.reducer"
 import logoutUserReducer from "./userLogut.reducer"
 import uploadCategoryReducer from "./categoryUpload.reducer"
 import getAllCategoryReducer from "./categoryGet.reducer"
+import updateCategoryreducer from "./update.category.reducer"
+import uploadSubCategoryReducer from "./subCategoryUpload.reducer"
 
 
 const rootReducers = combineReducers({
@@ -11,7 +13,9 @@ const rootReducers = combineReducers({
     allUser: allUserReducer,
     logoutUser: logoutUserReducer,
     uploadCategory: uploadCategoryReducer,
-    allCategory: getAllCategoryReducer
+    allCategory: getAllCategoryReducer,
+    updateCategory: updateCategoryreducer,
+    uploadSubCategory: uploadSubCategoryReducer
 })
 // console.log(userSlice);
 export default rootReducers

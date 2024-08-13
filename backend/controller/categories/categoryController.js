@@ -48,7 +48,6 @@ const getAllCategoriesController = async (req, res) => {
 
         const categories = await categoryModel.find()
         // .populate('Subcategory');
-        console.log("categories", categories);
 
         res.status(200).json(categories);
     } catch (error) {
@@ -62,10 +61,10 @@ const updateCategoriesController = async (req, res) => {
         const { _id, ...resBody } = req.body
         const updateCategories = await categoryModel.findByIdAndUpdate(_id, resBody)
         res.json({
+            data: updateCategories,
             message: "Product updated successfully",
             success: true,
-            error: false,
-            data: updateCategories
+            error: false
         })
     } catch (error) {
         res.status(400).json({

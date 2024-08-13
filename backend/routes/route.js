@@ -37,7 +37,7 @@ router.post('/update-category',authToken, updateCategoriesController)
 // subCategory upload route
 router.post("/subcategory", subCategoryController)
 // subCategory find route
-router.get("/get-subcategories", authToken, getAllSubcategories)
+router.get("/get-subcategories", getAllSubcategories)
 // courses upload route
 router.post("/course", authToken, coursesController)
 // courses find route

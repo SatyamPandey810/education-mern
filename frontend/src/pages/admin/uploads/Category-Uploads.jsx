@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_CATEGORY_UPLOAD_START } from '../../../redux/constants/courses/category-constants';
-import { getCategoryUploadStart } from '../../../redux/actions/uploadCategory.action';
 
-export default function CategoryUploads({ onClose ,onCategoryUploaded }) {
+
+export default function CategoryUploads({ onClose, onCategoryUploaded }) {
     const dispatch = useDispatch()
     const { data, error } = useSelector((state) => state.uploadCategory)
     const [categoryName, setCategoryname] = useState('')
+   
 
 
     const inputChange = (event) => {
@@ -20,12 +21,18 @@ export default function CategoryUploads({ onClose ,onCategoryUploaded }) {
             dispatch({
                 type: GET_CATEGORY_UPLOAD_START,
                 payload: { name: categoryName },
-                
+
             })
             onCategoryUploaded()
             onClose()
         }
     }
+
+  
+
+
+
+
 
     return (
         <>
