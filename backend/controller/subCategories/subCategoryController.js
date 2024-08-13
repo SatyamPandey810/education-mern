@@ -45,8 +45,8 @@ async function subCategoryController(req, res) {
             success: false
         });
     }
-
 }
+
 
 // get all subcategory
 const getAllSubcategories = async (req, res) => {

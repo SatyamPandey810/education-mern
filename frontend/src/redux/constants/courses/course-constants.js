@@ -1,0 +1,4 @@
+// course upload constatns
+export const COURSE_UPLOAD_START = "COURSE_UPLOAD_START"
+export const COURSE_UPLOAD_SUCCESS = "COURSE_UPLOAD_SUCCESS"
+export const COURSE_UPLOAD_ERROR = "COURSE_UPLOAD_ERROR"

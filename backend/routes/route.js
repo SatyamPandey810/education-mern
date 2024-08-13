@@ -39,7 +39,7 @@ router.post("/subcategory", subCategoryController)
 // subCategory find route
 router.get("/get-subcategories", getAllSubcategories)
 // courses upload route
-router.post("/course", authToken, coursesController)
+router.post("/course", coursesController)
 // courses find route
 router.get("/get-course", authToken, getAllCourses)
 

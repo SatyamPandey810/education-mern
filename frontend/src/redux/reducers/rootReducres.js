@@ -6,8 +6,10 @@ import uploadCategoryReducer from "./categoryUpload.reducer"
 import getAllCategoryReducer from "./categoryGet.reducer"
 import updateCategoryreducer from "./update.category.reducer"
 import uploadSubCategoryReducer from "./subCategoryUpload.reducer"
+import getAllSubCategoryReducer from "./subCategoryGet.reducer"
+import courseUploadReducer from "./courseUpload.reducer"
 
-
+ 
 const rootReducers = combineReducers({
     user: userReducer,
     allUser: allUserReducer,
@@ -15,7 +17,9 @@ const rootReducers = combineReducers({
     uploadCategory: uploadCategoryReducer,
     allCategory: getAllCategoryReducer,
     updateCategory: updateCategoryreducer,
-    uploadSubCategory: uploadSubCategoryReducer
+    uploadSubCategory: uploadSubCategoryReducer,
+    allSubCategory: getAllSubCategoryReducer,
+    uploadCourse: courseUploadReducer
 })
 // console.log(userSlice);
 export default rootReducers

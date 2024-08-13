@@ -20,7 +20,7 @@ export default function SubCategoryUpload({ onClose, onCategoryUploaded }) {
 
     const SubCategoryHandleSubmit = (event) => {
         event.preventDefault()
-        if (subCategoryName.trim()) {
+        if (subCategoryName.trim() && selectedCategory) {
             dispatch({
                 type: SUBCATEGORY_UPLOAD_START,
                 payload: { name: subCategoryName, categoryIds: [selectedCategory] }

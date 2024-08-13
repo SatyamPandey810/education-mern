@@ -7,18 +7,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategoryStart } from '../../redux/actions/getCategory.action'
 import moment from "moment"
 import { updateCategoryStart } from '../../redux/actions/updateCategory.action';
+import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action';
 
 export default function AllCategorySubcategory() {
     const [openUploadCategory, setOpenUploadCategory] = useState(false)
     const [openUploadSubCategory, setOpenUploadSubCategory] = useState(false)
-    const [editCategory, setEditCategory] = useState(null); 
+    const [editCategory, setEditCategory] = useState(null);
     const [editCategoryName, setEditCategoryName] = useState('');
     const [categories, setCategories] = useState([]);
     const dispatch = useDispatch()
-    
+
     const allCategory = useSelector((state) => state.allCategory.allCategory)
+
+    const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const updateCategoryState = useSelector((state) => state.updateCategory);
-    
+
 
 
 
@@ -28,7 +31,7 @@ export default function AllCategorySubcategory() {
 
     useEffect(() => {
         if (updateCategoryState.updatedCategory) {
-            dispatch(getAllCategoryStart()); 
+            dispatch(getAllCategoryStart());
         }
     }, [updateCategoryState.updatedCategory, dispatch])
 
@@ -45,25 +48,16 @@ export default function AllCategorySubcategory() {
         if (editCategoryName.trim()) {
             dispatch(updateCategoryStart({ id: editCategory._id, name: editCategoryName }));
             setEditCategory(null);
-            dispatch(getAllCategoryStart()); 
+            dispatch(getAllCategoryStart());
         }
     };
 
-// subcategories functionalities
+    // subcategories functionalities
+    useEffect(() => {
+        dispatch(getSubCategoryStart())
+    }, [dispatch])
+    const subCategoryData = allSubCategory ? allSubCategory.data : [];
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
     return (
         <>
             <div className='row'>
@@ -104,7 +98,6 @@ export default function AllCategorySubcategory() {
                                             <FontAwesomeIcon icon={faTrashCan} /></td>
                                     </tr>
                                 ))
-
                             }
                         </tbody>
                     </table>
@@ -125,34 +118,30 @@ export default function AllCategorySubcategory() {
                     </div>
                 </div>
                 <div className=''>
-                    <table className="table table-bordereda">
+                    <table className="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>First</th>
-                                <th>Last</th>
-                                <th>Handle</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Upload date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <td >Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {
+                                subCategoryData?.map((sub, index) => (
+                                    <tr key={index}>
+                                        <td>{index + 1}.</td>
+                                        <td className='text-capitalize'>{sub?.name}</td>
+                                        <td className='text-capitalize'> {sub?.category?.map((cat) => cat.name).join(', ')}</td>
+                                        <td>{moment(sub?.createdAt).format('ll')}</td>
+                                        <td className='text-light'><FontAwesomeIcon icon={faPenToSquare}
+                                        /> &nbsp;  &nbsp;
+                                            <FontAwesomeIcon icon={faTrashCan} /></td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>

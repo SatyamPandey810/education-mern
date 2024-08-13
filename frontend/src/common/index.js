@@ -37,14 +37,19 @@ const summaryApi = {
         url: `${backendDomain}/api/update-category`,
         method: "post"
     },
-    uploadSubCategory:{
-        url:`${backendDomain}/api/subcategory`,
-        method:"post"
+    uploadSubCategory: {
+        url: `${backendDomain}/api/subcategory`,
+        method: "post"
     },
-    getSubCategory:{
-        url:`${backendDomain}/api/get-subcategories`,
-        method:"get"
+    getSubCategory: {
+        url: `${backendDomain}/api/get-subcategories`,
+        method: "get"
+    },
+    uploadCourse: {
+        url: `${backendDomain}/api/course`,
+        method: "post"
     }
+
 
 }
 export default summaryApi

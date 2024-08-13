@@ -18,11 +18,10 @@ const courseSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    subcategory: {
+    subcategory: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subcategory',
-        // required: true
-    }
+    }]
 }, { timestamps: true })
 
 const courseModel = mongoose.model("Courses", courseSchema)

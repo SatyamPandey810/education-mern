@@ -6,7 +6,6 @@ const { GET_CATEGORY_UPLOAD_START } = require("../constants/courses/category-con
 function* getUploadCategory(action) {
     try {
         const response = yield call(uploadCategoryHandller, action.payload)
-        // console.log("API Response:", response);
         yield put(getCategoryUploadSuccess(response))
     } catch (error) {
         yield put(getCategoryUploadError(error.message))
