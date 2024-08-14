@@ -48,7 +48,12 @@ const summaryApi = {
     uploadCourse: {
         url: `${backendDomain}/api/course`,
         method: "post"
+    },
+    getCourse:{
+        url:`${backendDomain}/api/get-course`,
+        method:"get"
     }
+
 
 
 }

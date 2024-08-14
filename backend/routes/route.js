@@ -41,14 +41,8 @@ router.post("/subcategory", subCategoryController)
 router.get("/get-subcategories", getAllSubcategories)
 // courses upload route
 router.post("/course", upload.single('image'), coursesController)
-// router.post('/course', upload.single('image'), (req, res, next) => {
-//     next();
-// }, coursesController);
-
-
-
 // courses find route
-router.get("/get-course", authToken, getAllCourses)
+router.get("/get-course", getAllCourses)
 
 
 

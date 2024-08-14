@@ -1,7 +1,7 @@
 const { COURSE_UPLOAD_START, COURSE_UPLOAD_SUCCESS, COURSE_UPLOAD_ERROR } = require("../constants/courses/course-constants");
 
 const inititalState = {
-    course: []
+    courseData: null
 }
 
 const courseUploadReducer = (state = inititalState, action) => {
@@ -11,15 +11,9 @@ const courseUploadReducer = (state = inititalState, action) => {
                 ...state
             }
         case COURSE_UPLOAD_SUCCESS:
-            console.log("COURSE_UPLOAD_SUCCESS action triggered");
-            console.log("Current state:", state);
-            console.log("Action payload:", action.payload);
             return {
                 ...state,
-                course: [
-                    ...state.course,
-                    action.payload
-                ]
+                courseData: action.payload
             }
         case COURSE_UPLOAD_ERROR:
             return {

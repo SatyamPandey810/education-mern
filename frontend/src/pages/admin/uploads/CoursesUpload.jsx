@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import summaryApi from '../../../common';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
-
-
-
+import { courseUploadStart } from '../../../redux/actions/uploadCourse.action';
 
 export default function CoursesUpload({ onClose }) {
     const [formData, setFormData] = useState({
@@ -22,9 +19,11 @@ export default function CoursesUpload({ onClose }) {
     });
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
     const dispatch = useDispatch()
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+    const courseData = useSelector((state) => state.course)
     // console.log('allSubCategory:', allSubCategory);
     useEffect(() => {
         dispatch(getAllCategoryStart())
@@ -40,7 +39,7 @@ export default function CoursesUpload({ onClose }) {
         const selectedCategory = event.target.value;
         setFormData((prevData) => ({
             ...prevData,
-            category: selectedCategory, 
+            category: selectedCategory,
         }));
         setSelectedCategory(selectedCategory);
         setSelectedSubCategory('');
@@ -49,23 +48,30 @@ export default function CoursesUpload({ onClose }) {
         const selectedSubCategory = event.target.value;
         setFormData((prevData) => ({
             ...prevData,
-            subCategory: selectedSubCategory, 
+            subCategory: selectedSubCategory,
         }));
         setSelectedSubCategory(selectedSubCategory);
     };
 
-
-
+// image preview
     const inputChange = (event) => {
         const { name, value, files } = event.target;
         if (files) {
             setFormData({ ...formData, [name]: files[0] });
+
+            const file = files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
         } else {
             setFormData({ ...formData, [name]: value });
         }
     };
-
-    const submitHandler = async (event) => {
+   
+    // form submit function
+        const submitHandler = (event) => {
         event.preventDefault();
         const data = new FormData();
         data.append('name', formData.name);
@@ -75,32 +81,13 @@ export default function CoursesUpload({ onClose }) {
         data.append('description', formData.description);
         data.append('category', formData.category);
         data.append('subCategoryIds', [selectedSubCategory]);
-        try {
 
-            const resonse = await fetch(summaryApi.uploadCourse.url, {
-                method: summaryApi.uploadCourse.method,
-                // headers: {
-                //     "Content-Type": "application/json"
-                // },
-                body: data
-            })
-
-            const dataResponse = await resonse.json()
-
-            if (dataResponse.success) {
-                toast.success(dataResponse.message)
-                onClose()
-            }
-
-        } catch (error) {
-            throw error;
-        }
+        dispatch(courseUploadStart(data));
+        onClose();
+        toast.success("Course upload successfully")
     };
+
     const subCategoryData = allSubCategory ? allSubCategory.data : [];
-
-
-
-
     return (
         <>
             <div className="all-cu">
@@ -183,6 +170,11 @@ export default function CoursesUpload({ onClose }) {
                                 aria-describedby="emailHelp"
                                 onChange={inputChange}
                             />
+                             {imagePreview && (
+                                <div className="image-preview">
+                                    <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
+                                </div>
+                            )}
                         </div>
                         <div className='col-sm-6 mb-3'>
                             <label htmlFor="sheet" className="form-label">Sheet</label>
@@ -214,9 +206,6 @@ export default function CoursesUpload({ onClose }) {
                         </div>
                     </div>
                 </form>
-
-
-
             </div>
 
         </>

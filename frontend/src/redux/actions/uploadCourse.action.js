@@ -1,12 +1,12 @@
 import { COURSE_UPLOAD_ERROR, COURSE_UPLOAD_START, COURSE_UPLOAD_SUCCESS } from "../constants/courses/course-constants";
 
-export const courseUploadStart = (data) => ({
+export const courseUploadStart = (courseData) => ({
     type: COURSE_UPLOAD_START,
-    payload:data
+    payload:courseData
 })
-export const courseUploadSuccess = (course) => ({
+export const courseUploadSuccess = (data) => ({
     type: COURSE_UPLOAD_SUCCESS,
-    payload: course
+    payload: data
 })
 export const courseUploadError = (error) => ({
     type: COURSE_UPLOAD_ERROR,

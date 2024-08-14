@@ -1,8 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CoursesUpload from './uploads/CoursesUpload'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllCourseStart } from '../../redux/actions/getCourses.action'
 
 export default function AllCourses() {
   const [openUploadCourse, setOpenUploadCourse] = useState(false)
+  const dispatch = useDispatch()
+
+  const allCourse = useSelector((state) => state.allCourse?.allCourse)
+  console.log(allCourse);
+
+
+  useEffect(() => {
+    dispatch(getAllCourseStart())
+  }, [dispatch])
 
   return (
     <div>
@@ -20,34 +31,45 @@ export default function AllCourses() {
         </div>
       </div>
       <div className=''>
-        <table className="table table-bordered table-hover">
+        <table className="table table-bordered ">
           <thead>
             <tr>
-              <th>No</th>
-              <th>First</th>
-              <th>Last</th>
-              <th>Handle</th>
+              <th className='text-light'>No.</th>
+              <th className='text-light'>Course Name</th>
+              <th className='text-light'>Course Fees</th>
+              <th className='text-light'>Sheet</th>
+              <th className='text-light'>Description</th>
+              <th className='text-light'>Image</th>
+              <th className='text-light'>Category</th>
+              <th className='text-light'>Subcategory</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td >Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
+            {
+              allCourse?.map((course, index) => (
+                <tr key={index}>
+                  <td>{index + 1}.</td>
+                  <td className='text-capitalize'>{course.name}</td>
+                  <td>{course.price} /-</td>
+                  <td>{course.sheet}</td>
+                  <td className='text-capitalize'>{course.description}</td>
+                  <td><img src={course?.image} alt='img' style={{ width: "100px", height: "60px", objectFit: "cover" }} /></td>
+                  <td className='text-capitalize'>{course.subcategory?.map((sub) =>
+                    sub.category?.map((cat) => (
+                      <div key={cat._id}>
+                        <strong>{cat.name}</strong>
+                      </div>
+                    ))
+                  )}</td>
+                  <td className='text-capitalize'>{course.subcategory?.map((sub) => (
+                    <div key={sub._id}>
+                      <strong>{sub.name}</strong>
+                    </div>
+                  ))}</td>
+
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>

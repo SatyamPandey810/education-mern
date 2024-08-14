@@ -49,9 +49,34 @@ async function coursesController(req, res) {
 // get all courses
 
 const getAllCourses = async (req, res) => {
+    const { categoryId, subCategoryId } = req.query;
     try {
-        const courses = await courseModel.find().populate('Subcategory');
-        res.status(200).json(courses);
+        const query = {};
+        if (categoryId) {
+            query['subcategory.category'] = categoryId;
+        }
+        if (subCategoryId) {
+            query.subcategory = subCategoryId;
+        }
+
+        const courses = await courseModel.find(query)
+            .populate({
+                path: 'subcategory',
+                populate: {
+                    path: 'category',
+                    model: 'category' // Make sure this matches the category model name
+                }
+            });
+        // .populate('Subcategory');
+
+        const coursesWithFullImagePath = courses.map(course => {
+            return {
+                ...course._doc,  // Spread the original course object
+                image: course.image ? `${req.protocol}://${req.get('host')}/uploads/${course.image}` : null
+            };
+        });
+
+        res.status(200).json(coursesWithFullImagePath);
     } catch (error) {
         res.status(500).json({ message: 'Error retrieving courses', error });
     }

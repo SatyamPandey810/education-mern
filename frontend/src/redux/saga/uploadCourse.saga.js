@@ -6,8 +6,7 @@ const { COURSE_UPLOAD_START } = require("../constants/courses/course-constants")
 function* courseUpload(action) {
     try {
         const data = yield call(uploadCourseHandller, action.payload)
-        console.log(data);
-        
+        // console.log(data);        
         yield put(courseUploadSuccess(data))
 
 

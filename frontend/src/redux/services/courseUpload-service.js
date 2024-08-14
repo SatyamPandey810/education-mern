@@ -1,27 +1,15 @@
-const { toast } = require("react-toastify")
-const { default: summaryApi } = require("../../common")
+import summaryApi from "../../common";
 
-const uploadCourseHandller = async (data) => {
-    try {
-        const resonse = await fetch(summaryApi.uploadCourse.url, {
-            method: summaryApi.uploadCourse.method,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-
-        const dataResponse = await resonse.json()
-        console.log(dataResponse);
-        
-        if (dataResponse.success) {
-            toast.success(dataResponse.message)
-            return dataResponse
-        }
-
-    } catch (error) {
-        throw error;
+const uploadCourseHandller = async (courseData) => {
+    const response = await fetch(summaryApi.uploadCourse.url, {
+        method: summaryApi.uploadCourse.method,
+        body: courseData,
+    });
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || 'Failed to upload course');
     }
+    return data;
 }
 
 export default uploadCourseHandller;
