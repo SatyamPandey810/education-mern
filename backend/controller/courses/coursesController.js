@@ -1,43 +1,48 @@
 const courseModel = require("../../models/courses");
 const subCategoryModel = require("../../models/subCategory");
-const upload =require("../../middleware/fileUpload")
+const upload = require("../../middleware/fileUpload")
 
 async function coursesController(req, res) {
-    
-    upload.single('image')(req, res, async (err) => {
-        if (err) {
-            return res.status(400).json({ message: err.message });
-        }
+    try {
+        const { name, price, sheet, description, subCategoryIds } = req.body;
+        
 
-        const { name, price, sheet, description, subcategory } = req.body;
-        let imagePath = null;
+        const image = req.file ? req.file.filename : null;
 
-        if (req.file) {
-            imagePath = req.file.path; // Get the path of the uploaded file
-        }
 
-        if (!name || !price || !subcategory) {
-            return res.status(400).json({ message: 'Missing required fields' });
-        }
+        const suCategories = await subCategoryModel.find({ '_id': { $in: subCategoryIds } });
+        // if (suCategories.length !== subCategoryIds.length) {
+        //     return res.status(400).json({
+        //         message: 'One or more categories not found',
+        //         error: true,
+        //         success: false
+        //     });
+        // }
 
-        try {
-            const course = new courseModel({ name, image: imagePath, price, sheet, description, subcategory });
-            const savedCourse = await course.save();
+        const newCourse = new courseModel({
+            name,
+            image,
+            price,
+            sheet,
+            description,
+            subcategory: subCategoryIds
+        });
 
-            const subcat = await subCategoryModel.findById(subcategory);
-            if (subcat) {
-                subcat.items.push(savedCourse._id);
-                await subcat.save();
-            } else {
-                return res.status(404).json({ message: 'Subcategory not found' });
-            }
+        const savedCourse = await newCourse.save();
 
-            res.status(201).json(savedCourse);
-        } catch (error) {
-            console.error('Error creating course:', error);
-            res.status(500).json({ message: 'Error creating course', error });
-        }
-    });
+        res.status(201).json({
+            message: 'Course uploaded successfully',
+            success: true,
+            data: savedCourse,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Failed to upload course',
+            success: false,
+            error: error.message,
+        });
+    }
 }
 
 

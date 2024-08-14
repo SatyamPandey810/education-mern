@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
-import { COURSE_UPLOAD_START } from '../../../redux/constants/courses/course-constants';
+import summaryApi from '../../../common';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
+import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
+
+
+
 
 export default function CoursesUpload({ onClose }) {
     const [formData, setFormData] = useState({
@@ -14,43 +20,86 @@ export default function CoursesUpload({ onClose }) {
         description: '',
         image: null,
     });
-    const [error, setError] = useState('');
-    const dispatch = useDispatch();
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedSubCategory, setSelectedSubCategory] = useState('');
+    const dispatch = useDispatch()
+    const allCategory = useSelector((state) => state.allCategory.allCategory)
+    const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+    // console.log('allSubCategory:', allSubCategory);
+    useEffect(() => {
+        dispatch(getAllCategoryStart())
+        dispatch(getSubCategoryStart())
+    }, [dispatch])
+
+
+
+
+    // console.log(allCategory);
+
+    const handleCategoryChange = (event) => {
+        const selectedCategory = event.target.value;
+        setFormData((prevData) => ({
+            ...prevData,
+            category: selectedCategory, 
+        }));
+        setSelectedCategory(selectedCategory);
+        setSelectedSubCategory('');
+    };
+    const handleSubCategoryChange = (event) => {
+        const selectedSubCategory = event.target.value;
+        setFormData((prevData) => ({
+            ...prevData,
+            subCategory: selectedSubCategory, 
+        }));
+        setSelectedSubCategory(selectedSubCategory);
+    };
+
+
 
     const inputChange = (event) => {
         const { name, value, files } = event.target;
-        setFormData({
-            ...formData,
-            [name]: files ? files[0] : value, // Handle file input separately
-        });
+        if (files) {
+            setFormData({ ...formData, [name]: files[0] });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
-        event.preventDefault();
+        const data = new FormData();
+        data.append('name', formData.name);
+        data.append('price', formData.price);
+        data.append('image', formData.image);
+        data.append('sheet', formData.sheet);
+        data.append('description', formData.description);
+        data.append('category', formData.category);
+        data.append('subCategoryIds', [selectedSubCategory]);
+        try {
 
-        // Validation
-        if (!formData.courseName || !formData.courseName.trim()) {
-            setError('Course name is required');
-            return;
+            const resonse = await fetch(summaryApi.uploadCourse.url, {
+                method: summaryApi.uploadCourse.method,
+                // headers: {
+                //     "Content-Type": "application/json"
+                // },
+                body: data
+            })
+
+            const dataResponse = await resonse.json()
+
+            if (dataResponse.success) {
+                toast.success(dataResponse.message)
+                onClose()
+            }
+
+        } catch (error) {
+            throw error;
         }
-        if (!formData.category || !formData.subCategory) {
-            setError('Please select a category and subcategory');
-            return;
-        }
-
-        setError(''); // Clear any previous errors
-
-        const formDataToSend = new FormData();
-        for (const key in formData) {
-            formDataToSend.append(key, formData[key]);
-        }
-
-        dispatch({
-            type: COURSE_UPLOAD_START,
-            payload: formDataToSend,
-        });
     };
+    const subCategoryData = allSubCategory ? allSubCategory.data : [];
+
+
+
 
     return (
         <>
@@ -64,22 +113,37 @@ export default function CoursesUpload({ onClose }) {
                 <form className='mb-4' onSubmit={submitHandler}>
                     <div className='row'>
                         <div className="col-sm-6 d-grid mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Category</label><br />
-                            <select className="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <label htmlFor="category" className="form-label">Category</label><br />
+                            <select
+                                className="form-select"
+                                aria-label="Default select example"
+                                onChange={handleCategoryChange}
+                                value={selectedCategory}
+                            >
+                                <option >Open this select menu</option>
+                                {
+                                    allCategory?.map((category) => (
+                                        <option value={category._id} key={category._id}>{category?.name}</option>
+                                    ))
+                                }
                             </select>
                         </div>
 
                         <div className="col-sm-6 mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Sub category</label><br />
-                            <select className="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <label htmlFor="sub" className="form-label">Sub category</label><br />
+                            <select
+                                className="form-select"
+                                aria-label="Default select example"
+                                onChange={handleSubCategoryChange}
+                                value={selectedSubCategory}
+                                disabled={!selectedCategory}
+                            >
+                                <option >Open this select menu</option>
+                                {
+                                    subCategoryData?.map((sub) => (
+                                        <option value={sub._id} key={sub._id}>{sub?.name}</option>
+                                    ))
+                                }
                             </select>
                         </div>
                     </div>
@@ -91,6 +155,7 @@ export default function CoursesUpload({ onClose }) {
                                 type="text"
                                 className="form-control"
                                 name="name"
+                                value={formData.name}
                                 aria-describedby="emailHelp"
                                 onChange={inputChange}
                             />
@@ -101,6 +166,7 @@ export default function CoursesUpload({ onClose }) {
                                 type="number"
                                 className="form-control"
                                 name="price"
+                                value={formData.price}
                                 aria-describedby="emailHelp"
                                 onChange={inputChange}
                             />
@@ -124,6 +190,7 @@ export default function CoursesUpload({ onClose }) {
                                 type="number"
                                 className="form-control"
                                 name="sheet"
+                                value={formData.sheet}
                                 aria-describedby="emailHelp"
                                 onChange={inputChange}
                             />
@@ -136,6 +203,7 @@ export default function CoursesUpload({ onClose }) {
                                 cols={61}
                                 rows={4}
                                 name="description"
+                                value={formData.description}
                                 onChange={inputChange}
                             ></textarea>
                         </div>

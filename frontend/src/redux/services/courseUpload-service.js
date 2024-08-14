@@ -12,6 +12,8 @@ const uploadCourseHandller = async (data) => {
         })
 
         const dataResponse = await resonse.json()
+        console.log(dataResponse);
+        
         if (dataResponse.success) {
             toast.success(dataResponse.message)
             return dataResponse

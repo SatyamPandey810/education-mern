@@ -21,6 +21,7 @@ export default function AllCategorySubcategory() {
 
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const updateCategoryState = useSelector((state) => state.updateCategory);
+// console.log(allSubCategory);
 
 
 

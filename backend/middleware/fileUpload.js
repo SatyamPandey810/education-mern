@@ -9,9 +9,16 @@ const multerStorage = multer.diskStorage({
         cb(null, `${file.fieldname}-${Date.now()}.${ext}`);
     },
 });
-const upload = multer({
-    storage: multerStorage
 
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.startsWith('image')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Not an image! Please upload an image.'), false);
+        }
+    }
 });
 module.exports= upload
 

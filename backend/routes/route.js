@@ -11,6 +11,7 @@ const updateUserController = require('../controller/user-registration/userUpdate
 const { getAllSubcategories, subCategoryController } = require('../controller/subCategories/subCategoryController')
 const { uploadCategoryController, getAllCategoriesController, updateCategoriesController } = require('../controller/categories/categoryController')
 const { coursesController, getAllCourses } = require('../controller/courses/coursesController')
+const upload = require('../middleware/fileUpload')
 
 
 // user signup route
@@ -33,13 +34,19 @@ router.post("/category", uploadCategoryController)
 // category find route
 router.get("/get-category", getAllCategoriesController)
 // update category
-router.post('/update-category',authToken, updateCategoriesController)
+router.post('/update-category', authToken, updateCategoriesController)
 // subCategory upload route
 router.post("/subcategory", subCategoryController)
 // subCategory find route
 router.get("/get-subcategories", getAllSubcategories)
 // courses upload route
-router.post("/course", coursesController)
+router.post("/course", upload.single('image'), coursesController)
+// router.post('/course', upload.single('image'), (req, res, next) => {
+//     next();
+// }, coursesController);
+
+
+
 // courses find route
 router.get("/get-course", authToken, getAllCourses)
 
