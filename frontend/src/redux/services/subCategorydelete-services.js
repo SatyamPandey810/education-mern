@@ -1,8 +1,8 @@
-import summaryApi from "../../common"
+const { default: summaryApi } = require("../../common")
 
-const deleteCategoryService = async (id) => {
-    const response = await fetch(summaryApi.deleteCategory.url, {
-        method: summaryApi.deleteCategory.method,
+const deleteSubCategoryServices = async (id) => {
+    const response = await fetch(summaryApi.deleteSubCategory.url, {
+        method: summaryApi.deleteSubCategory.method,
         credentials: "include",
         headers: {
             "content-type": 'application/json'
@@ -14,6 +14,7 @@ const deleteCategoryService = async (id) => {
     const responseData = response.json()
     if (responseData.success) {
         return responseData
-    } 
+    }
 }
-export default deleteCategoryService;
+
+export default deleteSubCategoryServices

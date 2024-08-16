@@ -62,7 +62,7 @@ const updateCategoriesController = async (req, res) => {
         const updateCategories = await categoryModel.findByIdAndUpdate(_id, resBody)
         res.json({
             data: updateCategories,
-            message: "Product updated successfully",
+            message: "Category updated successfully",
             success: true,
             error: false
         })

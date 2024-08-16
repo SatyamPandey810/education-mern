@@ -10,6 +10,8 @@ import getAllSubCategorySaga from "./getAllSubCategory.saga"
 import courseUploadSaga from "./uploadCourse.saga"
 import getAllCourseSaga from "./getAllCourse.saga"
 import deleteCategorySaga from "./deletCategory.saga"
+import updateSubCategorySaga from "./updateSubCategory.saga"
+import deleteSubCategorySaga from "./deleteSubCategory.saga"
 
 
 export function* root() {
@@ -24,6 +26,8 @@ export function* root() {
         fork(getAllSubCategorySaga),
         fork(courseUploadSaga),
         fork(getAllCourseSaga),
-        fork(deleteCategorySaga)
+        fork(deleteCategorySaga),
+        fork(updateSubCategorySaga),
+        fork(deleteSubCategorySaga)
     ])
 }

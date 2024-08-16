@@ -49,6 +49,14 @@ const summaryApi = {
         url: `${backendDomain}/api/get-subcategories`,
         method: "get"
     },
+    updateSubCategory: {
+        url: `${backendDomain}/api/update-subcategory`,
+        method: "post"
+    },
+    deleteSubCategory: {
+        url: `${backendDomain}/api/delete-subcategory`,
+        method:"post"
+    },
     uploadCourse: {
         url: `${backendDomain}/api/course`,
         method: "post"

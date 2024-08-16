@@ -1,30 +1,31 @@
-import { toast } from "react-toastify"
-import summaryApi from "../../common"
+const { toast } = require("react-toastify")
+const { default: summaryApi } = require("../../common")
 
-const updateCategoryServices = async (category) => {
+
+const updateSubCategoryService = async (subCategory) => {
     try {
-        const response = await fetch(summaryApi.updateCategory.url, {
-            method: summaryApi.updateCategory.method,
+        const response = await fetch(summaryApi.updateSubCategory.url, {
+            method: summaryApi.updateSubCategory.method,
             credentials: 'include',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(category)
+            body: JSON.stringify(subCategory)
         });
-
         const responseData = await response.json();
-
+        
         if (responseData.success) {
             toast.success(responseData.message);
-            return responseData; 
+            return responseData;
         } else {
             toast.error(responseData.message || 'Failed to update category');
             return responseData;
         }
     } catch (error) {
         toast.error(error.message || 'An error occurred');
-        console.log("API error:", error);
         return { success: false, message: error.message };
     }
+
+
 }
-export default updateCategoryServices
+export default updateSubCategoryService;

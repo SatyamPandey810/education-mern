@@ -6,7 +6,6 @@ import { deleteCategoryError, deleteCategorySuccess } from "../actions/deleteCat
 function* deleteCategory(action) {
     try {
         const response = yield call(deleteCategoryService, action.payload)
-        console.log(response);
         
         yield put(deleteCategorySuccess(response))
     } catch (error) {

@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { SUBCATEGORY_UPLOAD_START } from '../../../redux/constants/courses/subCategory-constants';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function SubCategoryUpload({ onClose, onCategoryUploaded }) {
+export default function SubCategoryUpload({ onClose, onSubCategoryUploaded }) {
     const [subCategoryName, setSubCategoryname] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('');
     const dispatch = useDispatch()
@@ -25,7 +25,7 @@ export default function SubCategoryUpload({ onClose, onCategoryUploaded }) {
                 type: SUBCATEGORY_UPLOAD_START,
                 payload: { name: subCategoryName, categoryIds: [selectedCategory] }
             })
-            // onCategoryUploaded()
+            onSubCategoryUploaded()
             onClose()
         }
     }

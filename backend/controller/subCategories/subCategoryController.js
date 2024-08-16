@@ -46,8 +46,6 @@ async function subCategoryController(req, res) {
         });
     }
 }
-
-
 // get all subcategory
 const getAllSubcategories = async (req, res) => {
     try {
@@ -60,7 +58,58 @@ const getAllSubcategories = async (req, res) => {
     }
 };
 
+// update subcategory
+const updateSubCategory = async (req, res) => {
+    try {
+        const { _id, ...resBody } = req.body
+        const subCategoryUpdate = await subCategoryModel.findByIdAndUpdate(_id, resBody)
+        res.json({
+            data: subCategoryUpdate,
+            success: true,
+            error: false,
+            message: "Subcategory updated successfully"
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false
+
+        })
+    }
+
+}
+// delete subcategory
+const deleteSubCategory = async (req, res) => {
+    try {
+        const subCategoryId = req.body._id
+        const deleteSubCategory = await subCategoryModel.deleteOne({ _id: subCategoryId })
+
+        res.status(200).json({
+            message: "Subcategory deleted successfully",
+            error: false,
+            success: true,
+            data: deleteSubCategory
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false
+
+        })
+    }
+}
+
+
+
+
+
 module.exports = {
     subCategoryController,
-    getAllSubcategories
+    getAllSubcategories,
+    updateSubCategory,
+    deleteSubCategory
 }
