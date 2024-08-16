@@ -9,6 +9,7 @@ import uploadSubCategorySaga from "./uploadSubCategory.saga"
 import getAllSubCategorySaga from "./getAllSubCategory.saga"
 import courseUploadSaga from "./uploadCourse.saga"
 import getAllCourseSaga from "./getAllCourse.saga"
+import deleteCategorySaga from "./deletCategory.saga"
 
 
 export function* root() {
@@ -22,6 +23,7 @@ export function* root() {
         fork(uploadSubCategorySaga),
         fork(getAllSubCategorySaga),
         fork(courseUploadSaga),
-        fork(getAllCourseSaga)
+        fork(getAllCourseSaga),
+        fork(deleteCategorySaga)
     ])
 }

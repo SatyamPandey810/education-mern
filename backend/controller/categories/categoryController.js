@@ -76,10 +76,34 @@ const updateCategoriesController = async (req, res) => {
     }
 }
 
+// delete category
+const deleteCategoryController = async (req, res) => {
+    try {
+        const categoryId = req.body._id
+        const deleteCategory = await categoryModel.deleteOne({ _id: categoryId })
+
+        res.status(200).json({
+            message: "Category deleted successfully",
+            error: false,
+            success: true,
+            data: deleteCategory
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false
+
+        })
+    }
+}
+
 
 
 module.exports = {
     uploadCategoryController,
     getAllCategoriesController,
-    updateCategoriesController
+    updateCategoriesController,
+    deleteCategoryController
 }

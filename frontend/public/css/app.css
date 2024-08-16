@@ -212,17 +212,14 @@ select {
 2. Remove default button styles.
 */
 
-button,
+/* button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
-  /* 1 */
   background-color: transparent;
-  /* 2 */
   background-image: none;
-  /* 2 */
-}
+} */
 
 /*
 Use the modern Firefox focus style for all focusable elements.
@@ -2761,7 +2758,7 @@ select {
 }
 
 /********************** user login css *****************************/
-input,
+/* input,
 .btn {
   width: 100%;
   padding: 12px;
@@ -2773,13 +2770,12 @@ input,
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
-  /* remove underline from anchors */
-}
+} */
 
-input:hover,
+/* input:hover,
 .btn:hover {
   opacity: 1;
-}
+} */
 
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {

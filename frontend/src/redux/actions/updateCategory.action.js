@@ -5,9 +5,9 @@ export const updateCategoryStart = (category) => ({
     payload: category
 })
 
-export const updateCategorySuccess = (category) => ({
+export const updateCategorySuccess = (updatedCategory) => ({
     type: UPDATE_CATEGORY_SUCCESS,
-    payload: category
+    payload: updatedCategory
 })
 
 export const updateCategoryError = (error) => ({

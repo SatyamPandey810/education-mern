@@ -17,15 +17,15 @@ const updateCategoryServices = async (category) => {
 
         if (responseData.success) {
             toast.success(responseData.message);
-            return responseData.data || responseData;  // Return whatever is meaningful
+            return responseData; 
         } else {
             toast.error(responseData.message || 'Failed to update category');
-            return null;
+            return responseData;
         }
     } catch (error) {
         toast.error(error.message || 'An error occurred');
         console.log("API error:", error);
-        return null;
+        return { success: false, message: error.message };
     }
 }
 export default updateCategoryServices

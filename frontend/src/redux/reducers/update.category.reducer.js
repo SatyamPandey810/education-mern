@@ -1,6 +1,7 @@
 import { UPDATE_CATEGORY_ERROR, UPDATE_CATEGORY_START, UPDATE_CATEGORY_SUCCESS } from "../constants/courses/category-constants";
 
 const initialState = {
+    categories: [],
     updatedCategory: null
 }
 const updateCategoryreducer = (state = initialState, action) => {
@@ -13,8 +14,11 @@ const updateCategoryreducer = (state = initialState, action) => {
         case UPDATE_CATEGORY_SUCCESS:
             return {
                 ...state,
-                updatedCategory: action.payload || {},
- 
+                updatedCategory: action.payload,
+                categories: state.categories.map(cat =>
+                    cat._id === action.payload._id ? action.payload : cat
+                ),
+
             }
         case UPDATE_CATEGORY_ERROR:
             return {

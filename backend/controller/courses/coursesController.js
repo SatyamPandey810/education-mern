@@ -47,7 +47,6 @@ async function coursesController(req, res) {
 
 
 // get all courses
-
 const getAllCourses = async (req, res) => {
     const { categoryId, subCategoryId } = req.query;
     try {
@@ -64,10 +63,9 @@ const getAllCourses = async (req, res) => {
                 path: 'subcategory',
                 populate: {
                     path: 'category',
-                    model: 'category' // Make sure this matches the category model name
+                    model: 'category'
                 }
             });
-        // .populate('Subcategory');
 
         const coursesWithFullImagePath = courses.map(course => {
             return {
