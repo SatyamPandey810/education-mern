@@ -18,6 +18,9 @@ const courseSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    status: {
+        type: String
+    },
     subcategory: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subcategory',

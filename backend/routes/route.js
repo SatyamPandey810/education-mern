@@ -10,7 +10,7 @@ const userLogOutController = require('../controller/user-registration/userLogout
 const updateUserController = require('../controller/user-registration/userUpdate')
 const { getAllSubcategories, subCategoryController, updateSubCategory, deleteSubCategory } = require('../controller/subCategories/subCategoryController')
 const { uploadCategoryController, getAllCategoriesController, updateCategoriesController, deleteCategoryController } = require('../controller/categories/categoryController')
-const { coursesController, getAllCourses } = require('../controller/courses/coursesController')
+const { coursesController, getAllCourses, updateCourseController } = require('../controller/courses/coursesController')
 const upload = require('../middleware/fileUpload')
 
 
@@ -49,6 +49,8 @@ router.post("/delete-subcategory", deleteSubCategory)
 router.post("/course", upload.single('image'), coursesController)
 // courses find route
 router.get("/get-course", getAllCourses)
+// course update route
+router.post("/update-course", upload.single('image'), updateCourseController)
 
 
 

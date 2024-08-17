@@ -27,7 +27,6 @@ export default function AllCategorySubcategory() {
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const updateCategoryState = useSelector((state) => state.updateCategory);
-    // console.log(allSubCategory);
 
 
 
@@ -84,17 +83,15 @@ export default function AllCategorySubcategory() {
         setEditSubCategory(null)
         setEditSubCategoryName('')
         setSelectedCategoryId('');
-        handleCategoryUploaded()
+        handleSubCategoryUploaded()
 
     }
-
-
 
     // delete categories 
     const handleDeleteClick = (id) => {
         dispatch(deleteCategoryStart(id));
         toast.success('Category deleted')
-        handleSubCategoryUploaded()
+        handleCategoryUploaded()
     };
 
     // delete subcategory

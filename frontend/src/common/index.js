@@ -64,6 +64,10 @@ const summaryApi = {
     getCourse: {
         url: `${backendDomain}/api/get-course`,
         method: "get"
+    },
+    updateCourse:{
+        url:`${backendDomain}/api/update-course`,
+        method:"post"
     }
 
 

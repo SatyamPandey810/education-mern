@@ -7,7 +7,7 @@ import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
 import { courseUploadStart } from '../../../redux/actions/uploadCourse.action';
 
-export default function CoursesUpload({ onClose }) {
+export default function CoursesUpload({ onClose, onCourseUploaded }) {
     const [formData, setFormData] = useState({
         category: '',
         subCategory: '',
@@ -15,6 +15,7 @@ export default function CoursesUpload({ onClose }) {
         price: '',
         sheet: '',
         description: '',
+        status: 'Active',
         image: null,
     });
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -53,7 +54,7 @@ export default function CoursesUpload({ onClose }) {
         setSelectedSubCategory(selectedSubCategory);
     };
 
-// image preview
+    // image preview
     const inputChange = (event) => {
         const { name, value, files } = event.target;
         if (files) {
@@ -69,9 +70,9 @@ export default function CoursesUpload({ onClose }) {
             setFormData({ ...formData, [name]: value });
         }
     };
-   
+
     // form submit function
-        const submitHandler = (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
         const data = new FormData();
         data.append('name', formData.name);
@@ -79,19 +80,21 @@ export default function CoursesUpload({ onClose }) {
         data.append('image', formData.image);
         data.append('sheet', formData.sheet);
         data.append('description', formData.description);
+        data.append('status', formData.status);
         data.append('category', formData.category);
         data.append('subCategoryIds', [selectedSubCategory]);
 
         dispatch(courseUploadStart(data));
         onClose();
         toast.success("Course upload successfully")
+        onCourseUploaded()
     };
 
     const subCategoryData = allSubCategory ? allSubCategory.data : [];
     return (
         <>
             <div className="all-cu">
-                <h2 className='text-light'>CoursesUpload</h2>
+                <h2 className='text-light'>Upload Courses </h2>
                 <FontAwesomeIcon className='x-mark' icon={faXmark}
                     onClick={onClose}
                 />
@@ -170,7 +173,7 @@ export default function CoursesUpload({ onClose }) {
                                 aria-describedby="emailHelp"
                                 onChange={inputChange}
                             />
-                             {imagePreview && (
+                            {imagePreview && (
                                 <div className="image-preview">
                                     <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
                                 </div>
@@ -198,6 +201,18 @@ export default function CoursesUpload({ onClose }) {
                                 value={formData.description}
                                 onChange={inputChange}
                             ></textarea>
+                        </div>
+                        <div className='col-sm-6'>
+                            <label htmlFor="status" className="form-label">Status</label><br />
+                            <select
+                                className='form-control'
+                                name="status"
+                                value={formData.status}
+                                onChange={inputChange}
+                            >
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
                         </div>
                     </div>
                     <div className='row d-flex justify-content-center'>

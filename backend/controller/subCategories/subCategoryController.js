@@ -50,7 +50,6 @@ async function subCategoryController(req, res) {
 const getAllSubcategories = async (req, res) => {
     try {
         const subcategories = await subCategoryModel.find().populate('category');
-        console.log("subcategory", subcategories);
 
         res.status(200).json({ data: subcategories });
     } catch (error) {

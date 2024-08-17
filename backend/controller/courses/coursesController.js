@@ -4,8 +4,8 @@ const upload = require("../../middleware/fileUpload")
 
 async function coursesController(req, res) {
     try {
-        const { name, price, sheet, description, subCategoryIds } = req.body;
-        
+        const { name, price, sheet, description, status, subCategoryIds } = req.body;
+
 
         const image = req.file ? req.file.filename : null;
 
@@ -25,6 +25,7 @@ async function coursesController(req, res) {
             price,
             sheet,
             description,
+            status,
             subcategory: subCategoryIds
         });
 
@@ -69,7 +70,7 @@ const getAllCourses = async (req, res) => {
 
         const coursesWithFullImagePath = courses.map(course => {
             return {
-                ...course._doc,  // Spread the original course object
+                ...course._doc,
                 image: course.image ? `${req.protocol}://${req.get('host')}/uploads/${course.image}` : null
             };
         });
@@ -79,7 +80,41 @@ const getAllCourses = async (req, res) => {
         res.status(500).json({ message: 'Error retrieving courses', error });
     }
 };
+
+const updateCourseController = async (req, res) => {
+    try {
+        // const { _id, name, price, sheet, description, status } = req.body;
+        // const resBody = { name, price, sheet, description, status };
+        const { _id, ...resBody } = req.body
+        if (req.file) {
+            resBody.image = req.file.filename; // Store the filename or path in the database
+        }
+
+        const updateCourse = await courseModel.findByIdAndUpdate(_id, { $set: resBody }, { new: true });
+        console.log("updateCourse", updateCourse);
+
+        res.json({
+            data: updateCourse,
+            success: true,
+            error: false,
+            message: "Course updated successfully"
+        });
+    } catch (error) {
+        console.error("Error updating course:", error);
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        });
+    }
+
+}
+
+
+
+
 module.exports = {
     coursesController,
-    getAllCourses
+    getAllCourses,
+    updateCourseController
 }

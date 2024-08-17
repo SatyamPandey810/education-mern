@@ -25,8 +25,8 @@ export default function SubCategoryUpload({ onClose, onSubCategoryUploaded }) {
                 type: SUBCATEGORY_UPLOAD_START,
                 payload: { name: subCategoryName, categoryIds: [selectedCategory] }
             })
-            onSubCategoryUploaded()
             onClose()
+            onSubCategoryUploaded()
         }
     }
     return (
@@ -43,7 +43,7 @@ export default function SubCategoryUpload({ onClose, onSubCategoryUploaded }) {
 
                         <div className='row'>
                             <div className="col-sm-6 mb-3">
-                                <label for="exampleInputEmail1" className="form-label">Category name</label>
+                                <label for="exampleInputEmail1" className="form-label">Sub category name</label>
                                 <input
                                     type="text"
                                     className="form-control"

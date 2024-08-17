@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import moment from "moment"
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCourseStart } from '../redux/actions/getCourses.action';
 
 export default function Home() {
+  const dispatch = useDispatch()
+  const allCourse = useSelector((state) => state.allCourse?.allCourse)
+  const allCategory = useSelector((state) => state.allCategory.allCategory)
+  const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+  console.log(allCourse);
+
+  useEffect(() => {
+    dispatch(getAllCourseStart())
+  }, [dispatch])
+  
+  
+
   return (
     <>
-  <div className="slider">
+      <div className="slider">
         <div className="">
-          <OwlCarousel className='owl-theme all-slide owl-item' autoplay={true}	autoplayHoverPause={true} items={1} loop margin={10} nav>
+          <OwlCarousel className='owl-theme all-slide owl-item' autoplay={true} autoplayHoverPause={true} items={1} loop margin={10} nav>
             <div className="single-slide" style={{ backgroundImage: "url('assets/img/slide1.jpg')" }}>
               <div className="slider-overlay"></div>
               <div className="slider-wrapper">
@@ -86,7 +101,7 @@ export default function Home() {
           <div className="row">
             <div className="col-md-12">
               <div className="sec-title">
-                <h1>Our Feature Course</h1>
+                <h1>category</h1>
               </div>
             </div>
           </div>
@@ -95,234 +110,49 @@ export default function Home() {
             <div className="course-list-sec">
               <div className="all-course">
                 <OwlCarousel className='owl-theme' loop margin={10} nav>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_1.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_1.jpg" alt="" />
+
+                  {
+                    allCourse?.map((course, index) => (
+                      <div className="course-inner" key={index}>
+                        <div className="course-thumb">
+                          <img src={course.image} alt="" />
+                          {/* <div className="teacher-thumb">
+                            <img src="assets/img/teacher_1.jpg" alt="" />
+                          </div> */}
+                          <div className="readmore-button">
+                            <a href="#">Learn More</a>
+                          </div>
+                        </div>
+                        <div className="course-meta">
+                          <span className="course-price">${course.price}</span>
+                          <span className="course-rating">
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star-o"></i>
+                            <i className="fa fa-star-o"></i>
+                          </span>
+                        </div>
+                        <div className="course-desc">
+                          <h2><a href="#">{course.name}</a></h2>
+                          <p>{course.description}</p>
+                        </div>
+                        <div className="course-info">
+                          <ul>
+                            <li>
+                              <a href="#"><i className="fa fa-user"></i>{course.sheet} Seats</a>
+                            </li>
+                            <li>
+                              <a href="#"><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')} hour</a>
+                            </li>
+                            <li>
+                              <a href="#"><i className="fa fa-heart"></i>Save</a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$550</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">affiliate marketing</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_2.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_2.jpg" alt="" />
-                      </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$700</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">Graphics Design</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_4.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_3.jpg" alt="" />
-                      </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$350</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">Web Development</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_3.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_1.jpg" alt="" />
-                      </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$450</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">Search Engine Optimization(SEO)</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_5.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_2.jpg" alt="" />
-                      </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$450</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">Article Writing</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="course-inner">
-                    <div className="course-thumb">
-                      <img src="assets/img/course_6.jpg" alt="" />
-                      <div className="teacher-thumb">
-                        <img src="assets/img/teacher_3.jpg" alt="" />
-                      </div>
-                      <div className="readmore-button">
-                        <a href="#">Learn More</a>
-                      </div>
-                    </div>
-                    <div className="course-meta">
-                      <span className="course-price">$450</span>
-                      <span className="course-rating">
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                      </span>
-                    </div>
-                    <div className="course-desc">
-                      <h2><a href="#">Virtual Assitance</a></h2>
-                      <p>Ludus nemore qui ex. Verear luptatum principes sit ad.</p>
-                    </div>
-                    <div className="course-info">
-                      <ul>
-                        <li>
-                          <a href="#"><i className="fa fa-user"></i>24 Seats</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-clock-o"></i>4 hour</a>
-                        </li>
-                        <li>
-                          <a href="#"><i className="fa fa-heart"></i>Save</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                    ))
+                  }
                 </OwlCarousel>
               </div>
             </div>
