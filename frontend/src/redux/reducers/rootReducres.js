@@ -13,6 +13,7 @@ import categoryDeleteReducer from "./categoryDelete.reducer"
 import updateSubCategoryReducer from "./updateSubCategory.reducer"
 import deleteSubCategoryReducer from "./subCategoryDelete.reducer"
 import updateCourseReducer from "./updateCourse.reducer"
+import findCourseByCategoryAndSubcategoryReducer from "./findCourseByCategoryAndSubcategory.reducer"
 
 
 const rootReducers = combineReducers({
@@ -29,7 +30,8 @@ const rootReducers = combineReducers({
     deleteCategory: categoryDeleteReducer,
     updateSubCategory: updateSubCategoryReducer,
     deleteSubCategory: deleteSubCategoryReducer,
-    updateCourse: updateCourseReducer
+    updateCourse: updateCourseReducer,
+    findCourseByCategoryAndSubcategory: findCourseByCategoryAndSubcategoryReducer
 })
 // console.log(userSlice);
 export default rootReducers

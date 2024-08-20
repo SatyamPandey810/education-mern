@@ -29,7 +29,7 @@ export default function Router() {
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
-
+                
                 <Route path='/admin-dashboard'>
                     <Route path='' element={<AdminPanel />} />
                     {/* <Route path='total-user' element={<TotalUser />} /> */}

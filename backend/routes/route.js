@@ -12,6 +12,7 @@ const { getAllSubcategories, subCategoryController, updateSubCategory, deleteSub
 const { uploadCategoryController, getAllCategoriesController, updateCategoriesController, deleteCategoryController } = require('../controller/categories/categoryController')
 const { coursesController, getAllCourses, updateCourseController } = require('../controller/courses/coursesController')
 const upload = require('../middleware/fileUpload')
+const findCoursesByCategoryAndSubcategory = require('../controller/category-subcategory-courses/findCourse')
 
 
 // user signup route
@@ -51,7 +52,9 @@ router.post("/course", upload.single('image'), coursesController)
 router.get("/get-course", getAllCourses)
 // course update route
 router.post("/update-course", upload.single('image'), updateCourseController)
-
+// course find category and subcategory wise route
+router.get('/courses/:categoryId/:subcategoryId', findCoursesByCategoryAndSubcategory)
+//football route
 
 
 
