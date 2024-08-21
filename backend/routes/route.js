@@ -53,7 +53,7 @@ router.get("/get-course", getAllCourses)
 // course update route
 router.post("/update-course", upload.single('image'), updateCourseController)
 // course find category and subcategory wise route
-router.get('/courses/:categoryId/:subcategoryId', findCoursesByCategoryAndSubcategory)
+router.get('/courses', findCoursesByCategoryAndSubcategory)
 //football route
 
 

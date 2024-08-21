@@ -6,7 +6,8 @@ import { findCourseCategoryAndSubcategoryError, findCourseCategoryAndSubcategory
 function* findCourseByCategoryAndSubcategory(action) {
     const { categoryId, subcategoryId } = action.payload;
     try {
-        const response = yield call(findCourseCategoryAndSubcategoryServices, categoryId, subcategoryId)
+        // const response = yield call(findCourseCategoryAndSubcategoryServices, categoryId, subcategoryId)
+        const response = yield call(findCourseCategoryAndSubcategoryServices,  action.payload.categoryId, action.payload.subcategoryId)
         
         yield put(findCourseCategoryAndSubcategorySuccess(response.data))
     } catch (error) {

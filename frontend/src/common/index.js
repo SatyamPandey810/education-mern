@@ -69,8 +69,12 @@ const summaryApi = {
         url: `${backendDomain}/api/update-course`,
         method: "post"
     },
+    // findCourseBy: {
+    //     url: `${backendDomain}/api/courses/:categoryId/:subcategoryId`,
+    //     method: "get"
+    // },
     findCourseBy: {
-        url: `${backendDomain}/api/courses/:categoryId/:subcategoryId`,
+        url: `${backendDomain}/api/courses`,
         method: "get"
     }
 

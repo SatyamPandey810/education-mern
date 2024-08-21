@@ -1,8 +1,8 @@
 import { FIND_COURSE_CATEGORY_SUBCATEGORY_ERROR, FIND_COURSE_CATEGORY_SUBCATEGORY_START, FIND_COURSE_CATEGORY_SUBCATEGORY_SUCCESS } from "../constants/courses/findCourseByCategoryAndSubcategory-constants";
 
-export const findCourseCategoryAndSubcategoryStart = (payload) => ({
+export const findCourseCategoryAndSubcategoryStart = (categoryId, subcategoryId) => ({
     type: FIND_COURSE_CATEGORY_SUBCATEGORY_START,
-    payload
+    payload: { categoryId, subcategoryId }
 
 })
 export const findCourseCategoryAndSubcategorySuccess = (courses) => ({
