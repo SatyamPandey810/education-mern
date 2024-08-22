@@ -13,10 +13,11 @@ import AdminPanel from '../pages/admin/AdminPanel'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 import TotalUser from '../pages/admin/TotalUser'
+import CoursesCategory from '../components/CoursesCategory'
 
 export default function Router() {
     const location = useLocation()
-    const noHeaderFooterRoutes = ['/sign-in', '/sign-up', '/admin-dashboard/total-user',"/admin-dashboard"];
+    const noHeaderFooterRoutes = ['/sign-in', '/sign-up', '/admin-dashboard/total-user', "/admin-dashboard"];
     return (
         <>
             {!noHeaderFooterRoutes.includes(location.pathname) && <Header />}
@@ -29,7 +30,8 @@ export default function Router() {
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
-                
+                <Route path='/category/:id' element={<CoursesCategory />} />
+
                 <Route path='/admin-dashboard'>
                     <Route path='' element={<AdminPanel />} />
                     {/* <Route path='total-user' element={<TotalUser />} /> */}

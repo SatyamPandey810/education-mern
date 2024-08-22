@@ -2,12 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import ModalVideo from 'react-modal-video';
+import 'react-modal-video/css/modal-video.min.css';
 import moment from "moment"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
 import { findCourseCategoryAndSubcategoryStart } from '../redux/actions/findCourseByCategoryAndSubcategory.action';
 import summaryApi from '../common';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getAllCategoryStart } from '../redux/actions/getCategory.action';
 
 export default function Home() {
@@ -19,13 +21,11 @@ export default function Home() {
   const allCourse = useSelector((state) => state.allCourse?.allCourse)
   // console.log(allCourse);
 
+  const [isOpen, setIsOpen] = useState(false);
 
-
-
-
-
-
-
+  const openModal = () => {
+    setIsOpen(true);
+  };
   // console.log(courses);
   const separateCoursesByCategory = () => {
     const categorizedCourses = {};
@@ -153,11 +153,11 @@ export default function Home() {
 
               <div className="col-md-6">
                 <div className="vedio-inner">
-                  <img src="admin/uploads/first_sec_image" alt="" />
+                  <img src="assets/img/vedio.jpg" alt="" />
                   <div className="vedio-overly">
-                    <div className="vedio-button">
-                      <a href="https://www.youtube.com/watch?v=YzDz8g1z83U" className="mfp-iframe vedio-play"></a>
-                    </div>
+                    <button onClick={openModal} className="btn btn-warning video-play">
+                      <span className="video-icon">&#9658;</span> {/* Play button icon */}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function Home() {
                           <div className="course-thumb">
                             <img src={course.image} alt={course.name} />
                             <div className="readmore-button">
-                              <a href="#">Learn More</a>
+                              <Link to={`/category/${course._id}`}>Learn More</Link>
                             </div>
                           </div>
                           <div className="course-meta">
@@ -245,49 +245,49 @@ export default function Home() {
 
             <div className="row">
               {
-               (categorizedCourses["Another Course"] || []).map((course, index) => (
-                 
-                    < div className="col-md-4" key={index} >
-                      <div className="course-inner">
-                        <div className="course-thumb">
-                          <img src={course.image} alt="img" />
+                (categorizedCourses["Another Course"] || []).map((course, index) => (
 
-                          <div className="readmore-button">
-                            <a href="#">Learn More</a>
-                          </div>
-                        </div>
-                        <div className="course-meta">
-                          <span className="course-price">${course.price}</span>
-                          <span className="course-rating">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                          </span>
-                        </div>
-                        <div className="course-desc">
-                          <h2 className='text-lowercase'>{course.name}</h2>
-                          <p className='text-lowercase'>{course.description}</p>
-                        </div>
-                        <div className="course-info">
-                          <ul>
-                            <li>
-                              <i className="fa fa-user"></i>{course.sheet} Seats
-                            </li>
-                            <li>
-                              <a href="#"><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')}  hour</a>
-                            </li>
-                            <li>
-                              <a href="#"><i className="fa fa-heart"></i>Save</a>
-                            </li>
-                          </ul>
+                  < div className="col-md-4" key={index} >
+                    <div className="course-inner">
+                      <div className="course-thumb">
+                        <img src={course.image} alt="img" />
+
+                        <div className="readmore-button">
+                          <a href="#">Learn More</a>
                         </div>
                       </div>
+                      <div className="course-meta">
+                        <span className="course-price">${course.price}</span>
+                        <span className="course-rating">
+                          <i className="fa fa-star"></i>
+                          <i className="fa fa-star"></i>
+                          <i className="fa fa-star"></i>
+                          <i className="fa fa-star-o"></i>
+                          <i className="fa fa-star-o"></i>
+                        </span>
+                      </div>
+                      <div className="course-desc">
+                        <h2 className='text-lowercase'>{course.name}</h2>
+                        <p className='text-lowercase'>{course.description}</p>
+                      </div>
+                      <div className="course-info">
+                        <ul>
+                          <li>
+                            <i className="fa fa-user"></i>{course.sheet} Seats
+                          </li>
+                          <li>
+                            <a href="#"><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')}  hour</a>
+                          </li>
+                          <li>
+                            <a href="#"><i className="fa fa-heart"></i>Save</a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  
+                  </div>
 
-               ))
+
+                ))
               }
             </div>
           </div>
@@ -385,7 +385,7 @@ export default function Home() {
 
                 <div class="gallery-container">
                   {
-                   ( categorizedCourses["Our Student Gallery"]|| []).map((course, index) => (
+                    (categorizedCourses["Our Student Gallery"] || []).map((course, index) => (
                       <div class="col-xs-6 col-sm-4 col-md-3 filtr-item institute" key={index}>
                         <div class="gallery-item">
                           <img src={course?.image} alt="image" />
@@ -1073,7 +1073,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      <ModalVideo
+        channel='youtube'
+        isOpen={isOpen}
+        videoId='YzDz8g1z83U' 
+        onClose={() => setIsOpen(false)}
+      />
 
     </>
   )

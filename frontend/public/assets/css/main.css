@@ -692,6 +692,10 @@ li a.right{
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .vedio-button {
     text-align: center;
@@ -702,7 +706,7 @@ li a.right{
 .vedio-inner img {
     width: 100%;
 }
-.vedio-button {
+/* .vedio-button {
     position: relative;
     width: 60px;
     height: 60px;
@@ -717,13 +721,13 @@ li a.right{
     -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
     animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
     margin: 0 auto;
-}
-.vedio-button a {
+} */
+/* .vedio-button a {
     display: inline-block;
     width: 100%;
     height: 100%;
-}
-.vedio-button:hover {
+} */
+/* .vedio-button:hover {
     -webkit-animation: none;
     -moz-animation: none;
     -ms-animation: none;
@@ -748,7 +752,7 @@ li a.right{
     to {
         box-shadow: 0 0 0 45px transparent;
     }
-}
+} */
 .course-sec.index2-course.course-slider {
     background-image: none;
     background-color: #fff;

@@ -11444,9 +11444,10 @@ div.tagsinput span.tag a {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 /* Add these styles to your CSS file */
 
-.x-mark{
+.x-mark {
   font-size: 26px;
   cursor: pointer;
   color: white;
@@ -11457,9 +11458,188 @@ div.tagsinput span.tag a {
   width: 100%;
   height: 215px;
 }
-.course-thumb img{
+
+.course-thumb img {
   width: 100%;
   height: 215px;
   object-fit: fill;
 }
 
+.about-us-sec {
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
+
+.video-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-inner img {
+  width: 100%;
+  display: block;
+}
+
+/* .video-overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+} */
+
+.video-inner:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-play {
+  position: relative;
+  width: 92px;
+  height: 91px;
+  font-size: 53px;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  /* background-color: transparent;
+  background-image: url(../img/icon/play_button.png);
+  background-size: cover;
+  background-repeat: no-repeat; */
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  margin: 0 auto;
+}
+
+.vedio-button:hover {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  animation: none;
+}
+
+.video-icon {
+  width: 150px;
+  height: 140px;
+}
+
+@-webkit-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 45px transparent;
+  }
+}
+
+@-moz-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 45px transparent;
+  }
+}
+
+@-ms-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 45px transparent;
+  }
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 45px transparent;
+  }
+}
+
+.course-img img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.course-img {
+  margin-bottom: 20px;
+}
+
+.course-pro h1 {
+  font-size: 42px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #00609b;
+}
+
+.course-pro h3 {
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 20px;
+  text-transform: lowercase;
+}
+
+.course-p {
+  margin-top: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.choose-cat ul {
+  margin-top: 30px;
+}
+
+.choose-cat ul li {
+  padding: 7px;
+  color: black;
+  font-size: 18px;
+}
+.choose-cat ul li:hover{
+  cursor: pointer;
+  color: green;
+}
+.fa-check:before {
+  content: "\f00c";
+}
+
+.fa-credit-card-alt:before {
+  content: "\f283";
+}
+
+.fa-credit-card-alt {
+  font-size: 40px;
+}
+
+.fa-file:before {
+  content: "\f15b";
+}
+
+.fa-file {
+  font-size: 40px;
+}
+
+.fa-mortar-board:before,
+.fa-graduation-cap:before {
+  content: "\f19d";
+}
+
+.form-flex {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.card-registration h2 {
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-registration label,
+span {
+  /* color: white; */
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.7px;
+  font-size: 20px;
+}
+
+.card-registration input {
+  background-color: transparent;
+}
+
+.card-registration input:focus {
+  color: white;
+}

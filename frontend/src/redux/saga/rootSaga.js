@@ -14,6 +14,7 @@ import updateSubCategorySaga from "./updateSubCategory.saga"
 import deleteSubCategorySaga from "./deleteSubCategory.saga"
 import updateCourseSaga from "./updateCourse.saga"
 import findCourseByCategoryAndSubcategorySaga from "./findCourseByCategoryAndSubcategory.saga"
+import singleCourseSaga from "./singleCourse.saga"
 
 
 export function* root() {
@@ -32,6 +33,7 @@ export function* root() {
         fork(updateSubCategorySaga),
         fork(deleteSubCategorySaga),
         fork(updateCourseSaga),
-        fork(findCourseByCategoryAndSubcategorySaga)
+        fork(findCourseByCategoryAndSubcategorySaga),
+        fork(singleCourseSaga)
     ])
 }

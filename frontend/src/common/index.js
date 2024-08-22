@@ -76,6 +76,10 @@ const summaryApi = {
     findCourseBy: {
         url: `${backendDomain}/api/courses`,
         method: "get"
+    },
+    singleCourseFind:{
+        url:`${backendDomain}/api/single-course`,
+        method:"get"
     }
 
 
