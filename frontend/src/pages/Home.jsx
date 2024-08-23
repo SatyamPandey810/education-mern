@@ -39,7 +39,6 @@ export default function Home() {
         });
       });
     });
-    console.log('Categorized Courses:', categorizedCourses);
 
     return categorizedCourses;
   };

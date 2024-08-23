@@ -15,6 +15,7 @@ const upload = require('../middleware/fileUpload')
 const findCoursesByCategoryAndSubcategory = require('../controller/category-subcategory-courses/findCourse')
 const singleCourseController = require('../controller/courses/singleCourseFindController')
 const addToInquiryController = require('../controller/addToInquiries/addToInquiryController')
+const blogUploadController = require('../controller/blogs/blog')
 
 
 // user signup route
@@ -60,6 +61,8 @@ router.get('/courses', findCoursesByCategoryAndSubcategory)
 router.get("/single-course/:id", authToken, singleCourseController)
 // addtoinquiry upload route
 router.post("/upload-inquiry", addToInquiryController)
+// blog upload route
+router.post("/blog-upload", upload.single('image'), blogUploadController)
 
 
 module.exports = router

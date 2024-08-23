@@ -3,7 +3,8 @@ const courseModel = require("../../models/courses");
 
 const addToInquiryController = async (req, res) => {
     try {
-        const { courseId, name, email, phone } = req?.body;
+        const { courseId, name, email, phone, gender,message } = req?.body;
+
         const course = await courseModel.findById(courseId);
 
         if (!course) {
@@ -20,6 +21,8 @@ const addToInquiryController = async (req, res) => {
             name,
             email,
             phone,
+            gender,
+            message,
             courseId
         });
 

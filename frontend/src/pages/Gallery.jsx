@@ -1,6 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { findCourseCategoryAndSubcategoryStart } from '../redux/actions/findCourseByCategoryAndSubcategory.action';
 
 export default function Gallery() {
+    const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+    const dispatch = useDispatch()
+    const separateCoursesByCategory = () => {
+        const categorizedCourses = {};
+
+        courses.forEach((category) => {
+            const categoryName = category._id;
+
+            if (!categorizedCourses[categoryName]) {
+                categorizedCourses[categoryName] = [];
+            }
+
+            category.subcategories.forEach((subcategory) => {
+                subcategory.courses.forEach((course) => {
+                    categorizedCourses[categoryName].push(course);
+                });
+            });
+        });
+
+        return categorizedCourses;
+    };
+
+    const categorizedCourses = separateCoursesByCategory();
+
+
+
+    useEffect(() => {
+        dispatch(findCourseCategoryAndSubcategoryStart());
+    }, [dispatch])
     return (
         <>
             <div className="pagehding-sec">
@@ -50,21 +81,24 @@ export default function Gallery() {
 
 
                             <div className="gallery-container">
-
-
-                                <div className="col-xs-6 col-sm-4 col-md-3 filtr-item institute">
-                                    <div className="gallery-item">
-                                        <img src="assets/img/1.jpg" alt="" />
-                                        <div className="gallery-overlay">
-                                            <div className="gallery-overlay-text">
-                                                <span className="gallery-button">
-                                                    <a href="admin/uploads/gellary/image" className="gallery-photo"><i className="fa fa-file-image-o"></i></a>
-                                                </span>
+                                {
+                                    (categorizedCourses["Our Student Gallery"] || []).map((course, index) => (
+                                        <div className="col-xs-6 col-sm-4 col-md-3" key={index}>
+                                            <div className="gallery-item">
+                                                <img src={course?.image} alt="image" />
+                                                <div className="gallery-overlay">
+                                                    <div className="gallery-overlay-text">
+                                                        <span className="gallery-button">
+                                                            <a href="admin/uploads/gellary/image" className="gallery-photo"><i className="fa fa-file-image-o"></i></a>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-xs-6 col-sm-4 col-md-3 filtr-item institute">
+
+                                    ))
+                                }
+                                {/* <div className="col-xs-6 col-sm-4 col-md-3 filtr-item institute">
                                     <div className="gallery-item">
                                         <img src="assets/img/5.jpg" alt="" />
                                         <div className="gallery-overlay">
@@ -148,7 +182,7 @@ export default function Gallery() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
 

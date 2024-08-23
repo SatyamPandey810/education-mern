@@ -1,21 +1,49 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleCourseStart } from '../redux/actions/singleCourse.action'
 import { useParams } from 'react-router-dom';
+import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
+import { getAllCourseStart } from '../redux/actions/getCourses.action';
+
 
 export default function CoursesCategory() {
     const { id: _id } = useParams();
     const dispatch = useDispatch()
     const course = useSelector((state) => state.singleCourse.course)
     // const allCourse = useSelector((state) => state.allCourse?.allCourse)
+    const initialInquiryData = {
+        name: "",
+        email: "",
+        phone: "",
+        courseName: course?.name || '',
+        courseId: _id,
+        gender: '',
+        message: ""
+    }
+    const [inquiryData, setInquiryData] = useState(initialInquiryData)
+
+
+
     useEffect(() => {
         if (_id) {
             dispatch(singleCourseStart(_id));
         }
+        // dispatch(getAllCourseStart())
+
     }, [dispatch, _id])
 
-    // console.log(allCourse);
-    // const singleCourse = course ? allSubCategory.data : [];
+
+    const inputChange = (event) => {
+        const { name, value } = event.target;
+        setInquiryData({ ...inquiryData, [name]: value });
+    }
+
+    const inquiryHanleSubmit = async (event) => {
+        event.preventDefault();
+        dispatch(uploadInquiryStart(inquiryData));
+        setInquiryData(initialInquiryData)
+    }
+
     return (
         <>
             <div className='container mb-3'>
@@ -57,109 +85,131 @@ export default function CoursesCategory() {
                             <p>{course?.description}</p>
                         </div>
 
-                        <div className="h-100 mt-5" style={{ backgroundColor: "rgb(69 148 197 / 92%)" }}>
-                            <div className="row d-flex justify-content-center align-items-center h-100">
-                                <div>
-                                    <div className="card card-registration">
-                                        <div className="row g-0">
-                                            <div className="col-xl-6">
-                                                <div className="card-body p-md-5 text-black">
-                                                    <h2 className="mb-3 text-uppercase">Student registration form</h2>
+                        <div className="h-100 mt-5 w-75" style={{ backgroundColor: "rgb(69 148 197 / 92%)" }}>
+                            <div className="row h-100">
+
+                                <div className="card card-registration">
+                                    <div className="row g-0">
+                                        <div className="col-xl-6">
+                                            <div className="card-body p-md-5 text-black">
+                                                <h2 className="mb-3 text-uppercase">Student registration form</h2>
+                                                <form onSubmit={inquiryHanleSubmit}>
                                                     <div className="row">
-                                                        <div className="col-md-6 mb-4">
-                                                            <label className="form-label" for="form3Example1m">First name</label>
+                                                        <div className="col-md-12 mb-4">
                                                             <div data-mdb-input-init className="form-outline">
-                                                                <input type="text" id="form3Example1m" className="form-control form-control-lg" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-6 mb-4">
-                                                            <div data-mdb-input-init className="form-outline">
-                                                                <label className="form-label" for="form3Example1n">Last name</label>
-                                                                <input type="text" id="form3Example1n" className="form-control form-control-lg" />
+                                                                <label className="form-label" htmlFor="name">Name</label>
+                                                                <input
+                                                                    type="text"
+                                                                    name="name"
+                                                                    onChange={inputChange}
+                                                                    value={inquiryData.name}
+                                                                    className="form-control form-control-lg"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className='row'>
-                                                        <div className='col-md-6'>
+                                                        <div className='col-md-12'>
                                                             <div data-mdb-input-init className="form-outline mb-4">
-                                                                <label className="form-label" for="form3Example97">Email ID</label>
-                                                                <input type="text" id="form3Example97" className="form-control form-control-lg" />
+                                                                <label className="form-label" htmlFor="email">Email ID</label>
+                                                                <input
+                                                                    type="text"
+                                                                    name="email"
+                                                                    value={inquiryData.email}
+                                                                    onChange={inputChange}
+                                                                    className="form-control form-control-lg"
+                                                                />
                                                             </div>
                                                         </div>
-                                                        <div className='col-md-6'>
-                                                            <div data-mdb-input-init className="form-outline mb-4">
-                                                                <label className="form-label" for="form3Example97">Phone</label>
-                                                                <input type="number" id="form3Example97" className="form-control form-control-lg" />
+                                                    </div>
+                                                    <div className='row'>
+                                                        <div className='col-md-12'>
+                                                            <div className="form-flex">
+                                                                <div>
+                                                                    <label className="form-label" htmlFor="gender">Gender:</label>
+                                                                </div>
+                                                                <div className="form-check form-check-inline mb-0 me-4 d-flex align-items-center">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        type="radio"
+                                                                        name="gender"
+                                                                        value="Male"
+                                                                        onChange={inputChange}
+                                                                    />&nbsp;
+                                                                    <span className="form-check-label" htmlFor="Male">Male</span>
+                                                                </div>
+                                                                <div className="form-check form-check-inline mb-0 me-4 d-flex align-items-center">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        type="radio"
+                                                                        name="gender"
+                                                                        value="Female"
+                                                                        onChange={inputChange}
+                                                                    />&nbsp;
+                                                                    <span className="form-check-label" htmlFor="Female">Female</span>
+                                                                </div>
+                                                                <div className="form-check form-check-inline mb-0 d-flex align-items-center">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        type="radio"
+                                                                        name="gender"
+                                                                        value="Other"
+                                                                        onChange={inputChange}
+                                                                    />&nbsp;
+                                                                    <span className="form-check-label" htmlFor="Other">Other</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
-
-
-                                                    <div data-mdb-input-init className="form-outline mb-4">
-                                                        <label className="form-label" for="form3Example99">Course</label>
-                                                        <input type="text" id="form3Example99" className="form-control form-control-lg" />
-                                                    </div>
-                                                    <div className="form-flex">
-                                                        <div>
-                                                            <label className="form-label" for="form3Example8">Gender:</label>
-                                                        </div>
-
-
-                                                        <div className="form-check form-check-inline mb-0 me-4 d-flex align-items-center">
-                                                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                                                value="option1" />&nbsp;
-                                                            <span className="form-check-label" for="femaleGender">Male</span>
-                                                        </div>
-
-                                                        <div className="form-check form-check-inline mb-0 me-4 d-flex align-items-center">
-                                                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                                                                value="option2" />&nbsp;
-                                                            <span className="form-check-label" for="maleGender">Female</span>
-                                                        </div>
-
-                                                        <div className="form-check form-check-inline mb-0 d-flex align-items-center">
-                                                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                                                                value="option3" />&nbsp;
-                                                            <span className="form-check-label" for="otherGender">Other</span>
+                                                    <div className='row'>
+                                                        <div className='col-md-12'>
+                                                            <div data-mdb-input-init className="form-outline mb-4">
+                                                                <label className="form-label" htmlFor="phone">Phone</label>
+                                                                <input
+                                                                    type="number"
+                                                                    name="phone"
+                                                                    value={inquiryData.phone}
+                                                                    onChange={inputChange}
+                                                                    className="form-control form-control-lg"
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="d-flex justify-content-center pt-3">
-                                                        <button className="btn btn-warning btn-lg ms-2 mx-3">Submit form</button>
-                                                        <button className="btn btn-light btn-lg">Reset all</button>
-                                                    </div>
-                                                    {/* <div data-mdb-input-init className="form-outline mb-4">
-                                                        <label className="form-label" for="form3Example8">Address</label>
-                                                        <input type="text" id="form3Example8" className="form-control form-control-lg" />
-                                                    </div>
-                                                    <div data-mdb-input-init className="form-outline mb-4">
-                                                        <label className="form-label" for="form3Example90">Pincode</label>
-                                                        <input type="text" id="form3Example90" className="form-control form-control-lg" />
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-md-6 mb-4">
-
-                                                            <select data-mdb-select-init>
-                                                                <option value="1">State</option>
-                                                                <option value="2">Option 1</option>
-                                                                <option value="3">Option 2</option>
-                                                                <option value="4">Option 3</option>
-                                                            </select>
-
+                                                    <div className='row'>
+                                                        <div className='col-md-12'>
+                                                            <div data-mdb-input-init className="form-outline mb-4">
+                                                                <label className="form-label" htmlFor="course">Course</label>
+                                                                <select name="courseName" value={inquiryData.courseName} onChange={inputChange} className="form-control form-control-lg">
+                                                                    <option value="">{course?.name}</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-md-6 mb-4">
+                                                    </div>
+                                                    <div className='row'>
+                                                        <div className='col-md-12'>
+                                                            <div data-mdb-input-init className="form-outline mb-4">
+                                                                <label className="form-label" htmlFor="message">Message</label><br />
+                                                                <textarea
+                                                                    className='form-control'
+                                                                    type="text"
+                                                                    rows={5}
+                                                                    name="message"
+                                                                    value={inquiryData.message}
+                                                                    onChange={inputChange}>
+                                                                </textarea>
 
-                                                            <select data-mdb-select-init>
-                                                                <option value="1">City</option>
-                                                                <option value="2">Option 1</option>
-                                                                <option value="3">Option 2</option>
-                                                                <option value="4">Option 3</option>
-                                                            </select>
+
+                                                            </div>
                                                         </div>
-                                                    </div> */}
+                                                    </div>
 
+                                                    <div className='col-md-12 mb-3'>
+                                                        <div className="d-flex justify-content-center pt-3">
+                                                            <button className="btn btn-warning btn-lg ms-2 mx-3">Submit form</button>
+                                                        </div>
+                                                    </div>
 
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -168,10 +218,10 @@ export default function CoursesCategory() {
                         </div>
 
                     </div>
-                </div>
+                </div >
 
 
-            </div>
+            </div >
             <div className='row mb-4'>
                 <div className='col-md-12'>
                     <div className="count-up-sec">

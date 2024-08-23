@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUserStart } from '../../redux/actions/logoutUser.action';
 import ROLE from '../../common/role';
 import AllCategorySubcategory from './AllCategory-Subcategory';
+import Blog from './Blog';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -15,7 +16,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses,AllCategorySubcategory);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -113,11 +114,11 @@ export default function AdminPanel() {
 
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={()=>handleMenuClick('AllCategorySubcategory')}>
+                        <span className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
                             <span className="menu-icon">
                                 <i className="mdi mdi-chart-bar"></i>
                             </span>
-                            <span className="menu-title"  style={{ cursor: "pointer" }}>Category-subcategory</span>
+                            <span className="menu-title" style={{ cursor: "pointer" }}>Category-subcategory</span>
                         </span>
                     </li>
                     <li className="nav-item menu-items">
@@ -128,14 +129,14 @@ export default function AdminPanel() {
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
                         </span>
                     </li>
-                    
+
                     <li className="nav-item menu-items">
-                        <a className="nav-link" href="pages/icons/mdi.html">
+                        <span className="nav-link" onClick={() => handleMenuClick("Blog")}>
                             <span className="menu-icon">
                                 <i className="mdi mdi-contacts"></i>
                             </span>
-                            <span className="menu-title">Icons</span>
-                        </a>
+                            <span className="menu-title">Blogs</span>
+                        </span>
                     </li>
                     <li className="nav-item menu-items">
                         <a className="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -192,6 +193,7 @@ export default function AdminPanel() {
                         {activeComponent === 'TotalUser' && <TotalUser />}
                         {activeComponent === 'AllCourses' && <AllCourses />}
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
+                        {activeComponent === 'Blog' && <Blog />}
 
 
 
