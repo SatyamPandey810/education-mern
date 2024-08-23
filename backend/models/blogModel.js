@@ -6,6 +6,8 @@ const blogSchema = new mongoose.Schema({
     loaction: String,
     time: String,
     paragraph: String,
+    status: String,
+    price:String,
     subcategory: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subcategory',

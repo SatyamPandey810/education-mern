@@ -16,6 +16,7 @@ import updateCourseSaga from "./updateCourse.saga"
 import findCourseByCategoryAndSubcategorySaga from "./findCourseByCategoryAndSubcategory.saga"
 import singleCourseSaga from "./singleCourse.saga"
 import addToInquirySaga from "./addToInquiry.saga"
+import { blogUploadSaga } from "./blogs/blogUpload.saga"
 
 
 export function* root() {
@@ -36,6 +37,7 @@ export function* root() {
         fork(updateCourseSaga),
         fork(findCourseByCategoryAndSubcategorySaga),
         fork(singleCourseSaga),
-        fork(addToInquirySaga)
+        fork(addToInquirySaga),
+        fork(blogUploadSaga)
     ])
 }

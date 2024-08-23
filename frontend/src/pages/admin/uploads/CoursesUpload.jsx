@@ -22,6 +22,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
     const [imagePreview, setImagePreview] = useState('');
     const dispatch = useDispatch()
+    
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const courseData = useSelector((state) => state.course)

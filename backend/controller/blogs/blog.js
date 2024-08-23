@@ -3,7 +3,7 @@ const subCategoryModel = require("../../models/subCategory");
 
 const blogUploadController = async (req, res) => {
     try {
-        const { heading, loaction, time, paragraph, subCategoryIds } = req.body;
+        const { heading, loaction, time, paragraph, status,price, subCategoryIds } = req.body;
 
         const image = req.file ? req.file.filename : null;
 
@@ -14,6 +14,7 @@ const blogUploadController = async (req, res) => {
             loaction,
             time,
             paragraph,
+            status,
             subCategoryIds: subCategoryIds
         })
         const saveBlogs = await newBlogs.save()

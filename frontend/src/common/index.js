@@ -84,6 +84,10 @@ const summaryApi = {
     addToInquiry:{
         url:`${backendDomain}/api/upload-inquiry`,
         method:"post"
+    },
+    blogUpload:{
+        url:`${backendDomain}/api/blog-upload`,
+        method:"post"
     }
 
 
