@@ -14,6 +14,7 @@ const { coursesController, getAllCourses, updateCourseController } = require('..
 const upload = require('../middleware/fileUpload')
 const findCoursesByCategoryAndSubcategory = require('../controller/category-subcategory-courses/findCourse')
 const singleCourseController = require('../controller/courses/singleCourseFindController')
+const addToInquiryController = require('../controller/addToInquiries/addToInquiryController')
 
 
 // user signup route
@@ -55,8 +56,10 @@ router.get("/get-course", getAllCourses)
 router.post("/update-course", upload.single('image'), updateCourseController)
 // course find category and subcategory wise route
 router.get('/courses', findCoursesByCategoryAndSubcategory)
-//football route
-router.get("/single-course/:id", singleCourseController)
+//single-course find route
+router.get("/single-course/:id", authToken, singleCourseController)
+// addtoinquiry upload route
+router.post("/upload-inquiry", addToInquiryController)
 
 
 module.exports = router

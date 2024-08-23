@@ -14,7 +14,7 @@ export default function CoursesCategory() {
         }
     }, [dispatch, _id])
 
-    console.log(allCourse);
+    // console.log(allCourse);
     // const singleCourse = course ? allSubCategory.data : [];
     return (
         <>
@@ -35,6 +35,15 @@ export default function CoursesCategory() {
                                         <li> <i class="gdlr-core-icon-list-icon-hover fa fa-check gdlr-core-skin-e-content" style={{ color: "#fdb900", fontSize: "18px" }}></i>  Lorem ipsum dolor</li>
 
                                     </ul>
+                                </div>
+                                <div className='col-sm-6'>
+                                    <div className="star-container">
+                                        <svg className="star" viewBox="0 0 24 24">
+                                            <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <div className="fee"> ₦ {course?.price}/-</div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -70,11 +79,23 @@ export default function CoursesCategory() {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div className='row'>
+                                                        <div className='col-md-6'>
+                                                            <div data-mdb-input-init className="form-outline mb-4">
+                                                                <label className="form-label" for="form3Example97">Email ID</label>
+                                                                <input type="text" id="form3Example97" className="form-control form-control-lg" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col-md-6'>
+                                                            <div data-mdb-input-init className="form-outline mb-4">
+                                                                <label className="form-label" for="form3Example97">Phone</label>
+                                                                <input type="number" id="form3Example97" className="form-control form-control-lg" />
+                                                            </div>
+                                                        </div>
 
-                                                    <div data-mdb-input-init className="form-outline mb-4">
-                                                        <label className="form-label" for="form3Example97">Email ID</label>
-                                                        <input type="text" id="form3Example97" className="form-control form-control-lg" />
                                                     </div>
+
+
                                                     <div data-mdb-input-init className="form-outline mb-4">
                                                         <label className="form-label" for="form3Example99">Course</label>
                                                         <input type="text" id="form3Example99" className="form-control form-control-lg" />
@@ -102,9 +123,12 @@ export default function CoursesCategory() {
                                                                 value="option3" />&nbsp;
                                                             <span className="form-check-label" for="otherGender">Other</span>
                                                         </div>
-
                                                     </div>
-                                                    <div data-mdb-input-init className="form-outline mb-4">
+                                                    <div className="d-flex justify-content-center pt-3">
+                                                        <button className="btn btn-warning btn-lg ms-2 mx-3">Submit form</button>
+                                                        <button className="btn btn-light btn-lg">Reset all</button>
+                                                    </div>
+                                                    {/* <div data-mdb-input-init className="form-outline mb-4">
                                                         <label className="form-label" for="form3Example8">Address</label>
                                                         <input type="text" id="form3Example8" className="form-control form-control-lg" />
                                                     </div>
@@ -132,11 +156,8 @@ export default function CoursesCategory() {
                                                                 <option value="4">Option 3</option>
                                                             </select>
                                                         </div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-center pt-3">
-                                                        <button className="btn btn-light btn-lg">Reset all</button>
-                                                        <button className="btn btn-warning btn-lg ms-2 mx-3">Submit form</button>
-                                                    </div>
+                                                    </div> */}
+
 
                                                 </div>
                                             </div>

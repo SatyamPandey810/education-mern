@@ -80,6 +80,10 @@ const summaryApi = {
     singleCourseFind:{
         url:`${backendDomain}/api/single-course`,
         method:"get"
+    },
+    addToInquiry:{
+        url:`${backendDomain}/api/upload-inquiry`,
+        method:"post"
     }
 
 

@@ -14,12 +14,8 @@ import { getAllCategoryStart } from '../redux/actions/getCategory.action';
 
 export default function Home() {
   const dispatch = useDispatch()
-  // const { categoryId, subcategoryId } = useParams();
-  const allCategory = useSelector((state) => state.allCategory.allCategory)
-  const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
-  const allCourse = useSelector((state) => state.allCourse?.allCourse)
-  // console.log(allCourse);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,40 +45,8 @@ export default function Home() {
   };
 
   const categorizedCourses = separateCoursesByCategory();
-  //------------------------------------------------------------------
 
-  // const separateCoursesByCategory = () => {
-  //   const categorizedCourses = {};
-
-  //   if (Array.isArray(allCourse)) {
-  //     allCourse.forEach((category) => {
-  //       const categoryName = category._id;
-
-  //       if (!categorizedCourses[categoryName]) {
-  //         categorizedCourses[categoryName] = [];
-  //       }
-
-  //       console.log('Processing category:', categoryName);
-  //       console.log('Subcategories:', category.subcategories);
-
-  //       (category.subcategories || []).forEach((subcategory) => {
-  //         console.log('Processing subcategory:', subcategory.name);
-  //         console.log('Courses:', subcategory.courses);
-
-  //         (subcategory.courses || []).forEach((course) => {
-  //           categorizedCourses[categoryName].push(course);
-  //         });
-  //       });
-  //     });
-  //   } else {
-  //     console.warn('allCourse is not an array or is undefined');
-  //   }
-
-  //   console.log('Categorized Courses:', categorizedCourses);
-  //   return categorizedCourses;
-  // };
-
-  // const categorizedCourses = useMemo(separateCoursesByCategory, [allCourse]);
+  
 
   useEffect(() => {
     dispatch(findCourseCategoryAndSubcategoryStart());
@@ -253,7 +217,7 @@ export default function Home() {
                         <img src={course.image} alt="img" />
 
                         <div className="readmore-button">
-                          <a href="#">Learn More</a>
+                          <Link to={`/category/${course._id}`}>Learn More</Link>
                         </div>
                       </div>
                       <div className="course-meta">
@@ -392,8 +356,9 @@ export default function Home() {
                           <div class="gallery-overlay">
                             <div class="gallery-overlay-text">
                               <span class="gallery-button">
-                                <a href="admin/uploads/gallery/image" class="gallery-photo"><i
-                                  class="fa fa-file-image-o"></i></a>
+                                {/* <a href="admin/uploads/gallery/image" class="gallery-photo"><i
+                                  class="fa fa-file-image-o"></i></a> */}
+                                  
                               </span>
                             </div>
                           </div>
@@ -427,43 +392,22 @@ export default function Home() {
                 <div className="col-md-12">
                   <div className="">
                     <OwlCarousel className='owl-theme why-choose-all' items={3} loop margin={10} nav>
-
-                      <div className="why-choose-inner">
-                        <div className="why-choose-thumb">
-                          <img src="assets/img/img12.jpg" alt="" />
-                          <div className="why-choose-icon">
-                            <img src="assets/img/image.png" alt="" />
+                      {
+                        (categorizedCourses["Why Choose Us Course"] || []).map((course, index) => (
+                          <div className="why-choose-inner">
+                          <div className="why-choose-thumb">
+                            <img src={course.image} alt={course.name} />
+                            <div className="why-choose-icon">
+                              <img src="assets/img/image.png" alt="" />
+                            </div>
+                          </div>
+                          <div className="why-choose-text">
+                            <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
+                            cource about
                           </div>
                         </div>
-                        <div className="why-choose-text">
-                          <h2><a href="#">cource-name</a></h2>
-                          cource about
-                        </div>
-                      </div>
-                      <div className="why-choose-inner">
-                        <div className="why-choose-thumb">
-                          <img src="assets/img/img-13.jpg" alt="" />
-                          <div className="why-choose-icon">
-                            <img src="assets/img/image-1.png" alt="" />
-                          </div>
-                        </div>
-                        <div className="why-choose-text">
-                          <h2><a href="#">cource-name</a></h2>
-                          cource about
-                        </div>
-                      </div>
-                      <div className="why-choose-inner">
-                        <div className="why-choose-thumb">
-                          <img src="assets/img/img-14.jpg" alt="" />
-                          <div className="why-choose-icon">
-                            <img src="assets/img/image-2.png" alt="" />
-                          </div>
-                        </div>
-                        <div className="why-choose-text">
-                          <h2><a href="#">cource- name</a></h2>
-                          cource about
-                        </div>
-                      </div>
+                        ))
+                      }                     
                     </OwlCarousel>
                   </div>
                 </div>

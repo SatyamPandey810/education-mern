@@ -100,7 +100,6 @@ const updateCourseController = async (req, res) => {
             message: "Course updated successfully"
         });
     } catch (error) {
-        console.error("Error updating course:", error);
         res.status(400).json({
             message: error.message || error,
             error: true,

@@ -11643,3 +11643,74 @@ span {
 .card-registration input:focus {
   color: white;
 }
+
+.star-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2s infinite;
+}
+
+.star {
+  fill: #FFD700;
+  /* Gold color for the star */
+  width: 100%;
+  /* Size of the star */
+  height: 228px;
+  /* Size of the star */
+  animation: rotate 10s linear infinite;
+}
+
+.fee {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #333;
+  font-size: 1.2rem;
+  /* Size of the text inside the star */
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Background to ensure text readability */
+  border-radius: 5px;
+  /* Rounded corners for the background */
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+
+  50% {
+      transform: scale(1.1);
+  }
+
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
