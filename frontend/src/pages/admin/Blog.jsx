@@ -7,6 +7,8 @@ import { getBlogStart } from '../../redux/actions/blogs/getBlogs.action'
 import { updateBlogStart } from '../../redux/actions/blogs/updateBlogs.action';
 import { getAllCategoryStart } from '../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action';
+import { deleteBlogStart } from '../../redux/actions/blogs/deleteBlog.action';
+import { toast } from 'react-toastify';
 
 
 
@@ -105,9 +107,6 @@ export default function Blog() {
    
   };
 
-
-
-
   const handleCategoryChange = (event) => {
     const categoryId = event.target.value;
     setSelectedCategory(categoryId);
@@ -128,6 +127,15 @@ export default function Blog() {
       subCategory: subCategoryId,
     }));
   };
+
+// blog delete handler
+const handleDeleteClick = (id) => {
+  dispatch(deleteBlogStart(id));
+  handleBlogUploaded(id)
+};
+
+
+
   return (
     <div>
       {
@@ -331,7 +339,9 @@ export default function Blog() {
                   <td className='text-light'><FontAwesomeIcon icon={faPenToSquare}
                     onClick={() => handleBlogClick(blog)}
                   /> &nbsp;  &nbsp;
-                    <FontAwesomeIcon icon={faTrashCan} /></td>
+                    <FontAwesomeIcon icon={faTrashCan} 
+                      onClick={()=>handleDeleteClick(blog?._id)}
+                    /></td>
                 </tr>
               ))
             }

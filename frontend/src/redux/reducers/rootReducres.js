@@ -19,6 +19,7 @@ import addToinquiryReducer from "./addToInquiry.reducer"
 import blogUploadReducer from "./blogs/blogUpload.reducer"
 import getAllblogsReducer from "./blogs/getAllBlogs.reducer"
 import updateBlogReducer from "./blogs/updateBlog.reducer"
+import deleteBlogReducer from "./blogs/deleteBlog.reducer"
 
 
 const rootReducers = combineReducers({
@@ -41,7 +42,8 @@ const rootReducers = combineReducers({
     addToInquiries: addToinquiryReducer,
     uploadBlog: blogUploadReducer,
     allBlog: getAllblogsReducer,
-    blogUpdate: updateBlogReducer
+    blogUpdate: updateBlogReducer,
+    blogDelete:deleteBlogReducer
 })
 // console.log(userSlice);
 export default rootReducers
