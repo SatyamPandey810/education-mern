@@ -20,6 +20,7 @@ import  blogUploadSaga  from "./blogs/blogUpload.saga"
 import getAllBlogSaga from "./blogs/getBlogs.saga"
 import updateBlogSaga from "./blogs/updateBlog.saga"
 import blogDeleteSaga from "./blogs/deleteBlog.saga"
+import getBlogsCategoryAndSubCategorySaga from "./blogs/getBlogCategoryAndSubCategory.saga"
 
 
 export function* root() {
@@ -44,6 +45,7 @@ export function* root() {
         fork(blogUploadSaga),
         fork(getAllBlogSaga),
         fork(updateBlogSaga),
-        fork(blogDeleteSaga)
+        fork(blogDeleteSaga),
+        fork(getBlogsCategoryAndSubCategorySaga)
     ])
 }

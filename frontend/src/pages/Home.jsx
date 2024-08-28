@@ -11,28 +11,31 @@ import { findCourseCategoryAndSubcategoryStart } from '../redux/actions/findCour
 import summaryApi from '../common';
 import { Link, useParams } from 'react-router-dom';
 import { getAllCategoryStart } from '../redux/actions/getCategory.action';
+import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 
 export default function Home() {
   const dispatch = useDispatch()
 
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+  const blogs = useSelector((state) => state.findBlog.blogs)
+
+
 
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
   };
-  // console.log(courses);
+
+  // find course category and subcategory wise
   const separateCoursesByCategory = () => {
     const categorizedCourses = {};
-
     courses.forEach((category) => {
       const categoryName = category._id;
 
       if (!categorizedCourses[categoryName]) {
         categorizedCourses[categoryName] = [];
       }
-
       category.subcategories.forEach((subcategory) => {
         subcategory.courses.forEach((course) => {
           categorizedCourses[categoryName].push(course);
@@ -45,12 +48,38 @@ export default function Home() {
 
   const categorizedCourses = separateCoursesByCategory();
 
-  
+
+  // find blogs category and subcategory wise
+  const separateBlogsByCategory = () => {
+    const categorizedBlogs = {};
+
+    blogs?.data?.forEach((category) => {
+      const categoryName = category._id;
+
+      if (!categorizedBlogs[categoryName]) {
+        categorizedBlogs[categoryName] = [];
+      }
+
+      category.subcategories.forEach((subcategory) => {
+        subcategory.blogs.forEach((blog) => {
+          categorizedBlogs[categoryName].push(blog);
+        });
+      });
+    });
+
+    return categorizedBlogs;
+  };
+
+  const categorizedBlogs = separateBlogsByCategory();
+  // console.log(categorizedBlogs);
+
+
 
   useEffect(() => {
     dispatch(findCourseCategoryAndSubcategoryStart());
     dispatch(getAllCourseStart())
     dispatch(getAllCategoryStart())
+    dispatch(findBlogCategoryAndSubcategoryStart())
   }, [dispatch])
 
   return (
@@ -357,7 +386,7 @@ export default function Home() {
                               <span class="gallery-button">
                                 {/* <a href="admin/uploads/gallery/image" class="gallery-photo"><i
                                   class="fa fa-file-image-o"></i></a> */}
-                                  
+
                               </span>
                             </div>
                           </div>
@@ -394,19 +423,19 @@ export default function Home() {
                       {
                         (categorizedCourses["Why Choose Us Course"] || []).map((course, index) => (
                           <div className="why-choose-inner">
-                          <div className="why-choose-thumb">
-                            <img src={course.image} alt={course.name} />
-                            <div className="why-choose-icon">
-                              <img src="assets/img/image.png" alt="" />
+                            <div className="why-choose-thumb">
+                              <img src={course.image} alt={course.name} />
+                              <div className="why-choose-icon">
+                                <img src="assets/img/image.png" alt="" />
+                              </div>
+                            </div>
+                            <div className="why-choose-text">
+                              <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
+                              cource about
                             </div>
                           </div>
-                          <div className="why-choose-text">
-                            <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
-                            cource about
-                          </div>
-                        </div>
                         ))
-                      }                     
+                      }
                     </OwlCarousel>
                   </div>
                 </div>
@@ -743,65 +772,28 @@ export default function Home() {
                 <div className="col-md-6">
                   <h1 className="faq-style1-title">Join Us Our Event</h1>
 
-                  <div className="event-inner">
-                    <div className="event-thumb">
-                      <img src="assets/img/g1.jpg" alt="" />
-                      <div className="event-overlay">
-                        <a href="event-details.html"><i className="fa fa-external-link"></i></a>
+                  {
+                    (categorizedBlogs["Join Us Our Event"] || []).map((blog, index) => (
+                      <div className="event-inner" key={index}>
+                        <div className="event-thumb">
+                          <img src={blog.image} alt="" />
+                          <div className="event-overlay">
+                            <Link to="/"><i className="fa fa-external-link"></i></Link>
+                          </div>
+                        </div>
+                        <div className="event-desc">
+                          <h2><Link to="/">{blog.heading}</Link></h2>
+                          <div className="event-meta">
+                            <ul>
+                              <li><i className="fa fa-map-marker"></i>{blog.loaction}</li>
+                              {/* <li><i className="fa fa-clock-o"></i>08.00 - 11.30</li> */}
+                            </ul>
+                          </div>
+                          <p>{blog.paragraph}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="event-desc">
-                      <h2><a href="#">Mel apeirian salutatus scripserit ex</a></h2>
-                      <div className="event-meta">
-                        <ul>
-                          <li><i className="fa fa-map-marker"></i>Californiya , United State</li>
-                          <li><i className="fa fa-clock-o"></i>08.00 - 11.30</li>
-                        </ul>
-                      </div>
-                      <p>Mel apeirian salutatus scripserit ex, omnesque aliquando moderatius cum et. Affert
-                        euismod scaevola qui cu.</p>
-                    </div>
-                  </div>
-
-                  <div className="event-inner">
-                    <div className="event-thumb">
-                      <img src="assets/img/g2.jpg" alt="" />
-                      <div className="event-overlay">
-                        <a href="event-details.html"><i className="fa fa-external-link"></i></a>
-                      </div>
-                    </div>
-                    <div className="event-desc">
-                      <h2><a href="#">Mel apeirian salutatus scripserit ex</a></h2>
-                      <div className="event-meta">
-                        <ul>
-                          <li><i className="fa fa-map-marker"></i>Californiya , United State</li>
-                          <li><i className="fa fa-clock-o"></i>08.00 - 11.30</li>
-                        </ul>
-                      </div>
-                      <p>Mel apeirian salutatus scripserit ex, omnesque aliquando moderatius cum et. Affert
-                        euismod scaevola qui cu.</p>
-                    </div>
-                  </div>
-
-                  <div className="event-inner">
-                    <div className="event-thumb">
-                      <img src="assets/img/g3.jpg" alt="" />
-                      <div className="event-overlay">
-                        <a href="event-details.html"><i className="fa fa-external-link"></i></a>
-                      </div>
-                    </div>
-                    <div className="event-desc">
-                      <h2><a href="#">Mel apeirian salutatus scripserit ex</a></h2>
-                      <div className="event-meta">
-                        <ul>
-                          <li><i className="fa fa-map-marker"></i>Californiya , United State</li>
-                          <li><i className="fa fa-clock-o"></i>08.00 - 11.30</li>
-                        </ul>
-                      </div>
-                      <p>Mel apeirian salutatus scripserit ex, omnesque aliquando moderatius cum et. Affert
-                        euismod scaevola qui cu.</p>
-                    </div>
-                  </div>
+                    ))
+                  }
                 </div>
               </div>
             </div>
@@ -840,172 +832,36 @@ export default function Home() {
                 <div className="col-md-12">
                   <div className="">
                     <OwlCarousel className='owl-theme all-latest-news' items={3} loop margin={10} nav>
-                      <div className="single-post">
+                      {
+                         (categorizedBlogs["our latest post"] || []).map((blog, index) => (
+                          <div className="single-post">
 
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b1.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
+                          <div className="single-post-thumb">
+                            <img src={blog.image} alt="" />
+                            <div className="single-post-thumb-overlay">
+                              <div className="post-meta">
+                                <ul>
+                                  <li>
+                                    <a href="#"><i className="fa fa-user"></i>Admin</a>
+                                  </li>
+                                  <li>
+                                    <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
+                                  </li>
+                                  <li>
+                                    <a href="#"><i className="fa fa-comment-o"></i>36</a>
+                                  </li>
+                                </ul>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">write a good professional server-side scripting
-                            language php code</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
-
-                      <div className="single-post">
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b2.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
-                            </div>
+                          <div className="single-post-text">
+                            <h2><Link to="/">{blog.heading}</Link></h2>
+                            <p>{blog.paragraph}</p>
+                            <Link to="/" className="blog-readmore">Continue reading</Link>
                           </div>
                         </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">Most Popular Python to build desktop apps and web apps</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
-
-                      <div className="single-post">
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b3.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">Java Programing language use for apps, game develop</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
-
-                      <div className="single-post">
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b1.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">write a good professional server-side scripting
-                            language php code</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
-
-                      <div className="single-post">
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b2.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">Most Popular Python to build desktop apps and web
-                            apps</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
-
-                      <div className="single-post">
-                        <div className="single-post-thumb">
-                          <img src="assets/img/b3.jpg" alt="" />
-                          <div className="single-post-thumb-overlay">
-                            <div className="post-meta">
-                              <ul>
-                                <li>
-                                  <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                </li>
-                                <li>
-                                  <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="single-post-text">
-                          <h2><a href="blog-details.html">Java Programing language use for apps, game
-                            develop</a></h2>
-                          <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
-                            etiam in massa. Sagittis urna tellus augue montes .</p>
-                          <a href="blog-details.html" className="blog-readmore">Continue reading</a>
-                        </div>
-                      </div>
+                         ))
+                      }                                    
                     </OwlCarousel>
                   </div>
                 </div>
@@ -1017,7 +873,7 @@ export default function Home() {
       <ModalVideo
         channel='youtube'
         isOpen={isOpen}
-        videoId='YzDz8g1z83U' 
+        videoId='YzDz8g1z83U'
         onClose={() => setIsOpen(false)}
       />
 

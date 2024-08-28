@@ -16,6 +16,7 @@ const findCoursesByCategoryAndSubcategory = require('../controller/category-subc
 const singleCourseController = require('../controller/courses/singleCourseFindController')
 const addToInquiryController = require('../controller/addToInquiries/addToInquiryController')
 const { blogUploadController, getAllBlogs, updateBlogController, deleteBlogsController } = require('../controller/blogs/blog')
+const findBlogsCategoryAndSubCategory = require('../controller/category-subcategory-courses/findBlogs')
 
 
 // user signup route
@@ -68,7 +69,9 @@ router.get("/all-blogs", getAllBlogs)
 //update blog route
 router.post("/update-blog", upload.single('image'), updateBlogController)
 // delete blog route
-router.post("/delete-blog",deleteBlogsController)
+router.post("/delete-blog", deleteBlogsController)
+// blogs find category and subcategory wise 
+router.get("/blogs", findBlogsCategoryAndSubCategory)
 
 
 module.exports = router

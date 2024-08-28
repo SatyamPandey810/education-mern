@@ -100,6 +100,10 @@ const summaryApi = {
     deleteBlog:{
         url:`${backendDomain}/api/delete-blog`,
         method:"post"
+    },
+    findBlogBy:{
+        url:`${backendDomain}/api/blogs`,
+        method:"get"
     }
 
 
