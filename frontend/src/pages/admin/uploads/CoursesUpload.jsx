@@ -87,8 +87,8 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
 
         dispatch(courseUploadStart(data));
         onClose();
-        toast.success("Course upload successfully")
         onCourseUploaded()
+        toast.success("Course upload successfully")
     };
 
     const subCategoryData = allSubCategory ? allSubCategory.data : [];

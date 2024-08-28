@@ -93,7 +93,6 @@ export default function AllCourses() {
 
   const handleUpdateCourse = async (event) => {
     event.preventDefault()
-    console.log('Form Data to Send:', formData);
 
     const formDataToSend = new FormData();
     formDataToSend.append('_id', editCourse._id);
@@ -119,7 +118,6 @@ export default function AllCourses() {
       });
 
       const responseData = await response.json();
-      console.log("Service Response:", responseData);
 
       if (responseData.success) {
         toast.success(responseData.message);

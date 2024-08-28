@@ -88,7 +88,20 @@ const summaryApi = {
     blogUpload:{
         url:`${backendDomain}/api/blog-upload`,
         method:"post"
+    },
+    getBlogs:{
+        url:`${backendDomain}/api/all-blogs`,
+        method:"get"
+    },
+    updateBlog:{
+        url:`${backendDomain}/api/update-blog`,
+        method:"post"
+    },
+    deleteBlog:{
+        url:`${backendDomain}/api/delete-blog`,
+        method:"post"
     }
+
 
 
 

@@ -17,6 +17,8 @@ import findCourseByCategoryAndSubcategoryReducer from "./findCourseByCategoryAnd
 import singleCourseReducer from "./singleCourse.reducer"
 import addToinquiryReducer from "./addToInquiry.reducer"
 import blogUploadReducer from "./blogs/blogUpload.reducer"
+import getAllblogsReducer from "./blogs/getAllBlogs.reducer"
+import updateBlogReducer from "./blogs/updateBlog.reducer"
 
 
 const rootReducers = combineReducers({
@@ -37,7 +39,9 @@ const rootReducers = combineReducers({
     findCourseByCategoryAndSubcategory: findCourseByCategoryAndSubcategoryReducer,
     singleCourse: singleCourseReducer,
     addToInquiries: addToinquiryReducer,
-    uploadBlog:blogUploadReducer
+    uploadBlog: blogUploadReducer,
+    allBlog: getAllblogsReducer,
+    blogUpdate: updateBlogReducer
 })
 // console.log(userSlice);
 export default rootReducers

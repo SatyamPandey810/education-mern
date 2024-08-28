@@ -13,7 +13,6 @@ const updateCourseServices = async (course) => {
         });
 
         const responseData = await response.json();
-        console.log("Service Response:", responseData);
 
         if (responseData.success) {
             toast.success(responseData.message);

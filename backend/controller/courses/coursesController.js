@@ -9,7 +9,6 @@ async function coursesController(req, res) {
 
         const image = req.file ? req.file.filename : null;
 
-
         const suCategories = await subCategoryModel.find({ '_id': { $in: subCategoryIds } });
         // if (suCategories.length !== subCategoryIds.length) {
         //     return res.status(400).json({
@@ -37,7 +36,6 @@ async function coursesController(req, res) {
             data: savedCourse,
         });
     } catch (error) {
-        console.error(error);
         res.status(500).json({
             message: 'Failed to upload course',
             success: false,
@@ -91,7 +89,6 @@ const updateCourseController = async (req, res) => {
         }
 
         const updateCourse = await courseModel.findByIdAndUpdate(_id, { $set: resBody }, { new: true });
-        console.log("updateCourse", updateCourse);
 
         res.json({
             data: updateCourse,

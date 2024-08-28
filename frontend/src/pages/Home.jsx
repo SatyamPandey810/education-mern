@@ -889,8 +889,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="single-post-text">
-                          <h2><a href="blog-details.html">Most Popular Python to build desktop apps and web
-                            apps</a></h2>
+                          <h2><a href="blog-details.html">Most Popular Python to build desktop apps and web apps</a></h2>
                           <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
                             etiam in massa. Sagittis urna tellus augue montes .</p>
                           <a href="blog-details.html" className="blog-readmore">Continue reading</a>
@@ -917,8 +916,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="single-post-text">
-                          <h2><a href="blog-details.html">Java Programing language use for apps, game
-                            develop</a></h2>
+                          <h2><a href="blog-details.html">Java Programing language use for apps, game develop</a></h2>
                           <p>Lorem ipsum dolor sit amet, fusce adipiscing at sed aliquam pellentesque eu,
                             etiam in massa. Sagittis urna tellus augue montes .</p>
                           <a href="blog-details.html" className="blog-readmore">Continue reading</a>

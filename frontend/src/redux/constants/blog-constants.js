@@ -1,3 +1,19 @@
+// upload blogs
 export const BLOG_UPLOAD_START = "BLOG_UPLOAD_START"
 export const BLOG_UPLOAD_SUCCESS = "BLOG_UPLOAD_SUCCESS"
 export const BLOG_UPLOAD_ERROR = "BLOG_UPLOAD_ERROR"
+
+// get all blogs
+export const BLOG_GET_START = "BLOG_GET_START"
+export const BLOG_GET_SUCCESS = "BLOG_GET_SUCCESS"
+export const BLOG_GET_ERROR = "BLOG_GET_ERROR"
+
+// update blogs
+export const BLOG_UPDATE_START = "BLOG_UPDATE_START"
+export const BLOG_UPDATE_SUCCESS = "BLOG_UPDATE_SUCCESS"
+export const BLOG_UPDATE_ERROR = "BLOG_UPDATE_ERROR"
+
+// deleted blogs
+export const BLOG_DELETE_START = "BLOG_DELETE_START"
+export const BLOG_DELETE_SUCCESS = "BLOG_DELETE_SUCCESS"
+export const BLOG_DELETE_ERROR = "BLOG_DELETE_ERROR"

@@ -7,14 +7,25 @@ import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.actio
 import { blogUploadStart } from '../../../redux/actions/blogs/blogUpload.action';
 import { toast } from 'react-toastify';
 
-export default function Bloguploads({ onClose }) {
+export default function Bloguploads({ onClose, onBlogUploaded }) {
     const [imagePreview, setImagePreview] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const dispatch = useDispatch()
-    const initialFormData = {
+    // const initialFormData = {
+    //     heading: "",
+    //     image: null,
+    //     loaction: "",
+    //     time: "",
+    //     price: "",
+    //     paragraph: "",
+    //     status: "Active",
+    //     category: '',
+    //     subCategory: '',
+    // }
+    const [formData, setFormData] = useState({
         heading: "",
         image: null,
         loaction: "",
@@ -24,8 +35,7 @@ export default function Bloguploads({ onClose }) {
         status: "Active",
         category: '',
         subCategory: '',
-    }
-    const [formData, setFormData] = useState(initialFormData)
+    })
 
     useEffect(() => {
         dispatch(getAllCategoryStart())
@@ -85,8 +95,8 @@ export default function Bloguploads({ onClose }) {
 
         dispatch(blogUploadStart(data));
         onClose();
+        onBlogUploaded()
         toast.success("Blog upload successfully")
-        // onCourseUploaded()
     }
 
 
