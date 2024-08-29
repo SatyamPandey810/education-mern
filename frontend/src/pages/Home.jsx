@@ -422,7 +422,7 @@ export default function Home() {
                     <OwlCarousel className='owl-theme why-choose-all' items={3} loop margin={10} nav>
                       {
                         (categorizedCourses["Why Choose Us Course"] || []).map((course, index) => (
-                          <div className="why-choose-inner">
+                          <div className="why-choose-inner" key={index}>
                             <div className="why-choose-thumb">
                               <img src={course.image} alt={course.name} />
                               <div className="why-choose-icon">
@@ -778,11 +778,11 @@ export default function Home() {
                         <div className="event-thumb">
                           <img src={blog.image} alt="" />
                           <div className="event-overlay">
-                            <Link to="/"><i className="fa fa-external-link"></i></Link>
+                            <Link to={`/categories/${blog._id}`}><i className="fa fa-external-link"></i></Link>
                           </div>
                         </div>
                         <div className="event-desc">
-                          <h2><Link to="/">{blog.heading}</Link></h2>
+                          <h2><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></h2>
                           <div className="event-meta">
                             <ul>
                               <li><i className="fa fa-map-marker"></i>{blog.loaction}</li>
@@ -833,35 +833,35 @@ export default function Home() {
                   <div className="">
                     <OwlCarousel className='owl-theme all-latest-news' items={3} loop margin={10} nav>
                       {
-                         (categorizedBlogs["our latest post"] || []).map((blog, index) => (
-                          <div className="single-post">
+                        (categorizedBlogs["our latest post"] || []).map((blog, index) => (
+                          <div className="single-post" key={index}>
 
-                          <div className="single-post-thumb">
-                            <img src={blog.image} alt="" />
-                            <div className="single-post-thumb-overlay">
-                              <div className="post-meta">
-                                <ul>
-                                  <li>
-                                    <a href="#"><i className="fa fa-user"></i>Admin</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><i className="fa fa-comment-o"></i>36</a>
-                                  </li>
-                                </ul>
+                            <div className="single-post-thumb">
+                              <img src={blog.image} alt="" />
+                              <div className="single-post-thumb-overlay">
+                                <div className="post-meta">
+                                  <ul>
+                                    <li>
+                                      <a href="#"><i className="fa fa-user"></i>Admin</a>
+                                    </li>
+                                    <li>
+                                      <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
+                                    </li>
+                                    <li>
+                                      <a href="#"><i className="fa fa-comment-o"></i>36</a>
+                                    </li>
+                                  </ul>
+                                </div>
                               </div>
                             </div>
+                            <div className="single-post-text">
+                              <h2><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></h2>
+                              <p>{blog.paragraph}</p>
+                              <Link to={`/categories/${blog._id}`} className="blog-readmore">Continue reading</Link>
+                            </div>
                           </div>
-                          <div className="single-post-text">
-                            <h2><Link to="/">{blog.heading}</Link></h2>
-                            <p>{blog.paragraph}</p>
-                            <Link to="/" className="blog-readmore">Continue reading</Link>
-                          </div>
-                        </div>
-                         ))
-                      }                                    
+                        ))
+                      }
                     </OwlCarousel>
                   </div>
                 </div>

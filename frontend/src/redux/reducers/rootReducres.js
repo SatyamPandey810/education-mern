@@ -21,6 +21,7 @@ import getAllblogsReducer from "./blogs/getAllBlogs.reducer"
 import updateBlogReducer from "./blogs/updateBlog.reducer"
 import deleteBlogReducer from "./blogs/deleteBlog.reducer"
 import getBlogsCategoryAndSubCategoryReducer from "./blogs/getBlogCategoryAndSubCategory.reducer"
+import singleBlogReducer from "./blogs/singleBlogGet.reducer"
 
 
 const rootReducers = combineReducers({
@@ -45,7 +46,8 @@ const rootReducers = combineReducers({
     allBlog: getAllblogsReducer,
     blogUpdate: updateBlogReducer,
     blogDelete: deleteBlogReducer,
-    findBlog: getBlogsCategoryAndSubCategoryReducer
+    findBlog: getBlogsCategoryAndSubCategoryReducer,
+    singleBlog:singleBlogReducer
 })
 // console.log(userSlice);
 export default rootReducers

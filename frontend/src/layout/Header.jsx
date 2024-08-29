@@ -1,12 +1,42 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import ROLE from '../common/role';
+import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 
 export default function Header() {
-
     const user = useSelector((state) => state.user.user);
     const isAdmin = user?.role === ROLE.ADMIN;
+    const dispatch = useDispatch()
+    const blogs = useSelector((state) => state.findBlog.blogs)
+    // find blogs category and subcategory wise
+    const separateBlogsByCategory = () => {
+        const categorizedBlogs = {};
+
+        blogs?.data?.forEach((category) => {
+            const categoryName = category._id;
+
+            if (!categorizedBlogs[categoryName]) {
+                categorizedBlogs[categoryName] = [];
+            }
+
+            category.subcategories.forEach((subcategory) => {
+                subcategory.blogs.forEach((blog) => {
+                    categorizedBlogs[categoryName].push(blog);
+                });
+            });
+        });
+
+        return categorizedBlogs;
+    };
+
+    const categorizedBlogs = separateBlogsByCategory();
+    // console.log(categorizedBlogs);
+
+    useEffect(() => {
+        dispatch(findBlogCategoryAndSubcategoryStart())
+
+    }, [dispatch])
 
     return (
         <header>
@@ -69,11 +99,11 @@ export default function Header() {
                                         <li><Link to="/course">Course</Link></li>
                                         <li><Link to="/services">Services</Link>
                                             <ul>
-                                                <li><a href="#">Educational Services & Consulation</a></li>
-                                                <li><a href="#">Online Tranings</a></li>
-                                                <li><a href="#">Admission Processing to Study Abroad</a></li>
-                                                <li><a href="#"> Publishing of Education Materials</a></li>
-                                                <li><a href="#"> Private Schools- Primary to Tertiary Institutions</a></li>
+                                                {
+                                                      (categorizedBlogs["Navbar-services"] || []).map((blog, index) => (
+                                                          <li key={index}><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></li>
+                                                      ))
+                                                }                                              
                                             </ul>
                                         </li>
                                         <li><Link to="/gallery">gallery</Link></li>

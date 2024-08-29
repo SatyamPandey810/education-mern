@@ -40,6 +40,7 @@ export default function CoursesCategory() {
 
     const inquiryHanleSubmit = async (event) => {
         event.preventDefault();
+  
         dispatch(uploadInquiryStart(inquiryData));
         setInquiryData(initialInquiryData)
     }
@@ -197,18 +198,14 @@ export default function CoursesCategory() {
                                                                     value={inquiryData.message}
                                                                     onChange={inputChange}>
                                                                 </textarea>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div className='col-md-12 mb-3'>
                                                         <div className="d-flex justify-content-center pt-3">
                                                             <button className="btn btn-warning btn-lg ms-2 mx-3">Submit form</button>
                                                         </div>
                                                     </div>
-
                                                 </form>
                                             </div>
                                         </div>

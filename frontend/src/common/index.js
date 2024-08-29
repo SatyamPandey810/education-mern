@@ -77,32 +77,36 @@ const summaryApi = {
         url: `${backendDomain}/api/courses`,
         method: "get"
     },
-    singleCourseFind:{
-        url:`${backendDomain}/api/single-course`,
-        method:"get"
+    singleCourseFind: {
+        url: `${backendDomain}/api/single-course`,
+        method: "get"
     },
-    addToInquiry:{
-        url:`${backendDomain}/api/upload-inquiry`,
-        method:"post"
+    addToInquiry: {
+        url: `${backendDomain}/api/upload-inquiry`,
+        method: "post"
     },
-    blogUpload:{
-        url:`${backendDomain}/api/blog-upload`,
-        method:"post"
+    blogUpload: {
+        url: `${backendDomain}/api/blog-upload`,
+        method: "post"
     },
-    getBlogs:{
-        url:`${backendDomain}/api/all-blogs`,
-        method:"get"
+    getBlogs: {
+        url: `${backendDomain}/api/all-blogs`,
+        method: "get"
     },
-    updateBlog:{
-        url:`${backendDomain}/api/update-blog`,
-        method:"post"
+    updateBlog: {
+        url: `${backendDomain}/api/update-blog`,
+        method: "post"
     },
-    deleteBlog:{
-        url:`${backendDomain}/api/delete-blog`,
-        method:"post"
+    deleteBlog: {
+        url: `${backendDomain}/api/delete-blog`,
+        method: "post"
     },
-    findBlogBy:{
-        url:`${backendDomain}/api/blogs`,
+    findBlogBy: {
+        url: `${backendDomain}/api/blogs`,
+        method: "get"
+    },
+    singleBlogsFind: {
+        url: `${backendDomain}/api/single-blog`,
         method:"get"
     }
 

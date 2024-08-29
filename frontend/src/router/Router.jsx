@@ -14,6 +14,7 @@ import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 import TotalUser from '../pages/admin/TotalUser'
 import CoursesCategory from '../components/CoursesCategory'
+import BlogsCategory from '../components/BlogsCategory'
 
 export default function Router() {
     const location = useLocation()
@@ -31,6 +32,7 @@ export default function Router() {
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/category/:id' element={<CoursesCategory />} />
+                <Route path='/categories/:id' element={<BlogsCategory />} />
 
                 <Route path='/admin-dashboard'>
                     <Route path='' element={<AdminPanel />} />
