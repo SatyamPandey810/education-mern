@@ -8,30 +8,29 @@ export default function Header() {
     const user = useSelector((state) => state.user.user);
     const isAdmin = user?.role === ROLE.ADMIN;
     const dispatch = useDispatch()
-    const blogs = useSelector((state) => state.findBlog.blogs)
+    const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+
+
     // find blogs category and subcategory wise
-    const separateBlogsByCategory = () => {
-        const categorizedBlogs = {};
-
-        blogs?.data?.forEach((category) => {
-            const categoryName = category._id;
-
-            if (!categorizedBlogs[categoryName]) {
-                categorizedBlogs[categoryName] = [];
-            }
-
-            category.subcategories.forEach((subcategory) => {
-                subcategory.blogs.forEach((blog) => {
-                    categorizedBlogs[categoryName].push(blog);
-                });
+    const separateCoursesByCategory = () => {
+        const categorizedCourses = {};
+        courses.forEach((category) => {
+          const categoryName = category._id;
+    
+          if (!categorizedCourses[categoryName]) {
+            categorizedCourses[categoryName] = [];
+          }
+          category.subcategories.forEach((subcategory) => {
+            subcategory.courses.forEach((course) => {
+              categorizedCourses[categoryName].push(course);
             });
+          });
         });
-
-        return categorizedBlogs;
-    };
-
-    const categorizedBlogs = separateBlogsByCategory();
-    // console.log(categorizedBlogs);
+    
+        return categorizedCourses;
+      };
+    
+      const categorizedCourses = separateCoursesByCategory();
 
     useEffect(() => {
         dispatch(findBlogCategoryAndSubcategoryStart())
@@ -76,7 +75,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-
             <div className="hd-sec">
                 <div className="container">
                     <div className="row">
@@ -100,8 +98,8 @@ export default function Header() {
                                         <li><Link to="/services">Services</Link>
                                             <ul>
                                                 {
-                                                      (categorizedBlogs["Navbar-services"] || []).map((blog, index) => (
-                                                          <li key={index}><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></li>
+                                                      (categorizedCourses["Navbar-services"] || []).map((course, index) => (
+                                                          <li key={index}><Link to={`/category/${course._id}`}>{course.name}</Link></li>
                                                       ))
                                                 }                                              
                                             </ul>

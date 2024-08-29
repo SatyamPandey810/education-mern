@@ -17,7 +17,7 @@ export default function Home() {
   const dispatch = useDispatch()
 
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
-  const blogs = useSelector((state) => state.findBlog.blogs)
+  // const blogs = useSelector((state) => state.findBlog.blogs)
 
 
 
@@ -50,27 +50,27 @@ export default function Home() {
 
 
   // find blogs category and subcategory wise
-  const separateBlogsByCategory = () => {
-    const categorizedBlogs = {};
+  // const separateBlogsByCategory = () => {
+  //   const categorizedBlogs = {};
 
-    blogs?.data?.forEach((category) => {
-      const categoryName = category._id;
+  //   blogs?.data?.forEach((category) => {
+  //     const categoryName = category._id;
 
-      if (!categorizedBlogs[categoryName]) {
-        categorizedBlogs[categoryName] = [];
-      }
+  //     if (!categorizedBlogs[categoryName]) {
+  //       categorizedBlogs[categoryName] = [];
+  //     }
 
-      category.subcategories.forEach((subcategory) => {
-        subcategory.blogs.forEach((blog) => {
-          categorizedBlogs[categoryName].push(blog);
-        });
-      });
-    });
+  //     category.subcategories.forEach((subcategory) => {
+  //       subcategory.blogs.forEach((blog) => {
+  //         categorizedBlogs[categoryName].push(blog);
+  //       });
+  //     });
+  //   });
 
-    return categorizedBlogs;
-  };
+  //   return categorizedBlogs;
+  // };
 
-  const categorizedBlogs = separateBlogsByCategory();
+  // const categorizedBlogs = separateBlogsByCategory();
   // console.log(categorizedBlogs);
 
 
@@ -341,7 +341,7 @@ export default function Home() {
         </div>
 
         <div className="gallery-sec pt-100 pb-100">
-          <div class="container">
+          {/* <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <div class="sec-title">
@@ -384,9 +384,7 @@ export default function Home() {
                           <div class="gallery-overlay">
                             <div class="gallery-overlay-text">
                               <span class="gallery-button">
-                                {/* <a href="admin/uploads/gallery/image" class="gallery-photo"><i
-                                  class="fa fa-file-image-o"></i></a> */}
-
+                              
                               </span>
                             </div>
                           </div>
@@ -405,7 +403,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="why-choose-us-sec pt-100 pb-70">
             <div className="container">
@@ -773,23 +771,23 @@ export default function Home() {
                   <h1 className="faq-style1-title">Join Us Our Event</h1>
 
                   {
-                    (categorizedBlogs["Join Us Our Event"] || []).map((blog, index) => (
+                    (categorizedCourses["Join Us Our Event"] || []).map((course, index) => (
                       <div className="event-inner" key={index}>
                         <div className="event-thumb">
-                          <img src={blog.image} alt="" />
+                          <img src={course.image} alt="" />
                           <div className="event-overlay">
-                            <Link to={`/categories/${blog._id}`}><i className="fa fa-external-link"></i></Link>
+                            <Link to={`/category/${course._id}`}><i className="fa fa-external-link"></i></Link>
                           </div>
                         </div>
                         <div className="event-desc">
-                          <h2><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></h2>
+                          <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
                           <div className="event-meta">
                             <ul>
-                              <li><i className="fa fa-map-marker"></i>{blog.loaction}</li>
+                              <li><i className="fa fa-map-marker"></i>{course.loaction}</li>
                               {/* <li><i className="fa fa-clock-o"></i>08.00 - 11.30</li> */}
                             </ul>
                           </div>
-                          <p>{blog.paragraph}</p>
+                          <p>{course.description}</p>
                         </div>
                       </div>
                     ))
@@ -833,31 +831,31 @@ export default function Home() {
                   <div className="">
                     <OwlCarousel className='owl-theme all-latest-news' items={3} loop margin={10} nav>
                       {
-                        (categorizedBlogs["our latest post"] || []).map((blog, index) => (
+                        (categorizedCourses["our latest post"] || []).map((course, index) => (
                           <div className="single-post" key={index}>
 
                             <div className="single-post-thumb">
-                              <img src={blog.image} alt="" />
+                              <img src={course.image} alt="" />
                               <div className="single-post-thumb-overlay">
                                 <div className="post-meta">
                                   <ul>
                                     <li>
-                                      <a href="#"><i className="fa fa-user"></i>Admin</a>
+                                      <Link to={`/category/${course._id}`}><i className="fa fa-user"></i>Admin</Link>
                                     </li>
                                     <li>
-                                      <a href="#"><i className="fa fa-calendar"></i>1 Jan 2018</a>
+                                      <Link to={`/category/${course._id}`}><i className="fa fa-calendar"></i>{moment(course.createdAt).format('ll')}</Link>
                                     </li>
                                     <li>
-                                      <a href="#"><i className="fa fa-comment-o"></i>36</a>
+                                      <Link to={`/category/${course._id}`}><i className="fa fa-comment-o"></i>{course.sheet}</Link>
                                     </li>
                                   </ul>
                                 </div>
                               </div>
                             </div>
                             <div className="single-post-text">
-                              <h2><Link to={`/categories/${blog._id}`}>{blog.heading}</Link></h2>
-                              <p>{blog.paragraph}</p>
-                              <Link to={`/categories/${blog._id}`} className="blog-readmore">Continue reading</Link>
+                              <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
+                              <p>{course.description}</p>
+                              <Link to={`/categories/${course._id}`} className="blog-readmore">Continue reading</Link>
                             </div>
                           </div>
                         ))
