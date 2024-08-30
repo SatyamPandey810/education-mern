@@ -9,6 +9,7 @@ import { logoutUserStart } from '../../redux/actions/logoutUser.action';
 import ROLE from '../../common/role';
 import AllCategorySubcategory from './AllCategory-Subcategory';
 import Blog from './Blog';
+import CourseUpdate from './updates/CourseUpdate';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -16,7 +17,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog, CourseUpdate);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -191,9 +192,10 @@ export default function AdminPanel() {
 
                         {/* <h1>hello world</h1> */}
                         {activeComponent === 'TotalUser' && <TotalUser />}
-                        {activeComponent === 'AllCourses' && <AllCourses />}
+                        {activeComponent === 'AllCourses' && <AllCourses handleMenuClick={()=>handleMenuClick} />}
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
                         {activeComponent === 'Blog' && <Blog />}
+                        {activeComponent === 'CourseUpdate' && <CourseUpdate />}
 
 
 

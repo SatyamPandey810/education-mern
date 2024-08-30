@@ -315,6 +315,7 @@ export default function AllCourses() {
                                 </select>
                             </div>
                         </div>
+
                     </div>
             <div className='row d-flex justify-content-center'>
               <div className='col-sm-4'>
@@ -330,8 +331,8 @@ export default function AllCourses() {
             </div>
           </form>
         )
-      }
-
+      } 
+      
       <div className='all-cu'>
         <div>
           <h1 className='text-light'>All Courses</h1>
