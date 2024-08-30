@@ -4,7 +4,7 @@ const upload = require("../../middleware/fileUpload")
 
 async function coursesController(req, res) {
     try {
-        const { name, price, sheet, description, status, subCategoryIds } = req.body;
+        const { name, price, sheet, instructor, duration, lectures, description, status, subCategoryIds } = req.body;
 
 
         const image = req.file ? req.file.filename : null;
@@ -23,6 +23,9 @@ async function coursesController(req, res) {
             image,
             price,
             sheet,
+            instructor,
+            duration,
+            lectures,
             description,
             status,
             subcategory: subCategoryIds

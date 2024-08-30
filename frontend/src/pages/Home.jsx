@@ -15,12 +15,9 @@ import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blog
 
 export default function Home() {
   const dispatch = useDispatch()
-
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+  
   // const blogs = useSelector((state) => state.findBlog.blogs)
-
-
-
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -133,16 +130,16 @@ export default function Home() {
               <div className="col-md-6">
                 <div className="about-desc">
                   <h1>Welcome To Our learapress</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, justo nunc orci donec sagittis metus dapibus, erat ullamcorper odio augue eleifend, consequat enim ullamcorper magnis dignissim nec phasellus, Lorem ipsum dolor sit amet, justo
-                    nunc orci donec sagittis metus dapibus, erat ullamcorper odio augue eleifend, consequat enim
-                  </p>
-                  <p>Lorem ipsum dolor sit amet, justo nunc orci donec sagittis metus dapibus, erat ullamcorper odio augue eleifend, consequat enim .</p>
-
-                  <a href="#" className="about-btn">Read More</a>
+                  {
+                    (categorizedCourses["Our learapress"] || []).map((course, index) => (
+                      <p key={index}>
+                        {course.description}                       
+                      </p>
+                    ))
+                  }
+                  <Link to="/course" className="about-btn">Read More</Link>
                 </div>
               </div>
-
               <div className="col-md-6">
                 <div className="vedio-inner">
                   <img src="assets/img/vedio.jpg" alt="" />

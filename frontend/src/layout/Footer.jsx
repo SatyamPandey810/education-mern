@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { getAllCourseStart } from '../redux/actions/getCourses.action';
 
 export default function Footer() {
+    const dispatch = useDispatch()
+    const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+
+    const separateCoursesByCategory = () => {
+        const categorizedCourses = {};
+        courses.forEach((category) => {
+            const categoryName = category._id;
+
+            if (!categorizedCourses[categoryName]) {
+                categorizedCourses[categoryName] = [];
+            }
+            category.subcategories.forEach((subcategory) => {
+                subcategory.courses.forEach((course) => {
+                    categorizedCourses[categoryName].push(course);
+                });
+            });
+        });
+
+        return categorizedCourses;
+    };
+    const categorizedCourses = separateCoursesByCategory();
+
+    useEffect(() => {
+        dispatch(getAllCourseStart())
+    }, [dispatch])
+
     return (
         <footer className="footer">
             <div className="footer-sec">
@@ -23,11 +52,15 @@ export default function Footer() {
                             <div className="footer-widget-menu">
                                 <h2>our Course</h2>
                                 <ul>
-                                    <li><a href="#">Graphics Design</a></li>
-                                    <li><a href="#">Web Development</a></li>
+                                    {
+                                         (categorizedCourses["Another Course"] || []).map((course, index) => (
+                                             <li key={index}><Link to={`/category/${course._id}`}>{course.name}</Link></li>
+                                         ))
+                                    }
+                                    {/* <li><a href="#">Web Development</a></li>
                                     <li><a href="#">Article Wiriting</a></li>
                                     <li><a href="#">Vitual Assitance</a></li>
-                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="#">Support Center</a></li> */}
                                 </ul>
                             </div>
                         </div>

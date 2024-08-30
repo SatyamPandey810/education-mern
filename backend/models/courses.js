@@ -15,6 +15,15 @@ const courseSchema = new mongoose.Schema({
     sheet: {
         type: String
     },
+    instructor:{
+        type: String
+    },
+    duration:{
+        type: String
+    },
+    lectures:{
+        type:String
+    },
     description: {
         type: String
     },

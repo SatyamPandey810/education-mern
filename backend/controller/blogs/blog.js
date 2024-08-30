@@ -6,10 +6,8 @@ async function blogUploadController(req, res) {
         const { heading, loaction, time, paragraph, status, price, subCategoryIds } = req.body;
 
         const image = req.file ? req.file.filename : null;
-        // console.log("Received subCategoryIds:", subCategoryIds);
 
         const blogs = await subCategoryModel.find({ '_id': { $in: subCategoryIds } });
-        // console.log("Fetched subcategory details:", blogs);
 
         const newBlogs = new blogModel({
             heading,
@@ -79,7 +77,6 @@ async function getAllBlogs(req, res) {
 const updateBlogController = async (req, res) => {
     try {
         const { _id, ...resBody } = req.body
-        console.log("id", _id);
 
         if (req.file) {
             resBody.image = req.file.filename; // Store the filename or path in the database

@@ -118,7 +118,7 @@ export default function Header() {
 
                         <div className="col-md-2 col-sm-3 applay-button-area">
                             <div className="applay-button">
-                                <a href="#">Apply Now</a>
+                                <Link to="/applying">Apply Now</Link>
                             </div>
                         </div>
                     </div>

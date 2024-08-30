@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCourseStart } from '../redux/actions/getCourses.action';
+import { Link } from 'react-router-dom';
 
 export default function Courses() {
+    const dispatch = useDispatch()
+    const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
+
+    const separateCoursesByCategory = () => {
+        const categorizedCourses = {};
+        courses.forEach((category) => {
+            const categoryName = category._id;
+
+            if (!categorizedCourses[categoryName]) {
+                categorizedCourses[categoryName] = [];
+            }
+            category.subcategories.forEach((subcategory) => {
+                subcategory.courses.forEach((course) => {
+                    categorizedCourses[categoryName].push(course);
+                });
+            });
+        });
+
+        return categorizedCourses;
+    };
+    const categorizedCourses = separateCoursesByCategory();
+
+    useEffect(() => {
+        dispatch(getAllCourseStart())
+    }, [dispatch])
+
     return (
         <>
             <div class="pagehding-sec">
@@ -40,16 +69,18 @@ export default function Courses() {
 
                                 <div id="overview" class="tab-pane active">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="course-details">
-                                                <img src="assets/img/slide1.jpg" alt="" />
-                                                <h2><a href="#">Duo nibh malis dolorem cu. Te qui tantas quidam philosophia, ut erroribus definitionem mea. Sed an nominati consequuntu</a></h2>
-                                                <p>Lorem ipsum dolor sit amet, ut vel quodsi feugait praesent, ex qui lucilius voluptatum referrentur. Velit harum te ius, atomorum sapientem ea sit, id saepe utinam pri. Et sit singulis intellegam. His quas tibique an, at nihil doming nec, partem tibique adipisci sit an. Putent nostrud accumsan vim at. No eos mollis ornatus vocibus, id eos persius liberavisse, ne cum ferri posse fuisset.</p>
-                                                <p>Dicam antiopam reformidans id has. Cum ei elit nostrud, at per erant conceptam. Nam te impedit meliore mnesarchum
-                                                    . Eu posse quodsi oportere vis. Eam recusabo constituto ex, et sea discere qualisque scribentur, libris feugiat vis at.
-                                                </p>
-                                            </div>
-                                        </div>
+                                        {
+                                            (categorizedCourses["Our learapress"] || []).map((course, index) => (
+                                                <div class="col-md-12" key={index}>
+                                                    <div class="course-details">
+                                                        <img src={course.image} alt="" />
+                                                        <h2><Link to={`/category/${course._id}`}>{course.name}</Link></h2>
+                                                       <p>{course.description}</p>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+
                                     </div>
                                 </div>
 

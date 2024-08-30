@@ -14,6 +14,9 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
         name: '',
         price: '',
         sheet: '',
+        instructor: '',
+        duration: '',
+        lectures: '',
         description: '',
         status: 'Active',
         image: null,
@@ -22,7 +25,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
     const [imagePreview, setImagePreview] = useState('');
     const dispatch = useDispatch()
-    
+
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
     const courseData = useSelector((state) => state.course)
@@ -80,6 +83,9 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
         data.append('price', formData.price);
         data.append('image', formData.image);
         data.append('sheet', formData.sheet);
+        data.append('instructor', formData.instructor);
+        data.append('duration', formData.duration);
+        data.append('lectures', formData.lectures);
         data.append('description', formData.description);
         data.append('status', formData.status);
         data.append('category', formData.category);
@@ -162,6 +168,28 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                                 onChange={inputChange}
                             />
                         </div>
+                        <div className="col-sm-6 mb-3">
+                            <label htmlFor="instructor" className="form-label">Instructor name</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="instructor"
+                                value={formData.instructor}
+                                aria-describedby="emailHelp"
+                                onChange={inputChange}
+                            />
+                        </div>
+                        <div className="col-sm-6 mb-3">
+                            <label htmlFor="lectures" className="form-label">Lectures</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="lectures"
+                                value={formData.lectures}
+                                aria-describedby="emailHelp"
+                                onChange={inputChange}
+                            />
+                        </div>
 
                     </div>
                     <div className='row'>
@@ -203,22 +231,37 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                                 onChange={inputChange}
                             ></textarea>
                         </div>
-                        <div className='col-sm-6'>
-                            <label htmlFor="status" className="form-label">Status</label><br />
-                            <select
-                                className='form-control'
-                                name="status"
-                                value={formData.status}
-                                onChange={inputChange}
-                            >
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </select>
+                        <div className='row'>                           
+                            <div className='col-sm-3 mb-3'>
+                                <label htmlFor="duration" className="form-label">Duration</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="duration"
+                                    value={formData.duration}
+                                    aria-describedby="emailHelp"
+                                    onChange={inputChange}
+                                />
+                            </div>
+                            <div className='col-sm-2'>
+                                <label htmlFor="status" className="form-label">Status</label><br />
+                                <select
+                                    className='form-control'
+                                    name="status"
+                                    value={formData.status}
+                                    onChange={inputChange}
+                                >
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
                         </div>
+
                     </div>
+
                     <div className='row d-flex justify-content-center'>
                         <div className='col-sm-4'>
-                            <button className="btn btn-primary mt-3">Submit</button>
+                            <button className="btn btn-primary mt-3 p-2">Submit Course</button>
                         </div>
                     </div>
                 </form>
