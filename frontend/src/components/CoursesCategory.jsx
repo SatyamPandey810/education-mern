@@ -609,7 +609,7 @@ export default function CoursesCategory() {
                                                                                     <div data-mdb-input-init className="form-outline mb-4">
                                                                                         <label className="form-label" htmlFor="course">Course</label>
                                                                                         <select name="courseName" value={inquiryData.courseName} onChange={inputChange} className="form-control form-control-lg">
-                                                                                            <option value="">{course?.name}</option>
+                                                                                            <option value="" className='text-lowercase'>{course?.name}</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
