@@ -4648,7 +4648,29 @@ footer.footer {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-   
-    /* Additional styling */
+    width: 90%; /* Adjust width as needed */
+    max-width: 500px; /* Set a maximum width */
+    height: auto; /* Adjust height based on content */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Internal padding */
+    overflow: hidden; /* Ensure no scrolling within the popup */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.popup .header,
+.popup .footer {
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.form-label{
+    color: black;
+    /* display: flex; */
+}
+
+
+
+
+  input[type=number] {
+    -moz-appearance: textfield;
   }
-  

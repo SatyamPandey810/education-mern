@@ -107,7 +107,11 @@ const summaryApi = {
     },
     singleBlogsFind: {
         url: `${backendDomain}/api/single-blog`,
-        method:"get"
+        method: "get"
+    },
+    paymentHandler: {
+        url: `${backendDomain}/api/payment-handller`,
+        method: "post"
     }
 
 

@@ -22,6 +22,7 @@ import updateBlogReducer from "./blogs/updateBlog.reducer"
 import deleteBlogReducer from "./blogs/deleteBlog.reducer"
 import getBlogsCategoryAndSubCategoryReducer from "./blogs/getBlogCategoryAndSubCategory.reducer"
 import singleBlogReducer from "./blogs/singleBlogGet.reducer"
+import transactionInitiateReducer from "./transaction/transactionInitiate.reducer"
 
 
 const rootReducers = combineReducers({
@@ -47,7 +48,8 @@ const rootReducers = combineReducers({
     blogUpdate: updateBlogReducer,
     blogDelete: deleteBlogReducer,
     findBlog: getBlogsCategoryAndSubCategoryReducer,
-    singleBlog:singleBlogReducer
+    singleBlog: singleBlogReducer,
+    transactionUpload: transactionInitiateReducer
 })
 // console.log(userSlice);
 export default rootReducers
