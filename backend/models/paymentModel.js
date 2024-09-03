@@ -52,7 +52,7 @@ const paymentSchema = new mongoose.Schema({
     }],
     paymentMethod: {
         type: String,
-        enum: ['online', 'cod'],
+        enum: ['online'],
         // required: true
     },
     status: {

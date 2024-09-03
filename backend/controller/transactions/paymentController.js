@@ -5,14 +5,13 @@ const paymentModel = require("../../models/paymentModel");
 async function paymentController(req, res) {
 
     try {
-        const { courseId, paymentMethod, name, email, gender, phone, message, userId, amount } = req.body;
+        const { courseId, name, email, gender, phone, message, userId, amount, paymentMethod } = req.body;
 
         console.log("req body:", req.body);
 
-
         // Validate input
-        if (!courseId || !paymentMethod || !amount ) {
-            return res.status(400).json({ success: false, message: 'Required fields are missing' });
+        if (!courseId || !amount || paymentMethod !== 'online') {
+            return res.status(400).json({ success: false, message: 'Required fields are missing or invalid payment method' });
         }
 
         if (paymentMethod === 'online') {
@@ -28,7 +27,7 @@ async function paymentController(req, res) {
             }
 
             const newTransaction = new paymentModel({
-                // userId,
+                userId,
                 name,
                 email,
                 gender,
@@ -49,27 +48,6 @@ async function paymentController(req, res) {
                 success: true,
                 message: 'Transaction initialized',
                 authorization_url: transaction.data.authorization_url
-            });
-
-        } else if (paymentMethod === 'cod') {
-            const newTransaction = new paymentModel({
-                // userId,
-                name,
-                email,
-                gender,
-                phone,
-                message,
-                amount,
-                courseId,
-                paymentMethod: 'cod',
-                status: 'pending'
-            });
-
-            await newTransaction.save();
-
-            return res.status(200).json({
-                success: true,
-                message: 'Order placed successfully with COD'
             });
 
         } else {
