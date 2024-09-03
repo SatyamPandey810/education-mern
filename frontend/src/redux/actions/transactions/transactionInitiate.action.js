@@ -4,9 +4,9 @@ export const initiatePaymentStart = (formData) => ({
     type: INITIATE_TRANSACTIONS_START,
     payload: formData
 })
-export const initiatePaymentSuccess = (responseData) => ({
+export const initiatePaymentSuccess = (paymentUrl) => ({
     type: INITIATE_TRANSACTIONS_SUCCESS,
-    payload: responseData
+    payload: paymentUrl
 })
 export const initiatePaymentError = (error) => ({
     type: INITIATE_TRANSACTIONS_ERROR,

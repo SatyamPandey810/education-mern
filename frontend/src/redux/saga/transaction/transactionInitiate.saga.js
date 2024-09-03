@@ -5,9 +5,9 @@ import { INITIATE_TRANSACTIONS_START } from "../../constants/transaction/transac
 
 function* initiateTranaction(action) {
     try {
-        const { transactionDetails } = action.payload;
-        const data = yield call(initiatePaymentHandller, transactionDetails)
+        const data = yield call(initiatePaymentHandller, action.payload)
         yield put(initiatePaymentSuccess(data))
+        
     } catch (error) {
         yield put(error.message)
     }

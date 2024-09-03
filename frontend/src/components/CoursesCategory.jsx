@@ -1,33 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { singleCourseStart } from '../redux/actions/singleCourse.action'
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
+import { Link, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
 
 import { initiatePaymentStart } from '../redux/actions/transactions/transactionInitiate.action';
-import summaryApi from '../common';
-import { toast } from 'react-toastify';
 
 export default function CoursesCategory() {
-    const [isOpen, setIsOpen] = useState(false);
     const { id: _id } = useParams();
     const dispatch = useDispatch()
     const course = useSelector((state) => state.singleCourse.course)
-    const user = useSelector((state) => state.user.user);
-    // const navigate = useNavigate()
-    // const allCourse = useSelector((state) => state.allCourse?.allCourse)
+    const user = useSelector((state) => state.user.user);   
+    const paymentUrl = useSelector((state) => state.transactionUpload.paymentUrl)
     const initialFormData = {
         name: "",
         email: "",
         phone: "",
-        // courseName: course?.name || '',
         courseId: '',
         gender: '',
         message: "",
@@ -36,33 +26,18 @@ export default function CoursesCategory() {
     }
     const [formData, setFormData] = useState(initialFormData)
     const [open, setOpen] = React.useState(false);
+
+
     const handleOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
     };
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-    };
+  
 
-    useEffect(() => {
-        if (_id) {
-            dispatch(singleCourseStart(_id));
-        }
-        // dispatch(getAllCourseStart())
+   
 
-    }, [dispatch, _id])
-
-
-    const inputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-
-    }
     const style = {
         position: 'absolute',
         top: '50%',
@@ -79,33 +54,20 @@ export default function CoursesCategory() {
         borderRadius: "10px"
 
     };
+    const inputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+
+    }
+
+
+    // payment handller 
     const paymentHandleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await fetch(summaryApi.paymentHandler.url, {
-                method: summaryApi.paymentHandler.method,
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    paymentMethod: 'online',
-                }),
-            });
-
-            const responseData = await response.json();
-            console.log('responseData:', responseData);
-
-            if (responseData.success && responseData.authorization_url) {
-                window.location.href = responseData.authorization_url;
-            } else {
-                toast.error(responseData.message || 'Transaction failed!');
-            }
-        } catch (error) {
-            console.error('Payment submission error:', error);
-            toast.error(`An error occurred: ${error.message || 'Please try again.'}`);
-        }
+        event.preventDefault()
+        dispatch(initiatePaymentStart(formData))
     }
 
 
@@ -119,7 +81,14 @@ export default function CoursesCategory() {
 
             }));
         }
-    }, [course]);
+        if (paymentUrl) {
+            window.location.href = paymentUrl;
+        }
+        if (_id) {
+            dispatch(singleCourseStart(_id));
+        }
+    }, [course, paymentUrl, _id, dispatch]);
+
     return (
         <>
             <div className="pagehding-sec">

@@ -1,7 +1,7 @@
 import { INITIATE_TRANSACTIONS_ERROR, INITIATE_TRANSACTIONS_START, INITIATE_TRANSACTIONS_SUCCESS } from "../../constants/transaction/transaction-constants";
 
 const initialState = {
-    transactionDetails: null
+    paymentUrl: null
 }
 const transactionInitiateReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -12,7 +12,7 @@ const transactionInitiateReducer = (state = initialState, action) => {
         case INITIATE_TRANSACTIONS_SUCCESS:
             return {
                 ...state,
-                transactionDetails: action.payload
+                paymentUrl: action.payload
             }
 
         case INITIATE_TRANSACTIONS_ERROR:

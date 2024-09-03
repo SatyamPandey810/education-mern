@@ -16,16 +16,17 @@ const initiatePaymentHandller = async (formData) => {
         });
 
         const responseData = await response.json();
-        console.log('responseData:', responseData);
 
         if (responseData.success && responseData.authorization_url) {
-            window.location.href = responseData.authorization_url;
+            return responseData.authorization_url; 
         } else {
             toast.error(responseData.message || 'Transaction failed!');
+            throw new Error(responseData.message || 'Transaction failed!');
         }
     } catch (error) {
         console.error('Payment submission error:', error);
         toast.error(`An error occurred: ${error.message || 'Please try again.'}`);
+        throw error;
     }
 }
 export default initiatePaymentHandller
