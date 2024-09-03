@@ -77,7 +77,7 @@ router.get("/blogs", findBlogsCategoryAndSubCategory)
 //single blog find route
 router.get("/single-blog/:id", singleBlogController)
 // payment request route
-router.post("/payment-handller",authToken, paymentController)
+router.post("/payment-handller", authToken, paymentController)
 
 
 module.exports = router

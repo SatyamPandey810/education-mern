@@ -23,12 +23,12 @@ export default function CoursesCategory() {
         name: "",
         email: "",
         phone: "",
-        courseName: course?.name || '',
-        courseId: course?._id || '',
+        // courseName: course?.name || '',
+        courseId: '',
         gender: '',
         message: "",
         amount: course?.price || 0,
-        userId: '',
+        // userId: '',
     }
     const [formData, setFormData] = useState(initialFormData)
 
@@ -45,7 +45,11 @@ export default function CoursesCategory() {
 
     const inputChange = (event) => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+
     }
     // const response = await fetch(summaryApi.paymentHandler.url, {
 
@@ -60,30 +64,25 @@ export default function CoursesCategory() {
                 },
                 body: JSON.stringify({
                     ...formData,
-                    // courseId,
                     paymentMethod,
                 }),
+
             });
-    
-            if (!response.ok) {
-                throw new Error('Network response was not ok.');
-            }
-    
+
             const responseData = await response.json();
-            console.log(responseData);
-            
-    
+            console.log('responseData:', responseData);
+
             if (paymentMethod === 'online' && responseData.success && responseData.authorization_url) {
-                window.location.href = responseData.authorization_url;
+                window.location.href = responseData.authorization_url; // Redirect to payment gateway
             } else if (paymentMethod === 'cod' && responseData.success) {
-                toast.success('Order placed successfully!');
-                setTimeout(() => navigate('/success'), 1000);
+                toast.success('Order placed successfully!'); // Success message for Cash on Delivery
+                setTimeout(() => navigate('/success'), 1000); // Redirect after 1 second
             } else {
                 toast.error(responseData.message || 'Payment method not selected or transaction failed!');
             }
         } catch (error) {
             console.error('Payment submission error:', error);
-            toast.error('An error occurred. Please try again.');
+            toast.error(`An error occurred: ${error.message || 'Please try again.'}`);
         }
     }
     const [isOpen, setIsOpen] = useState(false);
@@ -91,7 +90,15 @@ export default function CoursesCategory() {
     const togglePopup = () => {
         setIsOpen(!isOpen);
     };
-
+    useEffect(() => {
+        if (course) {
+            setFormData((prevData) => ({
+                ...prevData,
+                amount: course.price || 0,
+                courseId: course._id || '',
+            }));
+        }
+    }, [course]);
     return (
         <>
             <div className="pagehding-sec">
@@ -263,14 +270,14 @@ export default function CoursesCategory() {
                                                             </div>
 
                                                             <div className='row'>
-                                                                {/* <div className='col-md-12'>
+                                                                <div className='col-md-12'>
                                                                     <div data-mdb-input-init className="form-outline mb-4">
-                                                                        <label className="form-label" htmlFor="course">Course</label>
-                                                                        <select name="courseName" value={formData.courseName} onChange={inputChange} className="form-control form-control-lg">
-                                                                            <option value="" className='text-lowercase'>{course?.name}</option>
+                                                                        <label className="form-label" htmlFor="courseId">Course</label>
+                                                                        <select name="courseId" value={formData.courseId} onChange={inputChange} className="form-control form-control-lg">
+                                                                            <option value={course?._id} className='text-lowercase'>{course?.name}</option>
                                                                         </select>
                                                                     </div>
-                                                                </div> */}
+                                                                </div>
                                                             </div>
                                                             <div className='row'>
                                                                 <div className='col-md-12'>
@@ -289,8 +296,8 @@ export default function CoursesCategory() {
                                                                 </div>
                                                             </div>
                                                             <div className='row'>
-                                                                <div className='col-md-12'>
-                                                                    <div className="form-check">
+                                                                <div className='col-md-6 d-flex justify-content-between'>
+                                                                    <div className="form-check d-flex justify-content-between">
                                                                         <input
                                                                             className="form-check-input"
                                                                             type="radio"
@@ -299,11 +306,11 @@ export default function CoursesCategory() {
                                                                             value="online"
                                                                             onChange={(e) => setPaymentMethod(e.target.value)}
                                                                         />
-                                                                        <label className="form-check-label" htmlFor="online">
+                                                                        <label className="form-check-label text-nowrap" htmlFor="online">
                                                                             Online Payment
                                                                         </label>
                                                                     </div>
-                                                                    <div className="form-check">
+                                                                    <div className="form-check d-flex">
                                                                         <input
                                                                             className="form-check-input"
                                                                             type="radio"
@@ -312,7 +319,7 @@ export default function CoursesCategory() {
                                                                             value="cod"
                                                                             onChange={(e) => setPaymentMethod(e.target.value)}
                                                                         />
-                                                                        <label className="form-check-label" htmlFor="cod">
+                                                                        <label className="form-check-label text-nowrap" htmlFor="cod">
                                                                             Cash on Delivery
                                                                         </label>
                                                                     </div>

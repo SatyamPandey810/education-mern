@@ -7,26 +7,26 @@ const paymentSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        // required: true
     },
     gender: {
         type: String,
-        required: true
+        // required: true
     },
     email: {
         type: String,
-        required: true
+        // required: true
     },
     phone: {
         type: Number,
-        required: true
+        // required: true
     },
     message: {
         type: String
     },
     amount: {
         type: Number,
-        required: true
+        // required: true
     },
     reference: {
         type: String,
@@ -53,13 +53,13 @@ const paymentSchema = new mongoose.Schema({
     paymentMethod: {
         type: String,
         enum: ['online', 'cod'],
-        required: true
+        // required: true
     },
     status: {
         type: String,
         enum: ['pending', 'order confirmed', 'order packed', 'order delivered', 'order canceled'],
         default: 'pending',
-        required: true
+        // required: true
     },
     createdAt: {
         type: Date,
