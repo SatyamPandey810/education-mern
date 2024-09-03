@@ -34,26 +34,7 @@ export default function CoursesCategory() {
     const handleClose = () => {
         setOpen(false);
     };
-  
-
    
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: "37%",
-        bgcolor: 'background.paper',
-        // border: '2px solid #000',
-        // dispaly:"flex",
-        boxShadow: 24,
-        // pt: 2,
-        // px: 4,
-        // pb: 3,
-        borderRadius: "10px"
-
-    };
     const inputChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -62,7 +43,6 @@ export default function CoursesCategory() {
         }));
 
     }
-
 
     // payment handller 
     const paymentHandleSubmit = async (event) => {
@@ -167,7 +147,7 @@ export default function CoursesCategory() {
                                         aria-describedby="parent-modal-description"
 
                                     >
-                                        <Box sx={{ ...style, width: 700 }} className="d-flex justify-content-between  pay-shadow">
+                                        <Box sx={{  width: 700 }} className="d-flex justify-content-between  pay-shadow">
                                             {/* <h2 className='text-center'>Get registration now</h2> */}
                                             <section>
                                                 <div className='pay-img'>
