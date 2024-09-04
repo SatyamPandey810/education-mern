@@ -23,6 +23,7 @@ import blogDeleteSaga from "./blogs/deleteBlog.saga"
 import getBlogsCategoryAndSubCategorySaga from "./blogs/getBlogCategoryAndSubCategory.saga"
 import singleBlogSaga from "./blogs/singleBlogFind.saga"
 import initiateTranactionSaga from "./transaction/transactionInitiate.saga"
+import getTransactionsSaga from "./transaction/getAllTransaction.saga"
 
 
 export function* root() {
@@ -50,6 +51,7 @@ export function* root() {
         fork(blogDeleteSaga),
         fork(getBlogsCategoryAndSubCategorySaga),
         fork(singleBlogSaga),
-        fork(initiateTranactionSaga)
+        fork(initiateTranactionSaga),
+        fork(getTransactionsSaga)
     ])
 }

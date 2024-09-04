@@ -19,6 +19,7 @@ const { blogUploadController, getAllBlogs, updateBlogController, deleteBlogsCont
 const findBlogsCategoryAndSubCategory = require('../controller/category-subcategory-courses/findBlogs')
 const singleBlogController = require('../controller/blogs/singleBlogFindController')
 const paymentController = require('../controller/transactions/paymentController')
+const findTransactionController = require('../controller/transactions/findTransactions')
 
 
 // user signup route
@@ -78,6 +79,8 @@ router.get("/blogs", findBlogsCategoryAndSubCategory)
 router.get("/single-blog/:id", singleBlogController)
 // payment request route
 router.post("/payment-handller", authToken, paymentController)
+// total payment find route
+router.get("/get-payment", findTransactionController)
 
 
 module.exports = router

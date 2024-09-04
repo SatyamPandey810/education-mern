@@ -10,6 +10,7 @@ import ROLE from '../../common/role';
 import AllCategorySubcategory from './AllCategory-Subcategory';
 import Blog from './Blog';
 import CourseUpdate from './updates/CourseUpdate';
+import TransactionOrder from './TransactionOrder';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -17,7 +18,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog, CourseUpdate);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog, CourseUpdate, TransactionOrder);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -132,11 +133,11 @@ export default function AdminPanel() {
                     </li>
 
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick("Blog")}>
+                        <span className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
                             <span className="menu-icon">
                                 <i className="mdi mdi-contacts"></i>
                             </span>
-                            <span className="menu-title">Blogs</span>
+                            <span className="menu-title">Order-transactions</span>
                         </span>
                     </li>
                     <li className="nav-item menu-items">
@@ -192,9 +193,9 @@ export default function AdminPanel() {
 
                         {/* <h1>hello world</h1> */}
                         {activeComponent === 'TotalUser' && <TotalUser />}
-                        {activeComponent === 'AllCourses' && <AllCourses handleMenuClick={()=>handleMenuClick} />}
+                        {activeComponent === 'AllCourses' && <AllCourses handleMenuClick={() => handleMenuClick} />}
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
-                        {activeComponent === 'Blog' && <Blog />}
+                        {activeComponent === 'TransactionOrder' && <TransactionOrder />}
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
 
 

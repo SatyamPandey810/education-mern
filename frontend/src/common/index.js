@@ -112,6 +112,10 @@ const summaryApi = {
     paymentHandler: {
         url: `${backendDomain}/api/payment-handller`,
         method: "post"
+    },
+    allPayment: {
+        url: `${backendDomain}/api/get-payment`,
+        method: "get"
     }
 
 
