@@ -11,7 +11,7 @@ import { findCourseCategoryAndSubcategoryStart } from '../redux/actions/findCour
 import summaryApi from '../common';
 import { Link, useParams } from 'react-router-dom';
 import { getAllCategoryStart } from '../redux/actions/getCategory.action';
-import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
+// import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -76,7 +76,7 @@ export default function Home() {
     dispatch(findCourseCategoryAndSubcategoryStart());
     dispatch(getAllCourseStart())
     dispatch(getAllCategoryStart())
-    dispatch(findBlogCategoryAndSubcategoryStart())
+    // dispatch(findBlogCategoryAndSubcategoryStart())
   }, [dispatch])
 
   return (

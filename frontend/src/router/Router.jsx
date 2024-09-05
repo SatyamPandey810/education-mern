@@ -14,13 +14,13 @@ import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 import TotalUser from '../pages/admin/TotalUser'
 import CoursesCategory from '../components/CoursesCategory'
-import BlogsCategory from '../components/BlogsCategory'
+// import BlogsCategory from '../components/BlogsCategory'
 import ApplyNow from '../pages/ApplyNow'
 import ThankuPage from '../pages/ThankuPage'
 
 export default function Router() {
     const location = useLocation()
-    const noHeaderFooterRoutes = ['/sign-in', '/sign-up', '/admin-dashboard/total-user', "/admin-dashboard"];
+    const noHeaderFooterRoutes = [ '/admin-dashboard/total-user', "/admin-dashboard"];
     return (
         <>
             {!noHeaderFooterRoutes.includes(location.pathname) && <Header />}
@@ -34,7 +34,7 @@ export default function Router() {
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/category/:id' element={<CoursesCategory />} />
-                <Route path='/categories/:id' element={<BlogsCategory />} />
+                {/* <Route path='/categories/:id' element={<BlogsCategory />} /> */}
                 <Route path='/applying' element={<ApplyNow/>}/>
                 <Route path="/success" element={<ThankuPage/>}/>
 

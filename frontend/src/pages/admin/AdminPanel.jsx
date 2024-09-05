@@ -11,7 +11,7 @@ import AllCategorySubcategory from './AllCategory-Subcategory';
 // import Blog from './Blog';
 import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
-import CourseCurriculum from './CourseCurriculum';
+// import CourseCurriculum from './CourseCurriculum';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -19,7 +19,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder, CourseCurriculum);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -206,7 +206,7 @@ export default function AdminPanel() {
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
                         {activeComponent === 'TransactionOrder' && <TransactionOrder />}
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
-                        {activeComponent === 'CourseCurriculum' && <CourseCurriculum />}
+                        {/* {activeComponent === 'CourseCurriculum' && <CourseCurriculum />} */}
 
 
 

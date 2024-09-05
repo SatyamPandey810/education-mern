@@ -16,12 +16,12 @@ import updateCourseReducer from "./updateCourse.reducer"
 import findCourseByCategoryAndSubcategoryReducer from "./findCourseByCategoryAndSubcategory.reducer"
 import singleCourseReducer from "./singleCourse.reducer"
 import addToinquiryReducer from "./addToInquiry.reducer"
-import blogUploadReducer from "./blogs/blogUpload.reducer"
-import getAllblogsReducer from "./blogs/getAllBlogs.reducer"
-import updateBlogReducer from "./blogs/updateBlog.reducer"
-import deleteBlogReducer from "./blogs/deleteBlog.reducer"
-import getBlogsCategoryAndSubCategoryReducer from "./blogs/getBlogCategoryAndSubCategory.reducer"
-import singleBlogReducer from "./blogs/singleBlogGet.reducer"
+// import blogUploadReducer from "./blogs/blogUpload.reducer"
+// import getAllblogsReducer from "./blogs/getAllBlogs.reducer"
+// import updateBlogReducer from "./blogs/updateBlog.reducer"
+// import deleteBlogReducer from "./blogs/deleteBlog.reducer"
+// import getBlogsCategoryAndSubCategoryReducer from "./blogs/getBlogCategoryAndSubCategory.reducer"
+// import singleBlogReducer from "./blogs/singleBlogGet.reducer"
 import transactionInitiateReducer from "./transaction/transactionInitiate.reducer"
 import allPaymentReducer from "./transaction/getAllTransaction.reducer"
 
@@ -44,12 +44,12 @@ const rootReducers = combineReducers({
     findCourseByCategoryAndSubcategory: findCourseByCategoryAndSubcategoryReducer,
     singleCourse: singleCourseReducer,
     addToInquiries: addToinquiryReducer,
-    uploadBlog: blogUploadReducer,
-    allBlog: getAllblogsReducer,
-    blogUpdate: updateBlogReducer,
-    blogDelete: deleteBlogReducer,
-    findBlog: getBlogsCategoryAndSubCategoryReducer,
-    singleBlog: singleBlogReducer,
+    // uploadBlog: blogUploadReducer,
+    // allBlog: getAllblogsReducer,
+    // blogUpdate: updateBlogReducer,
+    // blogDelete: deleteBlogReducer,
+    // findBlog: getBlogsCategoryAndSubCategoryReducer,
+    // singleBlog: singleBlogReducer,
     transactionUpload: transactionInitiateReducer,
     allTransaction: allPaymentReducer
 })

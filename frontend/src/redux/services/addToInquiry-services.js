@@ -12,6 +12,7 @@ const addToInquiriesHandller = async (inquiryData) => {
         });
 
         const dataResponse = await response.json();
+        console.log(dataResponse);
 
         if (response.ok && dataResponse.success) {
             toast.success(dataResponse.message);

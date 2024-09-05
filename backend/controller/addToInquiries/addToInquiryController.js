@@ -3,18 +3,19 @@ const courseModel = require("../../models/courses");
 
 const addToInquiryController = async (req, res) => {
     try {
-        const { courseId, name, email, phone, gender,message } = req?.body;
+        const { courseId, name, email, phone, gender, message } = req?.body;
+        console.log("body", req.body);
 
-        const course = await courseModel.findById(courseId);
+        // const course = await courseModel.findById(courseId);
 
-        if (!course) {
-            return res.status(404).json({ message: "Course not found" });
-        }
+        // if (!course) {
+        //     return res.status(404).json({ message: "Course not found" });
+        // }
 
-        // Validate the course status
-        if (course.status !== "Active") {
-            return res.status(400).json({ message: "Cannot add inquiry. The course is not active." });
-        }
+        // // Validate the course status
+        // if (course.status !== "Active") {
+        //     return res.status(400).json({ message: "Cannot add inquiry. The course is not active." });
+        // }
 
         // If course is active, proceed to add the inquiry
         const newInquiry = new addToInquiryModel({
@@ -29,7 +30,7 @@ const addToInquiryController = async (req, res) => {
         const savedInquiry = await newInquiry.save();
 
         res.status(201).json({
-            message: "Inquiry added successfully",
+            message: "Thanks for inqury",
             data: savedInquiry,
             success: true,
             error: false

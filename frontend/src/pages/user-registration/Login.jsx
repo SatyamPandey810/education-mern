@@ -54,46 +54,62 @@ export default function Login() {
 
         }
     }
-   
+
 
     return (
         <>
-            <div className="pagehding-sec">
-                <div className="images-overlay"></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="page-heading">
-                                <h1>Login</h1>
-                            </div>
-                            <div className="breadcrumb-list">
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Login</a></li>
-                                </ul>
-                            </div>
+            <div class="login-form">
+                <form onSubmit={submit}>
+                    <h1>Login</h1>
+                    <div class="content">
+                        <div class="input-field">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                id="email"
+                                name="email"
+                                onChange={inputChange}
+                                value={data.email}
+                                required
+                                autocomplete="nope"
+                            />
                         </div>
+                        <div class="input-field">
+                            <input
+                                type={showpassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={data.password}
+                                onChange={inputChange}
+                                placeholder="Password"
+                                autocomplete="new-password"
+                            />
+                            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
+                                <FontAwesomeIcon icon={showpassword ? faEyeSlash : faEye} />
+                            </span>
+                        </div>
+                        <a href="#" class="link">Forgot Your Password?</a>
                     </div>
-                </div>
+                    <div class="action">
+                        <button onClick={signUpPage}>Register</button>
+                        <button>Sign in</button>
+                    </div>
+                </form>
             </div>
-            <div className="about-us-sec row mt-5 pb-100">
-                <div className='col-sm-4'>
-
-                </div>
-                <div className="col-sm-8 col-xl-10">
-                    <div className="card" style={{ borderRadius: "1rem" }}>
-                        <div className="row g-0">
-                            {/* <div className="col-md-6 col-lg-5 d-none d-md-block">
+            {/* <div className="  row d-flex align-items-center justify-content-center mt-2 pb-100">               
+                <div className="col-sm-4 col-xl-10">
+                    <div className="" style={{ borderRadius: "1rem" }}>
+                        <div className="row g-0 d-flex align-items-center">
+                            <div className="col-md-6 col-lg-4 d-none d-md-block log-img">
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                                    alt="login form" className="img-fluid" style={{ borderRadius: "1rem 0 0 1rem" }} />
-                            </div> */}
-                            <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div className="card-body p-4 p-lg-5 text-black">
-
+                                    alt="login form" className="img-fluid"  />
+                            </div>
+                            <div className="d-flex align-items-center">
+                                <div className="p-4 p-lg-5 text-black">
                                     <form onSubmit={submit}>
 
                                         <div className="d-flex align-items-center mb-3 pb-1">
-                                            {/* <span className="h1 fw-bold mb-0">Logo</span> */}
+                                         
                                             <h1 className="mb-3 pb-3  text-center" style={{ letterSpacing: "1px" }}>Login</h1>
                                         </div>
 
@@ -134,7 +150,7 @@ export default function Login() {
                                     </div>
                                     <div>
                                         <h3 className="small text-muted">Forget password ?</h3><br />
-                                        {/* <span className="small text-muted">Privacy policy</span> */}
+                                      
                                     </div>
 
                                 </div>
@@ -143,7 +159,7 @@ export default function Login() {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
         </>
     )
 }
