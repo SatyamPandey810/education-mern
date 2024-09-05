@@ -12,7 +12,7 @@ export default function CoursesCategory() {
     const { id: _id } = useParams();
     const dispatch = useDispatch()
     const course = useSelector((state) => state.singleCourse.course)
-    const user = useSelector((state) => state.user.user);   
+    const user = useSelector((state) => state.user.user);
     const paymentUrl = useSelector((state) => state.transactionUpload.paymentUrl)
     const initialFormData = {
         name: "",
@@ -34,7 +34,7 @@ export default function CoursesCategory() {
     const handleClose = () => {
         setOpen(false);
     };
-   
+
     const inputChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -117,10 +117,404 @@ export default function CoursesCategory() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* there content */}
+                                <div id="curriculum" className="tab-pane">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="faq-sec">
+                                                <div className="panel-group" id="accordion" role="tablist">
+                                                    <div className="panel">
+                                                        <div className="panel-heading" role="tab" id="titleOne">
+                                                            <h4 className="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion"
+                                                                    href="#collapseOne" aria-expanded="true"
+                                                                    aria-controls="collapseOne">
+                                                                    Learn Start Basic</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel"
+                                                            aria-labelledby="titleOne">
+                                                            <div className="panel-content">
+                                                                <p>Errem delicatissimi no mel, error vocibus ut vim, te mei
+                                                                    aeterno nominavi delectus. Tamquam ornatus pro no</p>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-pdf-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 1.1
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With PDF File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            35 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-text"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 1.2
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With File text
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-play-circle"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 1.3
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With Vedio File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="panel">
+                                                        <div className="panel-heading" role="tab" id="titleTwo">
+                                                            <h4 className="panel-title">
+                                                                <a className="collapsed" data-toggle="collapse"
+                                                                    data-parent="#accordion" href="#collapseTwo"
+                                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                                    Learn Advance Level</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel"
+                                                            aria-labelledby="titleTwo">
+                                                            <div className="panel-content">
+                                                                <p>Errem delicatissimi no mel, error vocibus ut vim, te mei
+                                                                    aeterno nominavi delectus. Tamquam ornatus pro no</p>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-pdf-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 2.1
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With PDF File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            35 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-text"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 2.2
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With File text
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-play-circle"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 2.3
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With Vedio File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="panel">
+                                                        <div className="panel-heading" role="tab" id="titleThree">
+                                                            <h4 className="panel-title">
+                                                                <a className="collapsed" data-toggle="collapse"
+                                                                    data-parent="#accordion" href="#collapseThree"
+                                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                                    More Advance Level</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapseThree" className="panel-collapse collapse" role="tabpanel"
+                                                            aria-labelledby="titleThree">
+                                                            <div className="panel-content">
+                                                                <p>Errem delicatissimi no mel, error vocibus ut vim, te mei
+                                                                    aeterno nominavi delectus. Tamquam ornatus pro no</p>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-pdf-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 3.1
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With PDF File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            35 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-file-text"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 3.2
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With File text
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="coruse-lesson">
+                                                                    <div className="coruse-left-text">
+                                                                        <span className="coruse-left-icon">
+                                                                            <i className="fa fa-play-circle"></i>
+                                                                        </span>
+                                                                        <span className="coruse-left-title">
+                                                                            Lecture 3.3
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-center-text">
+                                                                        <span>
+                                                                            Lesson With Vedio File
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="coruse-right-text">
+                                                                        <span className="coruse-right-icon">
+                                                                            <i className="fa fa-clock-o"></i>
+                                                                        </span>
+                                                                        <span className="coruse-right-time">
+                                                                            45 Minite
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="instructor" className="tab-pane">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="course-insturctor">
+                                                <div className="insturctor-img">
+                                                    <img src="/assets/img/panel.png" alt="logo"  width={100} height={140}/>
+                                                       
+                                                </div>
+                                                <div className="details">
+                                                    <h2 className='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <span>Math Analysis</span>
+                                                </div>
+                                                <div className="rating">
+                                                    <p>Errem pp delicatissimi no mel, error vocibus ut vim, te mei aeterno nominavi
+                                                        delectus. Tamquam ornatus pro no, cum id elitr soleat maluisset. Mel
+                                                        quas everti insolens cu, duo harum feugiat an.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
+                                <div id="coruse_review" className="tab-pane">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="course-review course-insturctor">
+                                                <div className="insturctor-img">
+                                                    <img src="https://feedthenationplus.org/education/public/assets/img/client2.png"
+                                                        alt="" />
+                                                </div>
+                                                <div className="details">
+                                                <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <span>Math Analysis</span>
+                                                </div>
+                                                <div className="rating">
+                                                    <p>Errem delicatissimi no mel, error vocibus ut vim, te mei aeterno nominavi
+                                                        delectus. Tamquam ornatus pro no, cum id elitr soleat maluisset. Mel
+                                                        quas everti insolens cu, duo harum feugiat an.</p>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div className="course-review course-insturctor">
+                                                <div className="insturctor-img">
+                                                    <img src="https://feedthenationplus.org/education/public/assets/img/client1.png"
+                                                        alt="" />
+                                                </div>
+                                                <div className="details">
+                                                    <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <span>Math Analysis</span>
+                                                </div>
+                                                <div className="rating">
+                                                    <p>Errem delicatissimi no mel, error vocibus ut vim, te mei aeterno nominavi
+                                                        delectus. Tamquam ornatus pro no, cum id elitr soleat maluisset. Mel
+                                                        quas everti insolens cu, duo harum feugiat an.</p>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div className="course-review course-insturctor">
+                                                <div className="insturctor-img">
+                                                    <img src="https://feedthenationplus.org/education/public/assets/img/client3.png"
+                                                        alt="" />
+                                                </div>
+                                                <div className="details">
+                                                <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <span>Math Analysis</span>
+                                                </div>
+                                                <div className="rating">
+                                                    <p>Errem delicatissimi no mel, error vocibus ut vim, te mei aeterno nominavi
+                                                        delectus. Tamquam ornatus pro no, cum id elitr soleat maluisset. Mel
+                                                        quas everti insolens cu, duo harum feugiat an.</p>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                    <i className="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                                <div id="write_review" className="tab-pane">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="review-form">
+                                                <div className="contact-page-form">
+                                                    <h2>Write Your Review</h2>
+                                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                                        <div className="single-input-field">
+                                                            <input type="text" placeholder="First Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                                        <div className="single-input-field">
+                                                            <input type="text" placeholder="Last Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                                        <div className="single-input-field">
+                                                            <input type="text" placeholder="Phone Number" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                                        <div className="single-input-field">
+                                                            <input type="email" placeholder="E-mail" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-12 message-input">
+                                                        <div className="single-input-field">
+                                                            <textarea placeholder="Write Your Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div className="single-input-fieldsbtn">
+                                                        <input type="submit" value="Send Now" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -147,7 +541,7 @@ export default function CoursesCategory() {
                                         aria-describedby="parent-modal-description"
 
                                     >
-                                        <Box sx={{  width: 700 }} className="d-flex justify-content-between  pay-shadow">
+                                        <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow">
                                             {/* <h2 className='text-center'>Get registration now</h2> */}
                                             <section>
                                                 <div className='pay-img'>

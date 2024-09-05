@@ -3012,7 +3012,8 @@ th {
 .table>colgroup+thead>tr:first-child>th,
 .table>thead:first-child>tr:first-child>td,
 .table>thead:first-child>tr:first-child>th {
-    border-top: 0
+    border-top: 0;
+    padding: 14px;
 }
 
 .table>tbody+tbody {

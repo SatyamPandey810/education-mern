@@ -7,7 +7,6 @@ function* getTransactions(action) {
     try {
         const data = yield call(getAllTransactionServices, action.payload)
         yield put(getAllPaymentSuccess(data))
-        console.log(data);
         
     } catch (error) {
         yield put(getAllPaymentError(error.message))

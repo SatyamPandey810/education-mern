@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUserStart } from '../../redux/actions/logoutUser.action';
 import ROLE from '../../common/role';
 import AllCategorySubcategory from './AllCategory-Subcategory';
-import Blog from './Blog';
+// import Blog from './Blog';
 import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
+import CourseCurriculum from './CourseCurriculum';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
@@ -18,7 +19,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, Blog, CourseUpdate, TransactionOrder);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder, CourseCurriculum);
     }
     const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -131,6 +132,14 @@ export default function AdminPanel() {
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
                         </span>
                     </li>
+                    <li className="nav-item menu-items">
+                        <span className="nav-link" onClick={() => handleMenuClick('CourseCurriculum')}>
+                            <span className="menu-icon">
+                                <i className="mdi mdi-table-large"></i>
+                            </span>
+                            <span className="menu-title" style={{ cursor: "pointer" }}>Course curriculum</span>
+                        </span>
+                    </li>
 
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
@@ -197,6 +206,7 @@ export default function AdminPanel() {
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
                         {activeComponent === 'TransactionOrder' && <TransactionOrder />}
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
+                        {activeComponent === 'CourseCurriculum' && <CourseCurriculum />}
 
 
 

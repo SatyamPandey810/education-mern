@@ -85,8 +85,8 @@ const summaryApi = {
         url: `${backendDomain}/api/upload-inquiry`,
         method: "post"
     },
-    blogUpload: {
-        url: `${backendDomain}/api/blog-upload`,
+    courseCurriculumUpload: {
+        url: `${backendDomain}/api/courseCurriculum-upload`,
         method: "post"
     },
     getBlogs: {

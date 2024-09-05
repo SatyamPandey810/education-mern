@@ -3,8 +3,9 @@ import { GET_TRANSACTIONS_ERROR, GET_TRANSACTIONS_START, GET_TRANSACTIONS_SUCCES
 const inititalState = {
     allPayment: []
 }
-const allPaymentReducer = (state = inititalState, action) => {    
-    switch (action.payload) {
+const allPaymentReducer = (state = inititalState, action) => {  
+      
+    switch (action.type) {
         case GET_TRANSACTIONS_START:
             return {
                 ...state

@@ -10,6 +10,8 @@ function* uploadBlog(action) {
         const data = yield call(blogUploadHandller, action.payload)
 
         yield put(blogUploadSuccess(data))
+        console.log(data);
+        
     } catch (error) {
         yield put(blogUploadError(error.message))
     }
