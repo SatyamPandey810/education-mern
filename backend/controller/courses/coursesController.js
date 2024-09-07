@@ -110,10 +110,34 @@ const updateCourseController = async (req, res) => {
 }
 
 
+const courseDeleteController = async (req, res) => {
+    try {
+        const courseId = req.body._id
+        const deletecourse = await courseModel.deleteOne({ _id: courseId })
+
+        res.status(200).json({
+            message: "course deleted successfully",
+            error: false,
+            success: true,
+            data: deletecourse
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false
+
+        })
+    }
+}
+
+
 
 
 module.exports = {
     coursesController,
     getAllCourses,
-    updateCourseController
+    updateCourseController,
+    courseDeleteController
 }

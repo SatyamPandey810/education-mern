@@ -106,7 +106,7 @@ export default function AllCategorySubcategory() {
     const subCategoryData = allSubCategory ? allSubCategory.data : [];
 
     return (
-        <>
+        <div className='container'>
             <div className='row'>
                 {
                     openUploadCategory && (
@@ -279,6 +279,6 @@ export default function AllCategorySubcategory() {
                 )}
             </div>
 
-        </>
+        </div>
     )
 }

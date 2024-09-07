@@ -24,6 +24,7 @@ import addToinquiryReducer from "./addToInquiry.reducer"
 // import singleBlogReducer from "./blogs/singleBlogGet.reducer"
 import transactionInitiateReducer from "./transaction/transactionInitiate.reducer"
 import allPaymentReducer from "./transaction/getAllTransaction.reducer"
+import deleteCourseReducer from "./courseDelete.reducer"
 
 
 const rootReducers = combineReducers({
@@ -37,6 +38,7 @@ const rootReducers = combineReducers({
     allSubCategory: getAllSubCategoryReducer,
     uploadCourse: courseUploadReducer,
     allCourse: getAllCourseReducer,
+    deleteCourse: deleteCourseReducer,
     deleteCategory: categoryDeleteReducer,
     updateSubCategory: updateSubCategoryReducer,
     deleteSubCategory: deleteSubCategoryReducer,

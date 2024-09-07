@@ -24,6 +24,7 @@ import addToInquirySaga from "./addToInquiry.saga"
 // import singleBlogSaga from "./blogs/singleBlogFind.saga"
 import initiateTranactionSaga from "./transaction/transactionInitiate.saga"
 import getTransactionsSaga from "./transaction/getAllTransaction.saga"
+import courseDeleteSaga from "./deleteCourse.saga"
 
 
 export function* root() {
@@ -52,6 +53,7 @@ export function* root() {
         // fork(getBlogsCategoryAndSubCategorySaga),
         // fork(singleBlogSaga),
         fork(initiateTranactionSaga),
-        fork(getTransactionsSaga)
+        fork(getTransactionsSaga),
+        fork(courseDeleteSaga)
     ])
 }

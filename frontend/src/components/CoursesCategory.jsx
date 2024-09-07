@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import 'reactjs-popup/dist/index.css';
 import { singleCourseStart } from '../redux/actions/singleCourse.action'
 import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -68,6 +70,10 @@ export default function CoursesCategory() {
             dispatch(singleCourseStart(_id));
         }
     }, [course, paymentUrl, _id, dispatch]);
+
+    const onCloseModel = () => {
+        handleClose()
+    }
 
     return (
         <>
@@ -390,8 +396,8 @@ export default function CoursesCategory() {
                                         <div className="col-md-12">
                                             <div className="course-insturctor">
                                                 <div className="insturctor-img">
-                                                    <img src="/assets/img/panel.png" alt="logo"  width={100} height={140}/>
-                                                       
+                                                    <img src="/assets/img/panel.png" alt="logo" width={100} height={140} />
+
                                                 </div>
                                                 <div className="details">
                                                     <h2 className='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
@@ -417,7 +423,7 @@ export default function CoursesCategory() {
                                                         alt="" />
                                                 </div>
                                                 <div className="details">
-                                                <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -457,7 +463,7 @@ export default function CoursesCategory() {
                                                         alt="" />
                                                 </div>
                                                 <div className="details">
-                                                <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
+                                                    <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -542,13 +548,19 @@ export default function CoursesCategory() {
 
                                     >
                                         <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow">
-                                            {/* <h2 className='text-center'>Get registration now</h2> */}
+
                                             <section>
                                                 <div className='pay-img'>
                                                     <img src='/assets/img/bg_1.jpg' />
                                                 </div>
                                             </section>
                                             <section id="parent-modal-description" className='pay-form'>
+                                                <div className='d-flex justify-content-end text-right' >
+                                                    <FontAwesomeIcon className='x-mark p-2' icon={faXmark}
+                                                    style={{cursor:"pointer"}}
+                                                        onClick={onCloseModel}
+                                                    />
+                                                </div>
                                                 <div className="row">
                                                     <div className="col-md-12 text-dark ">
                                                         <form onSubmit={paymentHandleSubmit}>

@@ -9,6 +9,7 @@ import { getAllCategoryStart } from '../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action';
 import { toast } from 'react-toastify';
 import summaryApi from '../../common';
+import { deleteCourseStart } from '../../redux/actions/deleteCourse.action';
 
 export default function AllCourses() {
   const [openUploadCourse, setOpenUploadCourse] = useState(false)
@@ -152,7 +153,10 @@ export default function AllCourses() {
     dispatch(getAllCourseStart());
   };
 
-
+  const deleteCourseHandle = (id) => {
+    dispatch(deleteCourseStart(id))
+    handleCourseUploaded()
+  }
 
 
   return (
@@ -205,118 +209,118 @@ export default function AllCourses() {
             </div>
 
             <div className='row'>
-                        <div className="col-sm-6 mb-3">
-                            <label htmlFor="name" className="form-label">Course name</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                name="name"
-                                value={formData.name}
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                            <label htmlFor="price" className="form-label">Course fees</label>
-                            <input
-                                type="number"
-                                className="form-control"
-                                name="price"
-                                value={formData.price}
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                            <label htmlFor="instructor" className="form-label">Instructor name</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                name="instructor"
-                                value={formData.instructor}
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                            <label htmlFor="lectures" className="form-label">Lectures</label>
-                            <input
-                                type="number"
-                                className="form-control"
-                                name="lectures"
-                                value={formData.lectures}
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                        </div>
+              <div className="col-sm-6 mb-3">
+                <label htmlFor="name" className="form-label">Course name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="name"
+                  value={formData.name}
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+              </div>
+              <div className="col-sm-6 mb-3">
+                <label htmlFor="price" className="form-label">Course fees</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="price"
+                  value={formData.price}
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+              </div>
+              <div className="col-sm-6 mb-3">
+                <label htmlFor="instructor" className="form-label">Instructor name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="instructor"
+                  value={formData.instructor}
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+              </div>
+              <div className="col-sm-6 mb-3">
+                <label htmlFor="lectures" className="form-label">Lectures</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="lectures"
+                  value={formData.lectures}
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+              </div>
 
-                    </div>
-                    <div className='row'>
-                        <div className="col-sm-6 mb-3">
-                            <label htmlFor="image" className="form-label">Image</label>
-                            <input
-                                type="file"
-                                className="form-control"
-                                name="image"
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                            {imagePreview && (
-                                <div className="image-preview">
-                                    <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
-                                </div>
-                            )}
-                        </div>
-                        <div className='col-sm-6 mb-3'>
-                            <label htmlFor="sheet" className="form-label">Sheet</label>
-                            <input
-                                type="number"
-                                className="form-control"
-                                name="sheet"
-                                value={formData.sheet}
-                                aria-describedby="emailHelp"
-                                onChange={inputChange}
-                            />
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col-sm-6 '>
-                            <label htmlFor="description" className="form-label">Course description</label><br />
-                            <textarea
-                                cols={61}
-                                rows={4}
-                                name="description"
-                                value={formData.description}
-                                onChange={inputChange}
-                            ></textarea>
-                        </div>
-                        <div className='row'>                           
-                            <div className='col-sm-3 mb-3'>
-                                <label htmlFor="duration" className="form-label">Duration</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="duration"
-                                    value={formData.duration}
-                                    aria-describedby="emailHelp"
-                                    onChange={inputChange}
-                                />
-                            </div>
-                            <div className='col-sm-2'>
-                                <label htmlFor="status" className="form-label">Status</label><br />
-                                <select
-                                    className='form-control'
-                                    name="status"
-                                    value={formData.status}
-                                    onChange={inputChange}
-                                >
-                                    <option value="Active">Active</option>
-                                    <option value="Inactive">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
+            </div>
+            <div className='row'>
+              <div className="col-sm-6 mb-3">
+                <label htmlFor="image" className="form-label">Image</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  name="image"
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+                {imagePreview && (
+                  <div className="image-preview">
+                    <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
+                  </div>
+                )}
+              </div>
+              <div className='col-sm-6 mb-3'>
+                <label htmlFor="sheet" className="form-label">Sheet</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="sheet"
+                  value={formData.sheet}
+                  aria-describedby="emailHelp"
+                  onChange={inputChange}
+                />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-sm-6 '>
+                <label htmlFor="description" className="form-label">Course description</label><br />
+                <textarea
+                  cols={61}
+                  rows={4}
+                  name="description"
+                  value={formData.description}
+                  onChange={inputChange}
+                ></textarea>
+              </div>
+              <div className='row'>
+                <div className='col-sm-3 mb-3'>
+                  <label htmlFor="duration" className="form-label">Duration</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="duration"
+                    value={formData.duration}
+                    aria-describedby="emailHelp"
+                    onChange={inputChange}
+                  />
+                </div>
+                <div className='col-sm-2'>
+                  <label htmlFor="status" className="form-label">Status</label><br />
+                  <select
+                    className='form-control'
+                    name="status"
+                    value={formData.status}
+                    onChange={inputChange}
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
 
-                    </div>
+            </div>
             <div className='row d-flex justify-content-center'>
               <div className='col-sm-4'>
                 <button className="btn btn-primary mt-3">Submit</button>
@@ -331,8 +335,8 @@ export default function AllCourses() {
             </div>
           </form>
         )
-      } 
-      
+      }
+
       <div className='all-cu'>
         <div>
           <h1 className='text-light'>All Courses</h1>
@@ -389,7 +393,10 @@ export default function AllCourses() {
                   <td className='text-light'><FontAwesomeIcon icon={faPenToSquare}
                     onClick={() => handleCourseClick(course)}
                   /> &nbsp;  &nbsp;
-                    <FontAwesomeIcon icon={faTrashCan} /></td>
+                    <FontAwesomeIcon icon={faTrashCan}
+                      onClick={()=>deleteCourseHandle(course._id)}
+                    />
+                    </td>
                 </tr>
               ))
             }
@@ -403,3 +410,7 @@ export default function AllCourses() {
   )
 }
 
+//ARkQzdXFzZCnqdos
+//satyam
+//mongodb+srv://satyam:ARkQzdXFzZCnqdos@satyam.hxjb5.mongodb.net/?retryWrites=true&w=majority&appName=satyam
+//RthNgOvSFXuepccw

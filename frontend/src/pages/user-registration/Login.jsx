@@ -54,11 +54,12 @@ export default function Login() {
 
         }
     }
+   
 
 
     return (
         <>
-            <div class="login-form">
+            {/* <div class="login-form">
                 <form onSubmit={submit}>
                     <h1>Login</h1>
                     <div class="content">
@@ -91,12 +92,13 @@ export default function Login() {
                         <a href="#" class="link">Forgot Your Password?</a>
                     </div>
                     <div class="action">
+                        <button onClick={homePage}>Sign in</button>
                         <button onClick={signUpPage}>Register</button>
-                        <button>Sign in</button>
                     </div>
                 </form>
-            </div>
-            {/* <div className="  row d-flex align-items-center justify-content-center mt-2 pb-100">               
+            </div> */}
+
+             <div className="  row d-flex align-items-center justify-content-center mt-2 pb-100">               
                 <div className="col-sm-4 col-xl-10">
                     <div className="" style={{ borderRadius: "1rem" }}>
                         <div className="row g-0 d-flex align-items-center">
@@ -159,7 +161,7 @@ export default function Login() {
                     </div>
                 </div>
 
-            </div> */}
+            </div> 
         </>
     )
 }

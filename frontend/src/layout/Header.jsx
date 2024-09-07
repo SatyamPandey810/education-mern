@@ -9,6 +9,8 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     const user = useSelector((state) => state.user.user);
@@ -91,9 +93,13 @@ export default function Header() {
         setInquiryData(initialInquiryData);
         setTimeout(() => {
             handleClose()
-
         }, 2000)
     }
+
+    const onCloseModel=()=>{
+        handleClose()
+    }
+
 
     return (
         <header>
@@ -187,103 +193,110 @@ export default function Header() {
                                 <Link onClick={handleOpen}>Apply Now</Link>
                             </div>
                         </div>
-                        <Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="parent-modal-title"
-                            aria-describedby="parent-modal-description"
-                        >
+                        <div className='container'>
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="parent-modal-title"
+                                aria-describedby="parent-modal-description"
+                            >
 
-                            <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow" >
-                                <section>
-                                    <div className='pay-img'>
-                                        <img src='/assets/img/inquiry.jpg' />
-                                    </div>
-                                </section>
-                                <section id="parent-modal-description" className='pay-form'>
-                                    <div className="row">
-                                        <div className="col-md-12 text-dark ">
-                                            <h1 className='text-center p-3'>Inquiry now</h1>
-                                            <form onSubmit={inquiryHandller}>
-                                                <div className="col-md-12 mb-3">                                                 
-                                                    <input
-                                                        placeholder='Enter name'
-                                                        type="text"
-                                                        name="name"
-                                                        onChange={inputChange}
-                                                        value={inquiryData.name}
-                                                        className="form-control form-control-lg"
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className='col-md-12 mb-3'>
-                                                   
-                                                    <input
-                                                        placeholder='Enter email'
-                                                        type="text"
-                                                        name="email"
-                                                        value={inquiryData.email}
-                                                        onChange={inputChange}
-                                                        className="form-control form-control-lg"
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className='col-md-12 mb-3'>
-                                                    <select name="gender" value={inquiryData.gender} onChange={inputChange} className='form-control'>
-                                                        <option value="">Select Gender</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div className='col-md-12 mb-3'>
-                                                    <input
-                                                        placeholder='Enter phone'
-                                                        type="number"
-                                                        name="phone"
-                                                        value={inquiryData.phone}
-                                                        onChange={inputChange}
-                                                        className="form-control form-control-lg"
-                                                        required
-                                                    />
-                                                </div>
-
-
-                                                <div className='col-md-12 mb-3'>
-                                                    <select name="courseId" value={inquiryData.courseId} onChange={inputChange} className="form-control course-name form-control-lg">
-                                                        {
-                                                            allCourse?.map((course) => (
-                                                                <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
-
-                                                            ))
-                                                        }
-                                                    </select>
-                                                </div>
-                                                <div className='col-md-12 mb-3'>
-                                                    <div data-mdb-input-init className="form-outline mb-4">
-                                                        <textarea
-                                                            placeholder='Your message'
-                                                            className='form-control'
-                                                            type="text"
-                                                            rows={3}
-                                                            name="message"
-                                                            value={inquiryData.message}
-                                                            onChange={inputChange}
-                                                        >
-                                                        </textarea>
-                                                    </div>
-                                                </div>
-                                                <div className='col-md-12 mb-3'>
-                                                    <div className="d-flex justify-content-center">
-                                                        <button className="btn btn-warning btn-lg">Inquiry now</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow" >
+                                    <section>
+                                        <div className='pay-img'>
+                                            <img src='/assets/img/inquiry.jpg' />
                                         </div>
-                                    </div>
-                                </section>
-                            </Box>
-                        </Modal>
+                                    </section>
+                                    <section id="parent-modal-description" className='pay-form'>
+                                        <div className="row">
+                                            <div className="col-md-12 text-dark ">
+                                                <div className='d-flex justify-content-between' >
+                                                    <h1 className='text-center p-3'>Inquiry now</h1>
+                                                    <FontAwesomeIcon className='x-mark p-2' icon={faXmark}
+                                                    onClick={onCloseModel}
+                                                    />
+                                                </div>
+                                                <form onSubmit={inquiryHandller}>
+                                                    <div className="col-md-12 mb-3">
+                                                        <input
+                                                            placeholder='Enter name'
+                                                            type="text"
+                                                            name="name"
+                                                            onChange={inputChange}
+                                                            value={inquiryData.name}
+                                                            className="form-control form-control-lg"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div className='col-md-12 mb-3'>
+
+                                                        <input
+                                                            placeholder='Enter email'
+                                                            type="text"
+                                                            name="email"
+                                                            value={inquiryData.email}
+                                                            onChange={inputChange}
+                                                            className="form-control form-control-lg"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div className='col-md-12 mb-3'>
+                                                        <select name="gender" value={inquiryData.gender} onChange={inputChange} className='form-control'>
+                                                            <option value="">Select Gender</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className='col-md-12 mb-3'>
+                                                        <input
+                                                            placeholder='Enter phone'
+                                                            type="number"
+                                                            name="phone"
+                                                            value={inquiryData.phone}
+                                                            onChange={inputChange}
+                                                            className="form-control form-control-lg"
+                                                            required
+                                                        />
+                                                    </div>
+
+
+                                                    <div className='col-md-12 mb-3'>
+                                                        <select name="courseId" value={inquiryData.courseId} onChange={inputChange} className="form-control course-name form-control-lg">
+                                                            {
+                                                                allCourse?.map((course) => (
+                                                                    <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
+
+                                                                ))
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div className='col-md-12 mb-3'>
+                                                        <div data-mdb-input-init className="form-outline mb-4">
+                                                            <textarea
+                                                                placeholder='Your message'
+                                                                className='form-control'
+                                                                type="text"
+                                                                rows={3}
+                                                                name="message"
+                                                                value={inquiryData.message}
+                                                                onChange={inputChange}
+                                                            >
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div className='col-md-12 mb-3'>
+                                                        <div className="d-flex justify-content-center">
+                                                            <button className="btn btn-warning btn-lg">Inquiry now</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </Box>
+                            </Modal>
+                        </div>
                     </div>
                 </div>
             </div>

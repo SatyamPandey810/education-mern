@@ -92,8 +92,8 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
         data.append('subCategoryIds', [selectedSubCategory]);
 
         dispatch(courseUploadStart(data));
-        onClose();
         onCourseUploaded()
+        onClose();
         toast.success("Course upload successfully")
     };
 
