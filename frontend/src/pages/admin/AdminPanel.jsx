@@ -34,7 +34,7 @@ export default function AdminPanel() {
     }
 
     useEffect(() => {
-        console.log(user?.role);
+        // console.log(user?.role);
         if (user && user.role !== ROLE.ADMIN) {
             navigate('/')
         }

@@ -83,7 +83,7 @@ export default function AllCourses() {
     setFormData((prevData) => ({
       ...prevData,
       category: categoryId,
-      subCategory: '', // Reset subcategory when category changes
+      subCategory: '', 
     }));
     setSelectedSubCategory('');
   };
@@ -118,11 +118,7 @@ export default function AllCourses() {
     try {
       const response = await fetch(summaryApi.updateCourse.url, {
         method: summaryApi.updateCourse.method,
-        credentials: 'include',
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
-        // body: JSON.stringify({ ...formData, _id: editCourse._id }),
+        credentials: 'include',       
         body: formDataToSend,
       });
 
