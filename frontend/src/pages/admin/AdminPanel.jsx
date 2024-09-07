@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +10,7 @@ import AllCategorySubcategory from './AllCategory-Subcategory';
 // import Blog from './Blog';
 import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
+import { Link, useNavigate } from 'react-router-dom';
 // import CourseCurriculum from './CourseCurriculum';
 
 export default function AdminPanel() {
@@ -21,7 +21,7 @@ export default function AdminPanel() {
     const handleMenuClick = (TotalUser, AllCourses) => {
         setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder);
     }
-    const message = useSelector((state) => state.message?.message)
+    // const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
 
     // console.log(message);
@@ -58,10 +58,10 @@ export default function AdminPanel() {
                                     <span>Admin</span>
                                 </div>
                             </div>
-                            <a href="#" id="profile-dropdown" data-toggle="dropdown"><i className="mdi mdi-dots-vertical"></i></a>
+                            <Link to="" id="profile-dropdown" data-toggle="dropdown"><i className="mdi mdi-dots-vertical"></i></Link>
                             <div className="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                                 aria-labelledby="profile-dropdown">
-                                <a href="#" className="dropdown-item preview-item">
+                                <Link to="" className="dropdown-item preview-item">
                                     <div className="preview-thumbnail">
                                         <div className="preview-icon bg-dark rounded-circle">
                                             <i className="mdi mdi-settings text-primary"></i>
@@ -70,9 +70,9 @@ export default function AdminPanel() {
                                     <div className="preview-item-content">
                                         <p className="preview-subject ellipsis mb-1 text-small">Account settings</p>
                                     </div>
-                                </a>
+                                </Link>
                                 <div className="dropdown-divider"></div>
-                                <a href="#" className="dropdown-item preview-item">
+                                <Link to="" className="dropdown-item preview-item">
                                     <div className="preview-thumbnail">
                                         <div className="preview-icon bg-dark rounded-circle">
                                             <i className="mdi mdi-onepassword  text-info"></i>
@@ -81,9 +81,9 @@ export default function AdminPanel() {
                                     <div className="preview-item-content">
                                         <p className="preview-subject ellipsis mb-1 text-small">Change Password</p>
                                     </div>
-                                </a>
+                                </Link>
                                 <div className="dropdown-divider"></div>
-                                <a href="#" className="dropdown-item preview-item">
+                                <Link to="" className="dropdown-item preview-item">
                                     <div className="preview-thumbnail">
                                         <div className="preview-icon bg-dark rounded-circle">
                                             <i className="mdi mdi-calendar-today text-success"></i>
@@ -92,7 +92,7 @@ export default function AdminPanel() {
                                     <div className="preview-item-content">
                                         <p className="preview-subject ellipsis mb-1 text-small">To-do list</p>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </li>
@@ -100,12 +100,12 @@ export default function AdminPanel() {
                         <span className="nav-link">Navigation</span>
                     </li>
                     <li className="nav-item menu-items">
-                        <a className="nav-link" href="index.html">
+                        <Link className="nav-link" to="">
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faCalendarDays} className="text-primary" />
                             </span>
                             <span className="menu-title">Dashboard</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('TotalUser')}>

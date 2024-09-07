@@ -69,7 +69,7 @@ export default function CoursesCategory() {
         if (_id) {
             dispatch(singleCourseStart(_id));
         }
-    }, [course, paymentUrl, _id, dispatch]);
+    }, [course, paymentUrl, _id, user?._id, dispatch]);
 
     const onCloseModel = () => {
         handleClose()
@@ -551,13 +551,13 @@ export default function CoursesCategory() {
 
                                             <section>
                                                 <div className='pay-img'>
-                                                    <img src='/assets/img/bg_1.jpg' />
+                                                    <img src='/assets/img/bg_1.jpg' alt='img' />
                                                 </div>
                                             </section>
                                             <section id="parent-modal-description" className='pay-form'>
                                                 <div className='d-flex justify-content-end text-right' >
                                                     <FontAwesomeIcon className='x-mark p-2' icon={faXmark}
-                                                    style={{cursor:"pointer"}}
+                                                        style={{ cursor: "pointer" }}
                                                         onClick={onCloseModel}
                                                     />
                                                 </div>

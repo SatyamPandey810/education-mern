@@ -6,7 +6,6 @@ import ROLE from '../common/role';
 import { logoutUserStart } from '../redux/actions/logoutUser.action';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
 import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -145,7 +144,7 @@ export default function Header() {
                         <div className="col-md-3 col-sm-12 col-xs-8">
                             <div className="logo">
                                 <Link to="/"><img src="assets/img/logo.png" width="100"
-                                    className="mt-3" alt="" /></Link>
+                                    className="mt-3" alt="img" /></Link>
                             </div>
                         </div>
 
@@ -204,7 +203,7 @@ export default function Header() {
                                 <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow" >
                                     <section>
                                         <div className='pay-img'>
-                                            <img src='/assets/img/inquiry.jpg' />
+                                            <img src='/assets/img/inquiry.jpg' alt='img'/>
                                         </div>
                                     </section>
                                     <section id="parent-modal-description" className='pay-form'>

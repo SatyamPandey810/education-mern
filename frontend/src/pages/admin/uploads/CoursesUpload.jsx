@@ -28,7 +28,6 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
 
     const allCategory = useSelector((state) => state.allCategory.allCategory)
     const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
-    const courseData = useSelector((state) => state.course)
     // console.log('allSubCategory:', allSubCategory);
     useEffect(() => {
         dispatch(getAllCategoryStart())
@@ -204,7 +203,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                             />
                             {imagePreview && (
                                 <div className="image-preview">
-                                    <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
+                                    <img src={imagePreview} alt="img" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
                                 </div>
                             )}
                         </div>

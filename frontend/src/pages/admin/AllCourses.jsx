@@ -4,7 +4,6 @@ import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import CoursesUpload from './uploads/CoursesUpload'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourseStart } from '../../redux/actions/getCourses.action'
-import { updateCourseStart } from '../../redux/actions/updateCourse.action';
 import { getAllCategoryStart } from '../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action';
 import { toast } from 'react-toastify';
@@ -267,7 +266,7 @@ export default function AllCourses() {
                 />
                 {imagePreview && (
                   <div className="image-preview">
-                    <img src={imagePreview} alt="Image preview" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
+                    <img src={imagePreview} alt="img" style={{ maxWidth: '100%', maxHeight: '150px', marginTop: '10px' }} />
                   </div>
                 )}
               </div>
