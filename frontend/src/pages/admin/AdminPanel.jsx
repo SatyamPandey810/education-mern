@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faCalendarDays, faClipboard, faList, faMoneyBill, faUser } from '@fortawesome/free-solid-svg-icons';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -110,7 +110,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('TotalUser')}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-playlist-play"></i>
+                            <FontAwesomeIcon icon={faUser} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>User</span>
                         </span>
@@ -119,7 +119,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-chart-bar"></i>
+                            <FontAwesomeIcon icon={faList} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Category-subcategory</span>
                         </span>
@@ -127,7 +127,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('AllCourses')}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-table-large"></i>
+                            <FontAwesomeIcon icon={ faBookOpen }/>
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
                         </span>
@@ -135,7 +135,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('CourseCurriculum')}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-table-large"></i>
+                            <FontAwesomeIcon icon={faClipboard} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Course curriculum</span>
                         </span>
@@ -144,7 +144,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-contacts"></i>
+                            <FontAwesomeIcon icon={ faMoneyBill} />
                             </span>
                             <span className="menu-title">Order-transactions</span>
                         </span>
@@ -207,7 +207,6 @@ export default function AdminPanel() {
                         {activeComponent === 'TransactionOrder' && <TransactionOrder />}
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
                         {/* {activeComponent === 'CourseCurriculum' && <CourseCurriculum />} */}
-
 
 
                     </div>
