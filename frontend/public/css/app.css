@@ -11605,6 +11605,7 @@ div.tagsinput span.tag a {
 }
 
 .pay-shadow {
+  width: 700px !important;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11614,7 +11615,12 @@ div.tagsinput span.tag a {
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
-
+@media (max-width: 767px) {
+  .pay-shadow {
+      width: 90% !important; /* Reduce width for mobile devices */
+      margin: 0 auto;
+  }
+}
 .course-name:focus {
   font-size: 13px;
   text-transform: lowercase;

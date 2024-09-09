@@ -199,7 +199,7 @@ export default function Header() {
                                 aria-describedby="parent-modal-description"
                             >
 
-                                <Box sx={{ width: 700 }} className="d-flex justify-content-between  pay-shadow" >
+                                <Box className="d-flex justify-content-between pay-shadow" >
                                     <section>
                                         <div className='pay-img'>
                                             <img src='/assets/img/inquiry.jpg' alt='img'/>
