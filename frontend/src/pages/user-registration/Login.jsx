@@ -1,5 +1,5 @@
-import React, {  useState } from 'react'
-import {   useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import summaryApi from '../../common'
@@ -54,114 +54,69 @@ export default function Login() {
 
         }
     }
-   
+
 
 
     return (
-        <>
-            {/* <div class="login-form">
-                <form onSubmit={submit}>
-                    <h1>Login</h1>
-                    <div class="content">
-                        <div class="input-field">
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                id="email"
-                                name="email"
-                                onChange={inputChange}
-                                value={data.email}
-                                required
-                                autocomplete="nope"
-                            />
+        <div className='container'>
+            <div className="row mt-2 mb-4">
+                <div className="col-sm-12 col-xl-12 ">
+                    <div className="row d-flex align-itmes-center justify-content-center" style={{ borderRadius: "1rem" }}>
+                        <div className='log-in-img'>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                                alt="login form" className="img-fluid" style={{ borderRadius: "1rem 0 0 1rem" }} />
                         </div>
-                        <div class="input-field">
-                            <input
-                                type={showpassword ? "text" : "password"}
-                                id="password"
-                                name="password"
-                                value={data.password}
-                                onChange={inputChange}
-                                placeholder="Password"
-                                autocomplete="new-password"
-                            />
-                            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-                                <FontAwesomeIcon icon={showpassword ? faEyeSlash : faEye} />
-                            </span>
-                        </div>
-                        <a href="#" class="link">Forgot Your Password?</a>
-                    </div>
-                    <div class="action">
-                        <button onClick={homePage}>Sign in</button>
-                        <button onClick={signUpPage}>Register</button>
-                    </div>
-                </form>
-            </div> */}
-
-             <div className="  row d-flex align-items-center justify-content-center mt-2 pb-100">               
-                <div className="col-sm-4 col-xl-10">
-                    <div className="" style={{ borderRadius: "1rem" }}>
-                        <div className="row g-0 d-flex align-items-center">
-                            <div className="col-md-6 col-lg-4 d-none d-md-block log-img">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                                    alt="login form" className="img-fluid"  />
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <div className="p-4 p-lg-5 text-black">
-                                    <form onSubmit={submit}>
-
-                                        <div className="d-flex align-items-center mb-3 pb-1">
-                                         
-                                            <h1 className="mb-3 pb-3  text-center" style={{ letterSpacing: "1px" }}>Login</h1>
-                                        </div>
-
-                                        <div data-mdb-input-init className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="email">Email address</label>
-                                            <input
-                                                type="email"
-                                                className="form-control form-control-lg"
-                                                id="email"
-                                                name="email"
-                                                onChange={inputChange}
-                                                value={data.email}
-                                                required
-                                            />
-                                        </div>
-
-                                        <div data-mdb-input-init className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="password">Password</label>
-                                            <input
-                                                type={showpassword ? "text" : "password"}
-                                                id="password"
-                                                className="form-control form-control-lg"
-                                                name="password"
-                                                value={data.password}
-                                                onChange={inputChange}
-
-                                            />
-                                            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-                                                <FontAwesomeIcon icon={showpassword ? faEyeSlash : faEye} />
-                                            </span>
-                                        </div>
-                                        <div className="pt-1 mb-4">
-                                            <button className="btn btn-success">Login</button>
-                                        </div>
-                                    </form>
-                                    <div className="pt-1 mb-4">
-                                        <button onClick={signUpPage} className="btn btn-primary">Sign-up</button>
-                                    </div>
-                                    <div>
-                                        <h3 className="small text-muted">Forget password ?</h3><br />
-                                      
-                                    </div>
-
+                        <div className="col-md-4 text-black" style={{ backgroundColor: "rgb(181 189 76 / 69%)" }}>
+                            <form onSubmit={submit}>
+                                <div className="text-center p-3">
+                                    <h1 className="text-center" style={{ letterSpacing: "1px" }}>Login</h1>
                                 </div>
+                                <div data-mdb-input-init className="form-outline mb-4">
+                                    <label className="form-label" htmlFor="email">Email address</label>
+                                    <input
+                                        type="email"
+                                        className="form-control form-control-lg"
+                                        id="email"
+                                        name="email"
+                                        onChange={inputChange}
+                                        value={data.email}
+                                        required
+                                    />
+                                </div>
+
+                                <div data-mdb-input-init className="form-outline mb-4">
+                                    <label className="form-label" htmlFor="password">Password</label>
+                                    <input
+                                        type={showpassword ? "text" : "password"}
+                                        id="password"
+                                        className="form-control form-control-lg"
+                                        name="password"
+                                        value={data.password}
+                                        onChange={inputChange}
+
+                                    />
+                                    <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
+                                        <FontAwesomeIcon icon={showpassword ? faEyeSlash : faEye} />
+                                    </span>
+                                </div>
+                                <div className='d-flex align-items-center'>
+                                    <div className="pt-1 mb-4">
+                                        <button className="btn btn-success">Login</button>
+                                    </div>
+                                    {/* <div className="pt-1 mb-4 mx-3">
+                                        <button className="btn btn-primary">Log in with google</button>
+                                        </div> */}
+                                </div>
+                                <h3 className="text-muted" onClick={signUpPage} >Create a  <span className='new-account'> new account ?</span></h3>
+                            </form>
+                            <div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+            </div>
 
-            </div> 
-        </>
+        </div>
     )
 }

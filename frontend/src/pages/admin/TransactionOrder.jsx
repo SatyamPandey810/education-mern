@@ -7,7 +7,7 @@ import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action'
 export default function TransactionOrder() {
     const dispatch = useDispatch()
     const transaction = useSelector((state) => state.allTransaction.allPayment)
-    const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+    // const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
 
     useEffect(() => {
         dispatch(getAllPaymentStart())

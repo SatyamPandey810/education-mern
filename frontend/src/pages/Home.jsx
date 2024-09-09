@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -8,15 +8,17 @@ import moment from "moment"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
 import { findCourseCategoryAndSubcategoryStart } from '../redux/actions/findCourseByCategoryAndSubcategory.action';
-import summaryApi from '../common';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getAllCategoryStart } from '../redux/actions/getCategory.action';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+
 // import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 
 export default function Home() {
   const dispatch = useDispatch()
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
-  
+
   // const blogs = useSelector((state) => state.findBlog.blogs)
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,7 +88,7 @@ export default function Home() {
         <div className="slider">
           <div className="">
             <OwlCarousel className='owl-theme all-slide owl-item' autoplay={true} autoplayHoverPause={true} items={1} loop margin={10} nav>
-              <div className="single-slide" style={{ backgroundImage: "url('assets/img/slide1.jpg')" }}>
+              <div className="single-slide" style={{ backgroundImage: "url('assets/img/Banner 002.jpg')" }}>
                 <div className="slider-overlay"></div>
                 <div className="slider-wrapper">
                   <div className="slider-text">
@@ -95,8 +97,8 @@ export default function Home() {
                       <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
                         donec, suscipit tortor et sapien donec ac nec. Nam vel eu amet</p>
                       <ul>
-                        <li><a href="about.html">learn more</a></li>
-                        <li><a href="contact.html">contact us </a></li>
+                        <li><Link to="/about">learn more</Link></li>
+                        <li><Link to="/contact-us">contact us </Link></li>
                       </ul>
                     </div>
                   </div>
@@ -113,8 +115,8 @@ export default function Home() {
                       <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
                         donec, suscipit tortor et sapien donec ac nec. Nam vel eu amet</p>
                       <ul>
-                        <li><a href="about.html">learn more</a></li>
-                        <li><a href="contact.html">contact us </a></li>
+                        <li><Link to="/about">learn more</Link></li>
+                        <li><Link to="/contact-us">contact us </Link></li>
                       </ul>
                     </div>
                   </div>
@@ -133,7 +135,7 @@ export default function Home() {
                   {
                     (categorizedCourses["Our learapress"] || []).map((course, index) => (
                       <p key={index}>
-                        {course.description}                       
+                        {course.description}
                       </p>
                     ))
                   }
@@ -144,8 +146,8 @@ export default function Home() {
                 <div className="vedio-inner">
                   <img src="assets/img/vedio.jpg" alt="" />
                   <div className="vedio-overly">
-                    <button onClick={openModal} className="btn btn-warning video-play">
-                      <span className="video-icon">&#9658;</span> {/* Play button icon */}
+                    <button onClick={openModal} className="btn btn-none video-play">
+                      <span className="video-icon"><FontAwesomeIcon icon={faPlay} /></span>
                     </button>
                   </div>
                 </div>
@@ -172,18 +174,18 @@ export default function Home() {
             <div className="row">
               <div className="course-list-sec">
                 <div className="all-course">
-                  <OwlCarousel className='owl-theme' loop margin={10} nav>
+                  <OwlCarousel className='owl-theme owl-dots' items={3} loop margin={10} nav navText={['<h1>hello world</h1>']}>
                     {
-                      (categorizedCourses["Our Feature Course"] || []).map((course, index) => (
+                      (categorizedCourses[" Our Feature Course"] || []).map((course, index) => (
                         <div className="course-inner" key={index}>
                           <div className="course-thumb">
-                            <img src={course.image} alt={course.name} />
+                            <img src={course?.image} alt={course.name} />
                             <div className="readmore-button">
                               <Link to={`/category/${course._id}`}>Learn More</Link>
                             </div>
                           </div>
                           <div className="course-meta">
-                            <span className="course-price">${course.price}</span>
+                            <span className="course-price">${course?.price}</span>
                             <span className="course-rating">
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>
@@ -194,18 +196,17 @@ export default function Home() {
                           </div>
                           <div className="course-desc">
                             <h2 className='text-lowercase'>{course.name}</h2>
-                            {/* <p>{course.description}</p> */}
                           </div>
                           <div className="course-info">
                             <ul>
                               <li>
-                                <a href="#"><i className="fa fa-user"></i>{course.sheet} Seats</a>
+                                <Link to=""><i className="fa fa-user"></i>{course.sheet} Seats</Link>
                               </li>
                               <li>
-                                <a href="#"><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')} hour</a>
+                                <Link to=""><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')} hour</Link>
                               </li>
                               <li>
-                                <a href="#"><i className="fa fa-heart"></i>Save</a>
+                                <Link to=""><i className="fa fa-heart"></i>Save</Link>
                               </li>
                             </ul>
                           </div>
@@ -265,10 +266,10 @@ export default function Home() {
                             <i className="fa fa-user"></i>{course.sheet} Seats
                           </li>
                           <li>
-                            <a href="#"><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')}  hour</a>
+                            <Link to=""><i className="fa fa-clock-o"></i>{moment(course.createdAt).format('HH')}  hour</Link>
                           </li>
                           <li>
-                            <a href="#"><i className="fa fa-heart"></i>Save</a>
+                            <Link to=""><i className="fa fa-heart"></i>Save</Link>
                           </li>
                         </ul>
                       </div>
@@ -461,19 +462,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                  <a href="#"><i className="fa fa-facebook"></i></a>
+                                  <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-twitter"></i></a>
+                                  <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-linkedin"></i></a>
+                                  <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-google"></i></a>
+                                  <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-skype"></i></a>
+                                  <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -489,19 +490,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                  <a href="#"><i className="fa fa-facebook"></i></a>
+                                 <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-twitter"></i></a>
+                                 <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-linkedin"></i></a>
+                                 <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-google"></i></a>
+                                 <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-skype"></i></a>
+                                 <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -517,19 +518,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                  <a href="#"><i className="fa fa-facebook"></i></a>
+                                   <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-twitter"></i></a>
+                                   <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-linkedin"></i></a>
+                                   <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-google"></i></a>
+                                   <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-skype"></i></a>
+                                   <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -545,19 +546,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                  <a href="#"><i className="fa fa-facebook"></i></a>
+                                  <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-twitter"></i></a>
+                                  <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-linkedin"></i></a>
+                                  <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-google"></i></a>
+                                  <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                  <a href="#"><i className="fa fa-skype"></i></a>
+                                  <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -664,9 +665,9 @@ export default function Home() {
                       <div className="panel">
                         <div className="panel-heading" role="tab" id="titleOne">
                           <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                            <Link data-toggle="collapse" data-parent="#accordion" to="#collapseOne"
                               aria-expanded="true" aria-controls="collapseOne"> What`s the mission of
-                              learapress ?</a>
+                              learapress ?</Link>
                           </h4>
                         </div>
                         <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel"
@@ -684,9 +685,9 @@ export default function Home() {
                       <div className="panel">
                         <div className="panel-heading" role="tab" id="titleTwo">
                           <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion"
-                              href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              How can i get your service?</a>
+                            <Link className="collapsed" data-toggle="collapse" data-parent="#accordion"
+                              to="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              How can i get your service?</Link>
                           </h4>
                         </div>
                         <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel"
@@ -704,9 +705,9 @@ export default function Home() {
                       <div className="panel">
                         <div className="panel-heading" role="tab" id="titleThree">
                           <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion"
-                              href="#collapseThree" aria-expanded="false"
-                              aria-controls="collapseThree"> How much exprience about learapress?</a>
+                            <Link className="collapsed" data-toggle="collapse" data-parent="#accordion"
+                              to="#collapseThree" aria-expanded="false"
+                              aria-controls="collapseThree"> How much exprience about learapress?</Link>
                           </h4>
                         </div>
                         <div id="collapseThree" className="panel-collapse collapse" role="tabpanel"
@@ -724,9 +725,9 @@ export default function Home() {
                       <div className="panel">
                         <div className="panel-heading" role="tab" id="titleFour">
                           <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion"
-                              href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                              Lorem ipsum dolor sit amet?</a>
+                            <Link className="collapsed" data-toggle="collapse" data-parent="#accordion"
+                              to="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              Lorem ipsum dolor sit amet?</Link>
                           </h4>
                         </div>
                         <div id="collapseFour" className="panel-collapse collapse" role="tabpanel"
@@ -744,9 +745,9 @@ export default function Home() {
                       <div className="panel">
                         <div className="panel-heading" role="tab" id="titleFive">
                           <h4 className="panel-title">
-                            <a className="collapsed" data-toggle="collapse" data-parent="#accordion"
-                              href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                              how much offer for customer ?</a>
+                            <Link className="collapsed" data-toggle="collapse" data-parent="#accordion"
+                              to="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                              how much offer for customer ?</Link>
                           </h4>
                         </div>
                         <div id="collapseFive" className="panel-collapse collapse" role="tabpanel"
@@ -806,7 +807,7 @@ export default function Home() {
                 </div>
                 <div className="col-md-4 col-sm-3">
                   <div className="call-to-action-text">
-                    <a href="contact.html" className="btn">get support</a>
+                    <Link to="/contact-us" className="btn">get support</Link>
                   </div>
                 </div>
               </div>

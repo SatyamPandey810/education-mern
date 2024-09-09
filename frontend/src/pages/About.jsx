@@ -14,8 +14,8 @@ export default function About() {
 						</div>
 						<div class="breadcrumb-list">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#">about us</a></li>
+								<li><Link to="/">Home</Link></li>
+								<li><Link to="">about us</Link></li>
 							</ul>
 						</div>
 					</div>
@@ -33,7 +33,7 @@ export default function About() {
                                 nunc orci donec sagittis metus dapibus, erat ullamcorper odio augue eleifend, consequat enim
                             </p>
                             <p>Lorem ipsum dolor sit amet, justo nunc orci donec sagittis metus dapibus, erat ullamcorper odio augue eleifend, consequat enim .</p>
-							<a href="#" class="about-btn">Read More</a>
+							<Link to="" class="about-btn">Read More</Link>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -118,11 +118,11 @@ export default function About() {
 								<img src="assets/img/teacher_1.jpg" alt="" />
 								<div class="instructor-overlay">
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-google"></i></a></li>
-										<li><a href="#"><i class="fa fa-skype"></i></a></li>
+										<li><Link to=""><i class="fa fa-facebook"></i></Link></li>
+										<li><Link to=""><i class="fa fa-twitter"></i></Link></li>
+										<li><Link to=""><i class="fa fa-linkedin"></i></Link></li>
+										<li><Link to=""><i class="fa fa-google"></i></Link></li>
+										<li><Link to=""><i class="fa fa-skype"></i></Link></li>
 									</ul>
 								</div>
 							</div>
@@ -136,11 +136,11 @@ export default function About() {
 								<img src="assets/img/teacher_2.jpg" alt="" />
 								<div class="instructor-overlay">
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-google"></i></a></li>
-										<li><a href="#"><i class="fa fa-skype"></i></a></li>
+										<li><Link to=""><i class="fa fa-facebook"></i></Link></li>
+										<li><Link to=""><i class="fa fa-twitter"></i></Link></li>
+										<li><Link to=""><i class="fa fa-linkedin"></i></Link></li>
+										<li><Link to=""><i class="fa fa-google"></i></Link></li>
+										<li><Link to=""><i class="fa fa-skype"></i></Link></li>
 									</ul>
 								</div>
 							</div>
@@ -154,11 +154,11 @@ export default function About() {
 								<img src="assets/img/teacher_3.jpg" alt="" />
 								<div class="instructor-overlay">
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-google"></i></a></li>
-										<li><a href="#"><i class="fa fa-skype"></i></a></li>
+										<li><Link to=""><i class="fa fa-facebook"></i></Link></li>
+										<li><Link to=""><i class="fa fa-twitter"></i></Link></li>
+										<li><Link to=""><i class="fa fa-linkedin"></i></Link></li>
+										<li><Link to=""><i class="fa fa-google"></i></Link></li>
+										<li><Link to=""><i class="fa fa-skype"></i></Link></li>
 									</ul>
 								</div>
 							</div>
@@ -172,11 +172,11 @@ export default function About() {
 								<img src="assets/img/teacher_4.jpg" alt="" />
 								<div class="instructor-overlay">
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-google"></i></a></li>
-										<li><a href="#"><i class="fa fa-skype"></i></a></li>
+										<li><Link to=""><i class="fa fa-facebook"></i></Link></li>
+										<li><Link to=""><i class="fa fa-twitter"></i></Link></li>
+										<li><Link to=""><i class="fa fa-linkedin"></i></Link></li>
+										<li><Link to=""><i class="fa fa-google"></i></Link></li>
+										<li><Link to=""><i class="fa fa-skype"></i></Link></li>
 									</ul>
 								</div>
 							</div>

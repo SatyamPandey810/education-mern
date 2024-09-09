@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GET_CATEGORY_UPLOAD_START } from '../../../redux/constants/courses/category-constants';
 
 
 export default function CategoryUploads({ onClose, onCategoryUploaded }) {
     const dispatch = useDispatch()
-    const { data, error } = useSelector((state) => state.uploadCategory)
     const [categoryName, setCategoryname] = useState('')
    
 

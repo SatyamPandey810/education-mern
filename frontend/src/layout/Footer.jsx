@@ -41,8 +41,8 @@ export default function Footer() {
                                 <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
                                     varius proi Lorem ipsum dolor sit amet</p>
                                 <div className="mt-4">
-                                    <a href="#"><img src="assets/img/ECOclassNameICS EDUCATION SERVICES LTD.png" width="150"
-                                        alt="" /></a>
+                                    <Link to=""><img src="assets/img/ECOclassNameICS EDUCATION SERVICES LTD.png" width="150"
+                                        alt="img" /></Link>
                                 </div>
 
                             </div>
@@ -57,10 +57,10 @@ export default function Footer() {
                                              <li key={index}><Link to={`/category/${course._id}`}>{course.name}</Link></li>
                                          ))
                                     }
-                                    {/* <li><a href="#">Web Development</a></li>
-                                    <li><a href="#">Article Wiriting</a></li>
-                                    <li><a href="#">Vitual Assitance</a></li>
-                                    <li><a href="#">Support Center</a></li> */}
+                                    {/* <li><Link to="">Web Development</Link></li>
+                                    <li><Link to="">Article Wiriting</Link></li>
+                                    <li><Link to="">Vitual Assitance</Link></li>
+                                    <li><Link to="">Support Center</Link></li> */}
                                 </ul>
                             </div>
                         </div>
@@ -69,11 +69,11 @@ export default function Footer() {
                             <div className="footer-widget-menu">
                                 <h2>Quick Links</h2>
                                 <ul>
-                                    <li><a href="#">Support Center</a></li>
-                                    <li><a href="#">Create Account</a></li>
-                                    <li><a href="#">business Policy</a></li>
-                                    <li><a href="#">Terms and condition</a></li>
-                                    <li><a href="#">Analysis Course</a></li>
+                                    <li><Link to="">Support Center</Link></li>
+                                    <li><Link to="">Create Account</Link></li>
+                                    <li><Link to="">business Policy</Link></li>
+                                    <li><Link to="">Terms and condition</Link></li>
+                                    <li><Link to="">Analysis Course</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,8 +100,8 @@ export default function Footer() {
                                             </div>
                                             <div className="media-body">
                                                 <span className="inner-text">
-                                                    <a href="mailto:ecoclassNameicseducation@gmail.com"
-                                                        className="__cf_email__">ecoclassNameicseducation@gmail.com</a>
+                                                    <Link to="mailto:ecoclassNameicseducation@gmail.com"
+                                                        className="__cf_email__">ecoclassNameicseducation@gmail.com</Link>
 
                                                 </span>
                                             </div>
@@ -131,7 +131,7 @@ export default function Footer() {
                         <div className="col-md-12 col-sm-12">
                             <div className="copy-right">
                                 <p>
-                                    Copyright 2022 &copy; <span><a href="#">EcoclassNameics Educational Services,</a></span>
+                                    Copyright 2022 &copy; <span><Link to="">EcoclassNameics Educational Services,</Link></span>
                                     Designed by:<span> Topseed Technology Pvt Ltd.</span>
                                 </p>
                             </div>

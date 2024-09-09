@@ -2838,13 +2838,11 @@ input[type="submit"]:hover {
 
 .password-toggle-icon {
   position: absolute;
-  top: 67%;
-  transform: translateY(-70%);
-  cursor: pointer;
-  color: #6c757d;
-  /* right: 0.6rem; */
-  /* right: 1px; */
-  right: 30rem;
+    top: 50%;
+    transform: translateY(2%);
+    cursor: pointer;
+    color: #6c757d;
+    right: 0.6rem;
 }
 
 /*--------------------------------------------------------------------------------------------------- admin panel css */
@@ -11438,6 +11436,7 @@ div.tagsinput span.tag a {
 }
 
 .video-play {
+  background-color: inherit;
   position: relative;
   width: 92px;
   height: 91px;
@@ -11453,6 +11452,7 @@ div.tagsinput span.tag a {
   -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   margin: 0 auto;
+  border: 1px white solid;
 }
 
 .vedio-button:hover {
@@ -11460,11 +11460,13 @@ div.tagsinput span.tag a {
   -moz-animation: none;
   -ms-animation: none;
   animation: none;
+
 }
 
 .video-icon {
   width: 150px;
   height: 140px;
+  color: white;
 }
 
 @-webkit-keyframes pulse {
@@ -11766,3 +11768,64 @@ input[type=number] {
 input[type=number] {
     appearance: none;
 }
+.log-in-img img{
+  height: 25rem;
+}
+.sign-in-img img{
+  height: 35rem;
+
+}
+.new-account{
+  color: blue;
+  cursor: pointer;
+}
+.new-account:hover{
+  border-bottom: 1px solid;
+}
+/* Customize the next and prev buttons */
+.owl-prev, .owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); 
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  color: white !important;
+  font-size: 6rem !important;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.owl-prev {
+  left: 10px;
+}
+
+.owl-next {
+  right: 10px; 
+}
+
+
+.owl-prev:hover, .owl-next:hover {
+  background-color:inherit !important;
+}
+.owl-prev i, .owl-next i {
+  color: white;
+  font-size: 20px;
+}
+.owl-prev, .owl-next {
+  width: 40px; 
+  height: 40px; 
+}
+
+.owl-prev i, .owl-next i {
+  font-size: 24px; 
+}
+
+/* .owl-prev {
+  left: -30px; 
+}
+
+.owl-next {
+  right: -30px;
+} */

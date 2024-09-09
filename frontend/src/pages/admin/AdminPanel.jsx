@@ -34,9 +34,10 @@ export default function AdminPanel() {
     }
 
     useEffect(() => {
-        // console.log(user?.role);
-        if (user && user.role !== ROLE.ADMIN) {
-            navigate('/')
+        if (!user) {
+            navigate("*");
+        } else if (user.role !== ROLE.ADMIN) {          
+            navigate('/');
         }
     }, [user, navigate])
 
@@ -110,7 +111,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('TotalUser')}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={faUser} />
+                                <FontAwesomeIcon icon={faUser} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>User</span>
                         </span>
@@ -119,7 +120,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={faList} />
+                                <FontAwesomeIcon icon={faList} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Category-subcategory</span>
                         </span>
@@ -127,7 +128,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('AllCourses')}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={ faBookOpen }/>
+                                <FontAwesomeIcon icon={faBookOpen} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
                         </span>
@@ -135,7 +136,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick('CourseCurriculum')}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={faClipboard} />
+                                <FontAwesomeIcon icon={faClipboard} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Course curriculum</span>
                         </span>
@@ -144,7 +145,7 @@ export default function AdminPanel() {
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={ faMoneyBill} />
+                                <FontAwesomeIcon icon={faMoneyBill} />
                             </span>
                             <span className="menu-title">Order-transactions</span>
                         </span>

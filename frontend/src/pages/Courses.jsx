@@ -42,8 +42,8 @@ export default function Courses() {
                             </div>
                             <div class="breadcrumb-list">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Course Details</a></li>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to="">Course Details</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -56,11 +56,11 @@ export default function Courses() {
                         <div class="col-md-3">
                             <div class="course-tab">
                                 <ul class="service-tab">
-                                    <li class="active"><a data-toggle="tab" href="#overview" aria-expanded="true">Course Overview</a></li>
-                                    <li class=""><a data-toggle="tab" href="#curriculum" aria-expanded="false">Course Curriculum</a></li>
-                                    <li class=""><a data-toggle="tab" href="#instructor" aria-expanded="false">Course Instructor</a></li>
-                                    <li class=""><a data-toggle="tab" href="#coruse_review" aria-expanded="false">Course Review</a></li>
-                                    <li class=""><a data-toggle="tab" href="#write_review" aria-expanded="false">Write Review</a></li>
+                                    <li class="active"><Link data-toggle="tab" to="#overview" aria-expanded="true">Course Overview</Link></li>
+                                    <li class=""><Link data-toggle="tab" to="#curriculum" aria-expanded="false">Course Curriculum</Link></li>
+                                    <li class=""><Link data-toggle="tab" to="#instructor" aria-expanded="false">Course Instructor</Link></li>
+                                    <li class=""><Link data-toggle="tab" to="#coruse_review" aria-expanded="false">Course Review</Link></li>
+                                    <li class=""><Link data-toggle="tab" to="#write_review" aria-expanded="false">Write Review</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -93,8 +93,8 @@ export default function Courses() {
                                                     <div class="panel">
                                                         <div class="panel-heading" role="tab" id="titleOne">
                                                             <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                    Learn Start Basic</a>
+                                                                <Link data-toggle="collapse" data-parent="#accordion" to="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Learn Start Basic</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="titleOne">
@@ -175,8 +175,8 @@ export default function Courses() {
                                                     <div class="panel">
                                                         <div class="panel-heading" role="tab" id="titleTwo">
                                                             <h4 class="panel-title">
-                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                    Learn Advance Level</a>
+                                                                <Link class="collapsed" data-toggle="collapse" data-parent="#accordion" to="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    Learn Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="titleTwo">
@@ -257,8 +257,8 @@ export default function Courses() {
                                                     <div class="panel">
                                                         <div class="panel-heading" role="tab" id="titleThree">
                                                             <h4 class="panel-title">
-                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                    More Advance Level</a>
+                                                                <Link class="collapsed" data-toggle="collapse" data-parent="#accordion" to="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                    More Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="titleThree">
@@ -351,7 +351,7 @@ export default function Courses() {
                                                     <img src="assets/img/client1.png" alt="" />
                                                 </div>
                                                 <div class="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div class="rating">
@@ -371,7 +371,7 @@ export default function Courses() {
                                                     <img src="assets/img/client2.png" alt="" />
                                                 </div>
                                                 <div class="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div class="rating">
@@ -388,7 +388,7 @@ export default function Courses() {
                                                     <img src="assets/img/client1.png" alt="" />
                                                 </div>
                                                 <div class="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div class="rating">
@@ -405,7 +405,7 @@ export default function Courses() {
                                                     <img src="assets/img/client3.png" alt="" />
                                                 </div>
                                                 <div class="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div class="rating">
@@ -478,7 +478,7 @@ export default function Courses() {
                                     <li>Rating:<span><img src="assets/img/rating.png" alt="" /></span></li>
                                 </ul>
                                 <div class="get-coruse-btn">
-                                    <a href="#">Get Course</a>
+                                    <Link to="">Get Course</Link>
                                 </div>
                             </div>
                         </div>

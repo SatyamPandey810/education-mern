@@ -3,8 +3,7 @@ import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+
 
 
 export default function ContactUs() {

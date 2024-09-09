@@ -1,10 +1,10 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import findCourseCategoryAndSubcategoryServices from "../services/findCourseCategoryAndSubcategory-services";
-import { FIND_COURSE_CATEGORY_SUBCATEGORY_ERROR, FIND_COURSE_CATEGORY_SUBCATEGORY_START, FIND_COURSE_CATEGORY_SUBCATEGORY_SUCCESS } from "../constants/courses/findCourseByCategoryAndSubcategory-constants";
+import {  FIND_COURSE_CATEGORY_SUBCATEGORY_START } from "../constants/courses/findCourseByCategoryAndSubcategory-constants";
 import { findCourseCategoryAndSubcategoryError, findCourseCategoryAndSubcategorySuccess } from "../actions/findCourseByCategoryAndSubcategory.action";
 
 function* findCourseByCategoryAndSubcategory(action) {
-    const { categoryId, subcategoryId } = action.payload;
+    // const { categoryId, subcategoryId } = action.payload;
     try {
         // const response = yield call(findCourseCategoryAndSubcategoryServices, categoryId, subcategoryId)
         const response = yield call(findCourseCategoryAndSubcategoryServices,  action.payload.categoryId, action.payload.subcategoryId)

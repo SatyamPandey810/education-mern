@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Services() {
   return (
@@ -14,8 +15,8 @@ export default function Services() {
                             </div>
                             <div className="breadcrumb-list">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Educational Services & Consulation</a></li>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to="">Educational Services & Consulation</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -33,7 +34,7 @@ export default function Services() {
                                         <div className="col-md-12">
                                             <div className="course-details">
                                                 <img src="assets/img/slide1.jpg" alt="" />
-                                                <h2><a href="#">Duo nibh malis dolorem cu. Te qui tantas quidam philosophia, ut erroribus definitionem mea. Sed an nominati consequuntu</a></h2>
+                                                <h2><Link to="">Duo nibh malis dolorem cu. Te qui tantas quidam philosophia, ut erroribus definitionem mea. Sed an nominati consequuntu</Link></h2>
                                                 <p>Lorem ipsum dolor sit amet, ut vel quodsi feugait praesent, ex qui lucilius voluptatum referrentur. Velit harum te ius, atomorum sapientem ea sit, id saepe utinam pri. Et sit singulis intellegam. His quas tibique an, at nihil doming nec, partem tibique adipisci sit an. Putent nostrud accumsan vim at. No eos mollis ornatus vocibus, id eos persius liberavisse, ne cum ferri posse fuisset.</p>
                                                 <p>Dicam antiopam reformidans id has. Cum ei elit nostrud, at per erant conceptam. Nam te impedit meliore mnesarchum
                                                     . Eu posse quodsi oportere vis. Eam recusabo constituto ex, et sea discere qualisque scribentur, libris feugiat vis at.
@@ -50,8 +51,8 @@ export default function Services() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleOne">
                                                             <h4 className="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                    Learn Start Basic</a>
+                                                                <Link data-toggle="collapse" data-parent="#accordion" to="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Learn Start Basic</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="titleOne">
@@ -132,8 +133,8 @@ export default function Services() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleTwo">
                                                             <h4 className="panel-title">
-                                                                <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                    Learn Advance Level</a>
+                                                                <Link className="collapsed" data-toggle="collapse" data-parent="#accordion" to="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    Learn Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="titleTwo">
@@ -214,8 +215,8 @@ export default function Services() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleThree">
                                                             <h4 className="panel-title">
-                                                                <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                    More Advance Level</a>
+                                                                <Link className="collapsed" data-toggle="collapse" data-parent="#accordion" to="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                    More Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="titleThree">
@@ -308,7 +309,7 @@ export default function Services() {
                                                     <img src="{{asset('public/assets/img/client1.png')}}" alt=""/>
                                                 </div>
                                                 <div className="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -328,7 +329,7 @@ export default function Services() {
                                                     <img src="{{asset('public/assets/img/client2.png')}}" alt=""/>
                                                 </div>
                                                 <div className="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -345,7 +346,7 @@ export default function Services() {
                                                     <img src="{{asset('public/assets/img/client1.png')}}" alt=""/>
                                                 </div>
                                                 <div className="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -362,7 +363,7 @@ export default function Services() {
                                                     <img src="{{asset('public/assets/img/client3.png')}}" alt=""/>
                                                 </div>
                                                 <div className="details">
-                                                    <h2><a href="#">David Max</a></h2>
+                                                    <h2><Link to="">David Max</Link></h2>
                                                     <span>Math Analysis</span>
                                                 </div>
                                                 <div className="rating">
@@ -435,7 +436,7 @@ export default function Services() {
                                     <li>Rating:<span><img src="assets/img/rating.png" alt="" /></span></li>
                                 </ul>
                                 <div className="get-coruse-btn">
-                                    <a href="#">Get Course</a>
+                                    <Link to="">Get Course</Link>
                                 </div>
                             </div>
                         </div>

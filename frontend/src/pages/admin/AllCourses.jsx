@@ -77,6 +77,7 @@ export default function AllCourses() {
       setFormData({ ...formData, [name]: value });
     }
   };
+
   const handleCategoryChange = (event) => {
     const categoryId = event.target.value;
     setSelectedCategory(categoryId);
@@ -150,7 +151,7 @@ export default function AllCourses() {
 
   const deleteCourseHandle = (id) => {
     dispatch(deleteCourseStart(id))
-    handleCourseUploaded()
+    getAllCourseStart()
   }
 
 

@@ -167,13 +167,12 @@ export default function Header() {
                                                 }
                                             </ul>
                                         </li>
-                                        <li><Link to="/gallery">gallery</Link></li>
                                         <li><Link to="/contact-us">Contact</Link></li>
 
                                         <li>
                                             {
                                                 user?._id ? (
-                                                    <Link onClick={handleLogOutUser} to={'/login'} >Logout</Link>
+                                                    <Link onClick={handleLogOutUser} to={'/sign-in'} >Logout</Link>
                                                 ) : (<Link to='/sign-in'>Login</Link>)
                                             }
 

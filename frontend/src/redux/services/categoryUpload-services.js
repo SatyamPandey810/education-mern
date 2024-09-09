@@ -1,4 +1,3 @@
-import { toast } from "react-toastify"
 import summaryApi from "../../common"
 
 export const uploadCategoryHandller = async (data) => {

@@ -5,14 +5,12 @@ import PageNotFound from '../pages/PageNotFound'
 import About from '../pages/About'
 import Courses from '../pages/Courses'
 import Services from '../pages/Services'
-import Gallery from '../pages/Gallery'
 import ContactUs from '../pages/ContactUs'
 import Login from '../pages/user-registration/Login'
 import SignUp from '../pages/user-registration/SignUp'
 import AdminPanel from '../pages/admin/AdminPanel'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
-import TotalUser from '../pages/admin/TotalUser'
 import CoursesCategory from '../components/CoursesCategory'
 // import BlogsCategory from '../components/BlogsCategory'
 import ApplyNow from '../pages/ApplyNow'
@@ -20,7 +18,7 @@ import ThankuPage from '../pages/ThankuPage'
 
 export default function Router() {
     const location = useLocation()
-    const noHeaderFooterRoutes = [ '/admin-dashboard/total-user', "/admin-dashboard"];
+    const noHeaderFooterRoutes = [ '/admin-dashboard/total-user', "/admin-dashboard",'*'];
     return (
         <>
             {!noHeaderFooterRoutes.includes(location.pathname) && <Header />}
@@ -29,7 +27,6 @@ export default function Router() {
                 <Route path='/about' element={<About />} />
                 <Route path='/course' element={<Courses />} />
                 <Route path='/services' element={<Services />} />
-                <Route path='/gallery' element={<Gallery />} />
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />

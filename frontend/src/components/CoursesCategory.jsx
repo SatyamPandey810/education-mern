@@ -101,11 +101,11 @@ export default function CoursesCategory() {
                         <div className="col-md-3">
                             <div className="course-tab">
                                 <ul className="service-tab">
-                                    <li className="active"><a data-toggle="tab" href="#overview" aria-expanded="true">Course Overview</a></li>
-                                    <li className=""><a data-toggle="tab" href="#curriculum" aria-expanded="false">Course Curriculum</a></li>
-                                    <li className=""><a data-toggle="tab" href="#instructor" aria-expanded="false">Course Instructor</a></li>
-                                    <li className=""><a data-toggle="tab" href="#coruse_review" aria-expanded="false">Course Review</a></li>
-                                    <li className=""><a data-toggle="tab" href="#write_review" aria-expanded="false">Write Review</a></li>
+                                    <li className="active"><Link data-toggle="tab" to="#overview" aria-expanded="true">Course Overview</Link></li>
+                                    <li className=""><Link data-toggle="tab" to="#curriculum" aria-expanded="false">Course Curriculum</Link></li>
+                                    <li className=""><Link data-toggle="tab" to="#instructor" aria-expanded="false">Course Instructor</Link></li>
+                                    <li className=""><Link data-toggle="tab" to="#coruse_review" aria-expanded="false">Course Review</Link></li>
+                                    <li className=""><Link data-toggle="tab" to="#write_review" aria-expanded="false">Write Review</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,10 +131,10 @@ export default function CoursesCategory() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleOne">
                                                             <h4 className="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                    href="#collapseOne" aria-expanded="true"
+                                                                <Link data-toggle="collapse" data-parent="#accordion"
+                                                                    to="#collapseOne" aria-expanded="true"
                                                                     aria-controls="collapseOne">
-                                                                    Learn Start Basic</a>
+                                                                    Learn Start Basic</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel"
@@ -217,10 +217,10 @@ export default function CoursesCategory() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleTwo">
                                                             <h4 className="panel-title">
-                                                                <a className="collapsed" data-toggle="collapse"
-                                                                    data-parent="#accordion" href="#collapseTwo"
+                                                                <Link className="collapsed" data-toggle="collapse"
+                                                                    data-parent="#accordion" to="#collapseTwo"
                                                                     aria-expanded="false" aria-controls="collapseTwo">
-                                                                    Learn Advance Level</a>
+                                                                    Learn Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel"
@@ -303,10 +303,10 @@ export default function CoursesCategory() {
                                                     <div className="panel">
                                                         <div className="panel-heading" role="tab" id="titleThree">
                                                             <h4 className="panel-title">
-                                                                <a className="collapsed" data-toggle="collapse"
-                                                                    data-parent="#accordion" href="#collapseThree"
+                                                                <Link className="collapsed" data-toggle="collapse"
+                                                                    data-parent="#accordion" to="#collapseThree"
                                                                     aria-expanded="false" aria-controls="collapseThree">
-                                                                    More Advance Level</a>
+                                                                    More Advance Level</Link>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseThree" className="panel-collapse collapse" role="tabpanel"
@@ -440,7 +440,7 @@ export default function CoursesCategory() {
                                             <div className="course-review course-insturctor">
                                                 <div className="insturctor-img">
                                                     <img src="https://feedthenationplus.org/education/public/assets/img/client1.png"
-                                                        alt="" />
+                                                        alt="img" />
                                                 </div>
                                                 <div className="details">
                                                     <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
@@ -460,7 +460,7 @@ export default function CoursesCategory() {
                                             <div className="course-review course-insturctor">
                                                 <div className="insturctor-img">
                                                     <img src="https://feedthenationplus.org/education/public/assets/img/client3.png"
-                                                        alt="" />
+                                                        alt="img" />
                                                 </div>
                                                 <div className="details">
                                                     <h2 classNameName='text-light'>{course?.instructor ? `${course.instructor}` : 'Not show'}</h2>
