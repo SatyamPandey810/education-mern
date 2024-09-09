@@ -317,7 +317,7 @@ li a.right {
 .main-menu ul li a {
     display: block;
     font-size: 17px;
-    padding: 40px 17px;
+    padding: 38px 17px;
     text-decoration: none;
     text-transform: capitalize;
     transition: all 0.4s ease 0s;
@@ -4683,12 +4683,12 @@ header {
 }
 
 .header-top, .hd-sec {
-    padding: 15px 0;
+    padding: 0px 0;
 }
 
 .logo img {
     width: 100%;
-    max-width: 150px;
+    max-width: 100px;
 }
 
 /* For Tablets and Desktops (Min-width: 768px) */

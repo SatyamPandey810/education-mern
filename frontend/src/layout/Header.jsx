@@ -143,8 +143,8 @@ export default function Header() {
                     <div className="row">
                         <div className="col-md-3 col-sm-12 col-xs-8">
                             <div className="logo">
-                                <Link to="/"><img src="assets/img/logo.png" width="100"
-                                    className="mt-3" alt="img" /></Link>
+                                <Link to="/"><img src="assets/img/logo.png" 
+                                    className="mt-2" alt="img" /></Link>
                             </div>
                         </div>
 
