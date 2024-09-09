@@ -2838,11 +2838,11 @@ input[type="submit"]:hover {
 
 .password-toggle-icon {
   position: absolute;
-    top: 50%;
-    transform: translateY(2%);
-    cursor: pointer;
-    color: #6c757d;
-    right: 0.6rem;
+  top: 50%;
+  transform: translateY(2%);
+  cursor: pointer;
+  color: #6c757d;
+  right: 0.6rem;
 }
 
 /*--------------------------------------------------------------------------------------------------- admin panel css */
@@ -11615,12 +11615,15 @@ div.tagsinput span.tag a {
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 @media (max-width: 767px) {
   .pay-shadow {
-      width: 90% !important; /* Reduce width for mobile devices */
-      margin: 0 auto;
+    width: 90% !important;
+    /* Reduce width for mobile devices */
+    margin: 0 auto;
   }
 }
+
 .course-name:focus {
   font-size: 13px;
   text-transform: lowercase;
@@ -11761,39 +11764,46 @@ div.tagsinput span.tag a {
 .login-form .action button:nth-child(2):hover {
   background: #3c4d6d;
 }
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 input[type=number] {
-    appearance: none;
+  appearance: none;
 }
-.log-in-img img{
+
+.log-in-img img {
   height: 25rem;
 }
-.sign-in-img img{
+
+.sign-in-img img {
   height: 35rem;
 
 }
-.new-account{
+
+.new-account {
   color: blue;
   cursor: pointer;
 }
-.new-account:hover{
+
+.new-account:hover {
   border-bottom: 1px solid;
 }
+
 /* Customize the next and prev buttons */
-.owl-prev, .owl-next {
+.owl-prev,
+.owl-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   border: none;
   padding: 10px;
   border-radius: 50%;
@@ -11808,24 +11818,30 @@ input[type=number] {
 }
 
 .owl-next {
-  right: 10px; 
+  right: 10px;
 }
 
 
-.owl-prev:hover, .owl-next:hover {
-  background-color:inherit !important;
+.owl-prev:hover,
+.owl-next:hover {
+  background-color: inherit !important;
 }
-.owl-prev i, .owl-next i {
+
+.owl-prev i,
+.owl-next i {
   color: white;
   font-size: 20px;
 }
-.owl-prev, .owl-next {
-  width: 40px; 
-  height: 40px; 
+
+.owl-prev,
+.owl-next {
+  width: 40px;
+  height: 40px;
 }
 
-.owl-prev i, .owl-next i {
-  font-size: 24px; 
+.owl-prev i,
+.owl-next i {
+  font-size: 24px;
 }
 
 /* .owl-prev {
