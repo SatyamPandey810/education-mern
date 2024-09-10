@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faCalendarDays, faClipboard, faList, faMoneyBill, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faCalendarDays, faClipboard, faList, faMoneyBill, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import AllCategorySubcategory from './AllCategory-Subcategory';
 import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
 import { Link, useNavigate } from 'react-router-dom';
+import Review from './Review';
 // import CourseCurriculum from './CourseCurriculum';
 
 export default function AdminPanel() {
@@ -19,7 +20,7 @@ export default function AdminPanel() {
     const navigate = useNavigate()
 
     const handleMenuClick = (TotalUser, AllCourses) => {
-        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder);
+        setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder, Review);
     }
     // const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
@@ -36,7 +37,7 @@ export default function AdminPanel() {
     useEffect(() => {
         if (!user) {
             navigate("*");
-        } else if (user.role !== ROLE.ADMIN) {          
+        } else if (user.role !== ROLE.ADMIN) {
             navigate('/');
         }
     }, [user, navigate])
@@ -151,23 +152,14 @@ export default function AdminPanel() {
                         </span>
                     </li>
                     <li className="nav-item menu-items">
-                        <a className="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                        <span className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-security"></i>
+                            <FontAwesomeIcon icon= {faPenToSquare} />
                             </span>
-                            <span className="menu-title">User Pages</span>
-                            <i className="menu-arrow"></i>
-                        </a>
-                        <div className="collapse" id="auth">
-                            <ul className="nav flex-column sub-menu">
-                                <li className="nav-item"> <a className="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                                <li className="nav-item"> <a className="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                                <li className="nav-item"> <a className="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                                <li className="nav-item"> <a className="nav-link" href="pages/samples/login.html"> Login </a></li>
-                                <li className="nav-item"> <a className="nav-link" href="pages/samples/register.html"> Register </a></li>
-                            </ul>
-                        </div>
+                            <span className="menu-title">Inquires & review's</span>
+                        </span>
                     </li>
+                   
                     <li className="nav-item menu-items">
                         <a className="nav-link"
                             href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
@@ -207,6 +199,7 @@ export default function AdminPanel() {
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
                         {activeComponent === 'TransactionOrder' && <TransactionOrder />}
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
+                        {activeComponent === 'Review' && <Review />}
                         {/* {activeComponent === 'CourseCurriculum' && <CourseCurriculum />} */}
 
 

@@ -15,13 +15,10 @@ const upload = require('../middleware/fileUpload')
 const findCoursesByCategoryAndSubcategory = require('../controller/category-subcategory-courses/findCourse')
 const singleCourseController = require('../controller/courses/singleCourseFindController')
 const addToInquiryController = require('../controller/addToInquiries/addToInquiryController')
-// const {  getAllBlogs, updateBlogController, deleteBlogsController } = require('../controller/blogs/blog')
-// const findBlogsCategoryAndSubCategory = require('../controller/category-subcategory-courses/findBlogs')
-// const singleBlogController = require('../controller/blogs/singleBlogFindController')
 const paymentController = require('../controller/transactions/paymentController')
 const findTransactionController = require('../controller/transactions/findTransactions')
-const { sendSMS } = require('../helper/twilioConfig')
 const { courseCurriculumController } = require('../controller/course-curriculum/courseCurriculumController')
+const getInquiriesController = require('../controller/addToInquiries/getInquiry')
 
 
 // user signup route
@@ -62,7 +59,7 @@ router.get("/get-course", getAllCourses)
 // course update route
 router.post("/update-course", upload.single('image'), updateCourseController)
 // course delete route
-router.post("/delete-course",courseDeleteController)
+router.post("/delete-course", courseDeleteController)
 // course find category and subcategory wise route
 router.get('/courses', findCoursesByCategoryAndSubcategory)
 //single-course find route
@@ -71,20 +68,11 @@ router.get("/single-course/:id", singleCourseController)
 router.post("/upload-inquiry", addToInquiryController)
 // blog upload route
 router.post("/courseCurriculum-upload", courseCurriculumController)
-// get all blog route
-// router.get("/all-blogs", getAllBlogs)
-//update blog route
-// router.post("/update-blog", upload.single('image'), updateBlogController)
-// delete blog route
-// router.post("/delete-blog", deleteBlogsController)
-// blogs find category and subcategory wise 
-// router.get("/blogs", findBlogsCategoryAndSubCategory)
-//single blog find route
-// router.get("/single-blog/:id", singleBlogController)
 // payment request route
 router.post("/payment-handller", paymentController)
 // total payment find route
 router.get("/get-payment", findTransactionController)
-router.post("/sms", sendSMS)
+// inquires get route
+router.get("/get-inquries", getInquiriesController)
 
 module.exports = router

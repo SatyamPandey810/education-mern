@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import { initiatePaymentStart } from '../redux/actions/transactions/transactionInitiate.action';
+import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
 
 export default function CoursesCategory() {
     const { id: _id } = useParams();
@@ -16,8 +17,10 @@ export default function CoursesCategory() {
     const course = useSelector((state) => state.singleCourse.course)
     const user = useSelector((state) => state.user.user);
     const paymentUrl = useSelector((state) => state.transactionUpload.paymentUrl)
+    const allCourse = useSelector((state) => state.allCourse?.allCourse)
     const initialFormData = {
         name: "",
+        lastName:"",
         email: "",
         phone: "",
         courseId: '',
@@ -27,6 +30,16 @@ export default function CoursesCategory() {
         userId: '',
     }
     const [formData, setFormData] = useState(initialFormData)
+    const initialInquiryData = {
+        courseId: "",
+        name: "",
+        email: "",
+        phone: "",
+        gender: "",
+        message: ""
+    };
+    const [inquiryData, setInquiryData] = useState(initialInquiryData)
+
     const [open, setOpen] = React.useState(false);
 
 
@@ -47,6 +60,13 @@ export default function CoursesCategory() {
     }
 
     // payment handller 
+    const inputChanges = (event) => {
+        const { name, value } = event.target;
+        setInquiryData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    }
     const paymentHandleSubmit = async (event) => {
         event.preventDefault()
         dispatch(initiatePaymentStart(formData))
@@ -74,6 +94,16 @@ export default function CoursesCategory() {
     const onCloseModel = () => {
         handleClose()
     }
+
+    // review form handller
+    const inquiryHandller = async (event) => {
+        event.preventDefault()
+        dispatch(uploadInquiryStart(inquiryData))
+        setInquiryData(initialInquiryData);
+
+    }
+
+
 
     return (
         <>
@@ -111,7 +141,6 @@ export default function CoursesCategory() {
                         </div>
                         <div className="col-md-6">
                             <div className="tab-content">
-
                                 <div id="overview" className="tab-pane active">
                                     <div className="row">
                                         <div className="col-md-12">
@@ -412,8 +441,6 @@ export default function CoursesCategory() {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div id="coruse_review" className="tab-pane">
                                     <div className="row">
                                         <div className="col-md-12">
@@ -480,42 +507,96 @@ export default function CoursesCategory() {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div id="write_review" className="tab-pane">
                                     <div className="row">
                                         <div className="col-md-12">
+
                                             <div className="review-form">
                                                 <div className="contact-page-form">
                                                     <h2>Write Your Review</h2>
-                                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                                        <div className="single-input-field">
-                                                            <input type="text" placeholder="First Name" />
+                                                    <form onSubmit={inquiryHandller}>
+                                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                                            <div className="single-input-field">
+                                                                <input type="text"
+                                                                    placeholder="First Name"
+                                                                    name="name"
+                                                                    onChange={inputChanges}
+                                                                    value={inquiryData.name}
+                                                                    className='form-control'
+
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                                        <div className="single-input-field">
-                                                            <input type="text" placeholder="Last Name" />
+                                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                                            <div className="single-input-field">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Last Name"
+                                                                      name="lastName"
+                                                                    value={inquiryData.lastName}
+                                                                    onChange={inputChanges}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                                        <div className="single-input-field">
-                                                            <input type="text" placeholder="Phone Number" />
+                                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                                            <div className="single-input-field">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Phone Number"
+                                                                    name="phone"
+                                                                    value={inquiryData.phone}
+                                                                    onChange={inputChanges}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                                        <div className="single-input-field">
-                                                            <input type="email" placeholder="E-mail" />
+                                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                                            <div className="single-input-field">
+                                                                <input
+                                                                    type="email"
+                                                                    placeholder="E-mail"
+                                                                    name="email"
+                                                                    value={inquiryData.email}
+                                                                    onChange={inputChanges}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="col-md-12 message-input">
-                                                        <div className="single-input-field">
-                                                            <textarea placeholder="Write Your Message"></textarea>
+                                                        <div className="col-md-6 col-sm-6 col-xs-12 mb-3">
+                                                            <div className="single-input-field">
+                                                                <select name="courseId" value={inquiryData.courseId} onChange={inputChanges} className="form-control course-name form-control-lg">
+                                                                    {
+                                                                        allCourse?.map((course) => (
+                                                                            <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
+
+                                                                        ))
+                                                                    }
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="single-input-fieldsbtn">
-                                                        <input type="submit" value="Send Now" />
-                                                    </div>
+                                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                                            <div className="single-input-field">
+                                                                <select name="gender" value={inquiryData.gender} onChange={inputChanges} className='form-control'>
+                                                                    <option value="">Select Gender</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                    <option value="Other">Other</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-12 message-input">
+                                                            <div className="single-input-field">
+                                                                <textarea
+                                                                    placeholder="Write Your Message"
+                                                                    name="message"
+                                                                    value={inquiryData.message}
+                                                                    onChange={inputChanges}
+                                                                ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div className="single-input-fieldsbtn">
+                                                            <input type="submit" value="Send Now" />
+                                                        </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
                                         </div>

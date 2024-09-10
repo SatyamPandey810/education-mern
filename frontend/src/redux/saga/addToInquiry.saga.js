@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import addToInquiriesHandller from "../services/addToInquiry-services";
 import { uploadInquiryError, uploadInquirySuccess } from "../actions/addToInquiry.action";
-import { INQUIRY_UPLOAD_START } from "../constants/courses/addToInquiry-constants";
+import { INQUIRY_UPLOAD_START } from "../constants/inquries/addToInquiry-constants";
 
 function* addToinquiry(action) {
     try {

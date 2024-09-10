@@ -16,15 +16,10 @@ import updateCourseSaga from "./updateCourse.saga"
 import findCourseByCategoryAndSubcategorySaga from "./findCourseByCategoryAndSubcategory.saga"
 import singleCourseSaga from "./singleCourse.saga"
 import addToInquirySaga from "./addToInquiry.saga"
-// import  blogUploadSaga  from "./blogs/blogUpload.saga"
-// import getAllBlogSaga from "./blogs/getBlogs.saga"
-// import updateBlogSaga from "./blogs/updateBlog.saga"
-// import blogDeleteSaga from "./blogs/deleteBlog.saga"
-// import getBlogsCategoryAndSubCategorySaga from "./blogs/getBlogCategoryAndSubCategory.saga"
-// import singleBlogSaga from "./blogs/singleBlogFind.saga"
 import initiateTranactionSaga from "./transaction/transactionInitiate.saga"
 import getTransactionsSaga from "./transaction/getAllTransaction.saga"
 import courseDeleteSaga from "./deleteCourse.saga"
+import getAllInquriesSaga from "./inquriesGet.saga"
 
 
 export function* root() {
@@ -45,15 +40,10 @@ export function* root() {
         fork(updateCourseSaga),
         fork(findCourseByCategoryAndSubcategorySaga),
         fork(singleCourseSaga),
-        fork(addToInquirySaga),
-        // fork(blogUploadSaga),
-        // fork(getAllBlogSaga),
-        // fork(updateBlogSaga),
-        // fork(blogDeleteSaga),
-        // fork(getBlogsCategoryAndSubCategorySaga),
-        // fork(singleBlogSaga),
+        fork(addToInquirySaga),       
         fork(initiateTranactionSaga),
         fork(getTransactionsSaga),
-        fork(courseDeleteSaga)
+        fork(courseDeleteSaga),
+        fork(getAllInquriesSaga)
     ])
 }

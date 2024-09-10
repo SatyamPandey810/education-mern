@@ -116,10 +116,10 @@ const summaryApi = {
     allPayment: {
         url: `${backendDomain}/api/get-payment`,
         method: "get"
+    },
+    getAllInquries: {
+        url: `${backendDomain}/api/get-inquries`,
+        method: "get"
     }
-
-
-
-
 }
 export default summaryApi

@@ -1,4 +1,4 @@
-import { INQUIRY_UPLOAD_ERROR, INQUIRY_UPLOAD_START, INQUIRY_UPLOAD_SUCCESS } from "../constants/courses/addToInquiry-constants";
+import { INQUIRY_UPLOAD_ERROR, INQUIRY_UPLOAD_START, INQUIRY_UPLOAD_SUCCESS } from "../constants/inquries/addToInquiry-constants"
 
 const initialState = {
     data: null
