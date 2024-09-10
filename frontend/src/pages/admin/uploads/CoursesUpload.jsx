@@ -7,7 +7,7 @@ import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
 import { courseUploadStart } from '../../../redux/actions/uploadCourse.action';
 
-export default function CoursesUpload({ onClose, onCourseUploaded }) {
+export default function CoursesUpload({ onClose, onCourseUploaded}) {
     const [formData, setFormData] = useState({
         category: '',
         subCategory: '',

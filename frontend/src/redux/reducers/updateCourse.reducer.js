@@ -1,7 +1,7 @@
 import { UPDATE_COURSE_ERROR, UPDATE_COURSE_START, UPDATE_COURSE_SUCCESS } from "../constants/courses/course-constants";
 
 const initialState = {
-    course: null,
+    successMessage: '',
 }
 
 const updateCourseReducer = (state = initialState, action) => {
@@ -13,11 +13,12 @@ const updateCourseReducer = (state = initialState, action) => {
         case UPDATE_COURSE_SUCCESS:
             return {
                 ...state,
-                course: action.payload,
+                successMessage: action.payload,
             }
         case UPDATE_COURSE_ERROR:
             return {
-                ...state
+                ...state,
+                error: action.payload
             }
 
         default:

@@ -66,7 +66,8 @@ export default function AllCourses() {
   };
 
   const categorizedCourses = separateCoursesByCategory();
-  console.log(categorizedCourses);
+
+  
 
 
   const handleCourseClick = (course) => {
@@ -114,7 +115,7 @@ export default function AllCourses() {
             handleCourseClick={handleCourseClick}
             course={editCourse}
             onClose={() => setEditCourse(null)}
-            onCourseUploaded={() => handleCourseUploaded()}
+            onCourseUploaded={separateCoursesByCategory}
           />
         )
       }
@@ -147,7 +148,7 @@ export default function AllCourses() {
                     <th className='text-nowrap text-light'>Lectures</th>
                     <th className='text-nowrap text-light'>Duration</th>
                     <th className='text-nowrap text-light'>Description</th>
-                    <th className='text-nowrap text-light'>Image</th>                   
+                    <th className='text-nowrap text-light'>Image</th>
                     <th className='text-nowrap text-light'>Status</th>
                     <th className='text-nowrap text-light'>Action</th>
                   </tr>
@@ -173,7 +174,7 @@ export default function AllCourses() {
                             />
                           )}
                         </td>
-                       
+
                         <td>{course.status}</td>
                         <td className='text-light'>
                           <FontAwesomeIcon

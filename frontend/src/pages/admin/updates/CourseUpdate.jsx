@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import summaryApi from '../../../common';
-import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
 import { getAllCourseStart } from '../../../redux/actions/getCourses.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { updateCourseStart } from '../../../redux/actions/updateCourse.action';
 
-export default function CourseUpdate({ course, onClose }) {
+export default function CourseUpdate({ course, onClose,onCourseUploaded }) {
 
   const [formData, setFormData] = useState({
     category: '',
@@ -34,7 +33,6 @@ export default function CourseUpdate({ course, onClose }) {
 
   const handleUpdateCourse = async (event) => {
     event.preventDefault()
-
     const formDataToSend = new FormData();
     formDataToSend.append('_id', course._id);
     formDataToSend.append('category', formData.category);
@@ -50,28 +48,15 @@ export default function CourseUpdate({ course, onClose }) {
     if (formData.image) {
       formDataToSend.append('image', formData.image);
     }
-    try {
-      const response = await fetch(summaryApi.updateCourse.url, {
-        method: summaryApi.updateCourse.method,
-        credentials: 'include',
-        body: formDataToSend,
-      });
-
-      const responseData = await response.json();
-
-      if (responseData.success) {
-        toast.success(responseData.message);
-        setEditCourse(null)
-        onClose()
-
-      } else {
-        toast.error(responseData.message || 'Failed to update course');
-      }
-    } catch (error) {
-      toast.error(error.message || 'An error occurred');
-      return { success: false, message: error.message };
-    }
+    dispatch(updateCourseStart(formDataToSend))
+    setEditCourse(null)
+    onClose()
+    onCourseUploaded()
   }
+
+
+
+
   const inputChange = (event) => {
     const { name, value, files } = event.target;
     if (files) {
@@ -112,8 +97,6 @@ export default function CourseUpdate({ course, onClose }) {
     dispatch(getAllCategoryStart())
     dispatch(getSubCategoryStart())
     dispatch(getAllCourseStart())
-  }, [dispatch])
-  useEffect(() => {
     if (course) {
       setFormData({
         category: course.category || '',
@@ -132,7 +115,11 @@ export default function CourseUpdate({ course, onClose }) {
       setSelectedCategory(course.category || '');
       setSelectedSubCategory(course.subCategory || '');
     }
-  }, [course]);
+  }, [dispatch, course])
+
+
+
+
   return (
     <div className='container all-cu mb-4'>
       <div className="d-flex justify-content-between border-bottom p-4">
