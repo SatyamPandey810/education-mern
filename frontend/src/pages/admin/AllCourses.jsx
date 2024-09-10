@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCourseStart } from '../../redux/actions/getCourses.action'
 import { getAllCategoryStart } from '../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action';
-import { toast } from 'react-toastify';
-import summaryApi from '../../common';
 import { deleteCourseStart } from '../../redux/actions/deleteCourse.action';
 import CourseUpdate from './updates/CourseUpdate';
 
