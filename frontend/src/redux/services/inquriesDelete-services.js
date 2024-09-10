@@ -1,9 +1,9 @@
-import { toast } from "react-toastify"
-import summaryApi from "../../common"
+const { toast } = require("react-toastify")
+const { default: summaryApi } = require("../../common")
 
-const deleteCourseService = async (id) => {
-    const data = await fetch(summaryApi.deleteCourse.url, {
-        method: summaryApi.deleteCourse.method,
+const deleteinquriesService = async (id) => {
+    const data = await fetch(summaryApi.deleteInquries.url, {
+        method: summaryApi.deleteInquries.method,
         credentials: "include",
         headers: {
             "content-type": 'application/json'
@@ -13,10 +13,9 @@ const deleteCourseService = async (id) => {
         })
     })
     const responseData = await data.json()
-    
     if (responseData.success) {
         toast.success(responseData.message)
         return responseData
     }
 }
-export default deleteCourseService;
+export default deleteinquriesService

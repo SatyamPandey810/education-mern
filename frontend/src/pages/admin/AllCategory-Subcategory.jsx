@@ -98,7 +98,7 @@ export default function AllCategorySubcategory() {
     const handleDeleteSubCategory = (id) => {
         dispatch(deleteSubCategoryStart(id))
         toast.success('subCategory deleted')
-        handleSubCategoryUploaded()
+        dispatch(getSubCategoryStart())
     }
 
 

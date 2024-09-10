@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faCalendarDays, faClipboard, faList, faMoneyBill, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faCalendarDays, faClipboard, faFolder, faList, faMoneyBill, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,9 +35,7 @@ export default function AdminPanel() {
     }
 
     useEffect(() => {
-        if (!user) {
-            navigate("*");
-        } else if (user.role !== ROLE.ADMIN) {
+        if (user?.role !== ROLE.ADMIN) {
             navigate('/');
         }
     }, [user, navigate])
@@ -148,26 +146,25 @@ export default function AdminPanel() {
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faMoneyBill} />
                             </span>
-                            <span className="menu-title">Order-transactions</span>
+                            <span className="menu-title" style={{ cursor: "pointer" }}>Order-transactions</span>
                         </span>
                     </li>
                     <li className="nav-item menu-items">
                         <span className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon= {faPenToSquare} />
+                                <FontAwesomeIcon icon={faPenToSquare} />
                             </span>
-                            <span className="menu-title">Inquires & review's</span>
+                            <span className="menu-title" style={{ cursor: "pointer" }}>Inquires & review's</span>
                         </span>
                     </li>
-                   
+
                     <li className="nav-item menu-items">
-                        <a className="nav-link"
-                            href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
+                        <span className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
-                                <i className="mdi mdi-file-document-box"></i>
+                            <FontAwesomeIcon icon={ faFolder} />
                             </span>
                             <span className="menu-title">Documentation</span>
-                        </a>
+                        </span>
                     </li>
                 </ul>
             </nav>

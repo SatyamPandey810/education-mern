@@ -93,6 +93,9 @@ const findCoursesByCategoryAndSubcategory = async (req, res) => {
                             image: { $concat: [baseUrl, '$image'] }, 
                             price: '$price',
                             sheet: '$sheet',
+                            instructor:'$instructor',
+                            duration:'$duration',
+                            lectures:'$lectures',
                             description: '$description',
                             status: '$status'
                         }

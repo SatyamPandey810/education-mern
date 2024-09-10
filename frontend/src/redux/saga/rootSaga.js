@@ -20,6 +20,7 @@ import initiateTranactionSaga from "./transaction/transactionInitiate.saga"
 import getTransactionsSaga from "./transaction/getAllTransaction.saga"
 import courseDeleteSaga from "./deleteCourse.saga"
 import getAllInquriesSaga from "./inquriesGet.saga"
+import inquriesDeleteSaga from "./inquriesDelete.saga"
 
 
 export function* root() {
@@ -44,6 +45,7 @@ export function* root() {
         fork(initiateTranactionSaga),
         fork(getTransactionsSaga),
         fork(courseDeleteSaga),
-        fork(getAllInquriesSaga)
+        fork(getAllInquriesSaga),
+        fork(inquriesDeleteSaga)
     ])
 }

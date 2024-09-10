@@ -99,8 +99,8 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
     const subCategoryData = allSubCategory ? allSubCategory.data : [];
     return (
         <>
-            <div className="all-cu">
-                <h2 className='text-light'>Upload Courses </h2>
+            <div className="d-flex justify-content-between all-cu p-4">
+                <h1 className='text-light'>Upload Courses </h1>
                 <FontAwesomeIcon className='x-mark' icon={faXmark}
                     onClick={onClose}
                 />
@@ -109,7 +109,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                 <form className='mb-4' onSubmit={submitHandler}>
                     <div className='row'>
                         <div className="col-sm-6 d-grid mb-3">
-                            <label htmlFor="category" className="form-label">Category</label><br />
+                            <label htmlFor="category" className="form-label text-light">Category</label><br />
                             <select
                                 className="form-select"
                                 aria-label="Default select example"
@@ -126,7 +126,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                         </div>
 
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="sub" className="form-label">Sub category</label><br />
+                            <label htmlFor="sub" className="form-label text-light">Sub category</label><br />
                             <select
                                 className="form-select"
                                 aria-label="Default select example"
@@ -146,7 +146,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
 
                     <div className='row'>
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="name" className="form-label">Course name</label>
+                            <label htmlFor="name" className="form-label text-light">Course name</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -157,7 +157,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                             />
                         </div>
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="price" className="form-label">Course fees</label>
+                            <label htmlFor="price" className="form-label text-light">Course fees</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -168,7 +168,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                             />
                         </div>
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="instructor" className="form-label">Instructor name</label>
+                            <label htmlFor="instructor" className="form-label text-light">Instructor name</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -179,7 +179,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                             />
                         </div>
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="lectures" className="form-label">Lectures</label>
+                            <label htmlFor="lectures" className="form-label text-light">Lectures</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -193,7 +193,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                     </div>
                     <div className='row'>
                         <div className="col-sm-6 mb-3">
-                            <label htmlFor="image" className="form-label">Image</label>
+                            <label htmlFor="image" className="form-label text-light">Image</label>
                             <input
                                 type="file"
                                 className="form-control"
@@ -208,7 +208,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                             )}
                         </div>
                         <div className='col-sm-6 mb-3'>
-                            <label htmlFor="sheet" className="form-label">Sheet</label>
+                            <label htmlFor="sheet" className="form-label text-light">Sheet</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -221,7 +221,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                     </div>
                     <div className='row'>
                         <div className='col-sm-6 '>
-                            <label htmlFor="description" className="form-label">Course description</label><br />
+                            <label htmlFor="description" className="form-label text-light">Course description</label><br />
                             <textarea
                                 cols={61}
                                 rows={4}
@@ -232,7 +232,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                         </div>
                         <div className='row'>                           
                             <div className='col-sm-3 mb-3'>
-                                <label htmlFor="duration" className="form-label">Duration</label>
+                                <label htmlFor="duration" className="form-label text-light">Duration</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -243,7 +243,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                                 />
                             </div>
                             <div className='col-sm-2'>
-                                <label htmlFor="status" className="form-label">Status</label><br />
+                                <label htmlFor="status" className="form-label text-light">Status</label><br />
                                 <select
                                     className='form-control'
                                     name="status"

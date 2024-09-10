@@ -41,7 +41,7 @@ export default function Footer() {
                                 <p>Lorem ipsum dolor sit amet, luctus posuere semper felis consectetuer hendrerit, enim
                                     varius proi Lorem ipsum dolor sit amet</p>
                                 <div className="mt-4">
-                                    <Link to=""><img src="assets/img/ECOclassNameICS EDUCATION SERVICES LTD.png" width="150"
+                                    <Link to=""><img src="/assets/img/logo.png" width="150"
                                         alt="img" /></Link>
                                 </div>
 

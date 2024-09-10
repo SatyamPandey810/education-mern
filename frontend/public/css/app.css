@@ -11375,10 +11375,8 @@ div.tagsinput span.tag a {
 .all-cu {
   background-color: black;
   border: 1px white solid;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 30px;
+  /* padding: 10px 30px; */
   /* border-radius: 30px; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

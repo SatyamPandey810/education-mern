@@ -12,7 +12,7 @@ export default function TotalUser() {
     email: "",
     name: "",
     role: "",
-    _id:""
+    _id: ""
   })
   const dispatch = useDispatch();
   const allUser = useSelector((state) => state.allUser.allUser);
@@ -24,10 +24,8 @@ export default function TotalUser() {
 
   const userData = allUser ? allUser.data : [];
 
-  
-
   return (
-    <>
+    <div className='container'>
       <table className="table table-bordered text-light">
         <thead>
           <tr>
@@ -40,7 +38,6 @@ export default function TotalUser() {
           </tr>
         </thead>
         <tbody>
-
           {
             userData.length > 0 ? userData?.map((user, index) => (
               <tr key={index}>
@@ -55,7 +52,6 @@ export default function TotalUser() {
                     setOpenUpdateUser(true)
                     setUpdateUserDetails(user)
                   }}
-
                 /></td>
               </tr>
             )) : <span>no user</span>
@@ -73,6 +69,6 @@ export default function TotalUser() {
           />
         )
       }
-    </>
+    </div>
   )
 }

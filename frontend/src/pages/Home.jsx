@@ -47,38 +47,10 @@ export default function Home() {
 
   const categorizedCourses = separateCoursesByCategory();
 
-
-  // find blogs category and subcategory wise
-  // const separateBlogsByCategory = () => {
-  //   const categorizedBlogs = {};
-
-  //   blogs?.data?.forEach((category) => {
-  //     const categoryName = category._id;
-
-  //     if (!categorizedBlogs[categoryName]) {
-  //       categorizedBlogs[categoryName] = [];
-  //     }
-
-  //     category.subcategories.forEach((subcategory) => {
-  //       subcategory.blogs.forEach((blog) => {
-  //         categorizedBlogs[categoryName].push(blog);
-  //       });
-  //     });
-  //   });
-
-  //   return categorizedBlogs;
-  // };
-
-  // const categorizedBlogs = separateBlogsByCategory();
-  // console.log(categorizedBlogs);
-
-
-
-  useEffect(() => {
+    useEffect(() => {
     dispatch(findCourseCategoryAndSubcategoryStart());
     dispatch(getAllCourseStart())
     dispatch(getAllCategoryStart())
-    // dispatch(findBlogCategoryAndSubcategoryStart())
   }, [dispatch])
 
   return (
