@@ -120,6 +120,10 @@ const summaryApi = {
     getAllInquries: {
         url: `${backendDomain}/api/get-inquries`,
         method: "get"
+    },
+    deleteInquries:{
+        url:`${backendDomain}/api/delete-inquries`,
+        method:"post"
     }
 }
 export default summaryApi

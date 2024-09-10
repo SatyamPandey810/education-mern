@@ -19,6 +19,7 @@ const paymentController = require('../controller/transactions/paymentController'
 const findTransactionController = require('../controller/transactions/findTransactions')
 const { courseCurriculumController } = require('../controller/course-curriculum/courseCurriculumController')
 const getInquiriesController = require('../controller/addToInquiries/getInquiry')
+const deleteinquriesController = require('../controller/addToInquiries/deleteInquries')
 
 
 // user signup route
@@ -74,5 +75,7 @@ router.post("/payment-handller", paymentController)
 router.get("/get-payment", findTransactionController)
 // inquires get route
 router.get("/get-inquries", getInquiriesController)
+//inquries delete route
+router.post("/delete-inquries", deleteinquriesController)
 
 module.exports = router
