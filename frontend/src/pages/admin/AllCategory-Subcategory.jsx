@@ -200,7 +200,7 @@ export default function AllCategorySubcategory() {
                 <div className=''>
                     <table className="table table-bordered">
                         <thead>
-                            <tr>
+                            <tr className='text-light'>
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Category</th>

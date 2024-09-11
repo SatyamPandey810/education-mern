@@ -32,9 +32,6 @@ export default function AllCourses() {
   const allCourse = useSelector((state) => state.allCourse?.allCourse)
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
-  const allCategory = useSelector((state) => state.allCategory.allCategory)
-  const allSubCategory = useSelector((state) => state.allSubCategory?.allSubCategory)
-  const subCategoryData = allSubCategory ? allSubCategory.data : [];
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
 
 
@@ -65,7 +62,7 @@ export default function AllCourses() {
 
   const categorizedCourses = separateCoursesByCategory();
 
-  
+
 
 
   const handleCourseClick = (course) => {

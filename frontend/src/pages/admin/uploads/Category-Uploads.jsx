@@ -8,7 +8,7 @@ import { GET_CATEGORY_UPLOAD_START } from '../../../redux/constants/courses/cate
 export default function CategoryUploads({ onClose, onCategoryUploaded }) {
     const dispatch = useDispatch()
     const [categoryName, setCategoryname] = useState('')
-   
+
 
 
     const inputChange = (event) => {
@@ -26,12 +26,6 @@ export default function CategoryUploads({ onClose, onCategoryUploaded }) {
             onClose()
         }
     }
-
-  
-
-
-
-
 
     return (
         <>

@@ -18,7 +18,7 @@ import ThankuPage from '../pages/ThankuPage'
 
 export default function Router() {
     const location = useLocation()
-    const noHeaderFooterRoutes = [ '/admin-dashboard/total-user', "/admin-dashboard",'*'];
+    const noHeaderFooterRoutes = [ '/admin-dashboard/total-user', "/admin-dashboard"];
     return (
         <>
             {!noHeaderFooterRoutes.includes(location.pathname) && <Header />}
