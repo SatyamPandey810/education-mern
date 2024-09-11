@@ -36,8 +36,8 @@ export default function CategoryUploads({ onClose, onCategoryUploaded }) {
     return (
         <>
             <div>
-                <div className="all-cu">
-                    <h2 className='text-light'>Upload categories</h2>
+                <div className="all-cu d-flex justify-content-between p-4">
+                    <h1 className='text-light'>Upload categories</h1>
                     <FontAwesomeIcon className='x-mark' icon={faXmark}
                         onClick={onClose}
                     />

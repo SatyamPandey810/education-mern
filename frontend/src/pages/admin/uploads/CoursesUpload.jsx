@@ -111,7 +111,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded}) {
                         <div className="col-sm-6 d-grid mb-3">
                             <label htmlFor="category" className="form-label text-light">Category</label><br />
                             <select
-                                className="form-select"
+                                className="form-control"
                                 aria-label="Default select example"
                                 onChange={handleCategoryChange}
                                 value={selectedCategory}
@@ -128,7 +128,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded}) {
                         <div className="col-sm-6 mb-3">
                             <label htmlFor="sub" className="form-label text-light">Sub category</label><br />
                             <select
-                                className="form-select"
+                                className="form-control"
                                 aria-label="Default select example"
                                 onChange={handleSubCategoryChange}
                                 value={selectedSubCategory}

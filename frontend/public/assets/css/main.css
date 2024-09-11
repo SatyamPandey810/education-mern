@@ -4682,3 +4682,9 @@ footer.footer {
 
 /* Adjust the Modal width for smaller screens */
 
+.owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
+    display: inline !important;
+}
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+    display: inline !important;
+}

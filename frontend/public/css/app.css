@@ -11827,20 +11827,20 @@ input[type=number] {
 
 .owl-prev i,
 .owl-next i {
-  color: white;
+  color: red;
   font-size: 20px;
 }
 
-.owl-prev,
+/* .owl-prev,
 .owl-next {
   width: 40px;
   height: 40px;
-}
+} */
 
-.owl-prev i,
+/* .owl-prev i,
 .owl-next i {
   font-size: 24px;
-}
+} */
 
 /* .owl-prev {
   left: -30px; 

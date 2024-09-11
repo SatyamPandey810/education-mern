@@ -47,11 +47,24 @@ export default function Home() {
 
   const categorizedCourses = separateCoursesByCategory();
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(findCourseCategoryAndSubcategoryStart());
     dispatch(getAllCourseStart())
     dispatch(getAllCategoryStart())
   }, [dispatch])
+
+
+  const options = {
+    items: 3,
+    loop: true,
+    margin: 10,
+    nav: true,
+    navText: [
+      "<i class='fa fa-chevron-left'></i>",
+      "<i class='fa fa-chevron-right'></i>"
+    ],
+    dots: false,
+  };
 
   return (
     <>
@@ -145,8 +158,9 @@ export default function Home() {
 
             <div className="row">
               <div className="course-list-sec">
-                <div className="all-course">
-                  <OwlCarousel className='owl-theme owl-dots' items={3} loop margin={10} nav navText={['<h1>hello world</h1>']}>
+                <OwlCarousel className=' all-course owl-theme' autoplay={true} items={3} loop margin={10} dots={false} nav
+                  navText={["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]} >
+                  <div>
                     {
                       (categorizedCourses[" Our Feature Course"] || []).map((course, index) => (
                         <div className="course-inner" key={index}>
@@ -185,8 +199,8 @@ export default function Home() {
                         </div>
                       ))
                     }
-                  </OwlCarousel>
-                </div>
+                  </div>
+                </OwlCarousel>
               </div>
             </div>
           </div>
@@ -426,7 +440,7 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-12">
                   <div className="">
-                    <OwlCarousel className='owl-theme teams-all ' items={4} loop margin={10} nav>
+                    <OwlCarousel className='owl-theme teams-all' autoPlay={true} nav items={4} loop margin={10} navText={false} dotClass='false'>
                       <div className="col-md-12 col-sm-12 col-xs-12">
                         <div className="instructor-member">
                           <div className="instructor-member-thumb">
@@ -462,19 +476,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                 <Link to=""><i className="fa fa-facebook"></i></Link>
+                                  <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                 <Link to=""><i className="fa fa-twitter"></i></Link>
+                                  <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                 <Link to=""><i className="fa fa-linkedin"></i></Link>
+                                  <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                 <Link to=""><i className="fa fa-google"></i></Link>
+                                  <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                 <Link to=""><i className="fa fa-skype"></i></Link>
+                                  <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -490,19 +504,19 @@ export default function Home() {
                             <div className="instructor-overlay">
                               <ul>
                                 <li>
-                                   <Link to=""><i className="fa fa-facebook"></i></Link>
+                                  <Link to=""><i className="fa fa-facebook"></i></Link>
                                 </li>
                                 <li>
-                                   <Link to=""><i className="fa fa-twitter"></i></Link>
+                                  <Link to=""><i className="fa fa-twitter"></i></Link>
                                 </li>
                                 <li>
-                                   <Link to=""><i className="fa fa-linkedin"></i></Link>
+                                  <Link to=""><i className="fa fa-linkedin"></i></Link>
                                 </li>
                                 <li>
-                                   <Link to=""><i className="fa fa-google"></i></Link>
+                                  <Link to=""><i className="fa fa-google"></i></Link>
                                 </li>
                                 <li>
-                                   <Link to=""><i className="fa fa-skype"></i></Link>
+                                  <Link to=""><i className="fa fa-skype"></i></Link>
                                 </li>
                               </ul>
                             </div>
@@ -552,75 +566,73 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
-                  <div className="">
-                    <OwlCarousel className='owl-theme all-testimonial' items={1} loop margin={10} nav>
-                      <div className="single-testimonial">
-                        <p>
-                          Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                          donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
-                          magna at etiam aliquip venenatis.
-                          Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
-                        </p>
-                        <div className="testimonial">
-                          <div className="inner">
-                            <div className="client-info">
-                              <h2>Michael</h2>
-                              <h3>Ceo & Founder</h3>
-                            </div>
+                  <OwlCarousel className='owl-theme all-testimonial' items={1} loop margin={10} nav>
+                    <div className="single-testimonial">
+                      <p>
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                        donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
+                        magna at etiam aliquip venenatis.
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
+                      </p>
+                      <div className="testimonial">
+                        <div className="inner">
+                          <div className="client-info">
+                            <h2>Michael</h2>
+                            <h3>Ceo & Founder</h3>
                           </div>
-                          <div className="inner">
-                            <div className="testimonial-client-img">
-                              <img src="assets/img/testimonial_1.jpg" alt="" />
-                            </div>
+                        </div>
+                        <div className="inner">
+                          <div className="testimonial-client-img">
+                            <img src="assets/img/testimonial_1.jpg" alt="" />
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="single-testimonial">
-                        <p>
-                          Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                          donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
-                          magna at etiam aliquip venenatis.
-                          Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
-                        </p>
-                        <div className="testimonial">
-                          <div className="inner">
-                            <div className="client-info">
-                              <h2>lucie</h2>
-                              <h3>Ceo & Founder</h3>
-                            </div>
+                    <div className="single-testimonial">
+                      <p>
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                        donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
+                        magna at etiam aliquip venenatis.
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
+                      </p>
+                      <div className="testimonial">
+                        <div className="inner">
+                          <div className="client-info">
+                            <h2>lucie</h2>
+                            <h3>Ceo & Founder</h3>
                           </div>
-                          <div className="inner">
-                            <div className="testimonial-client-img">
-                              <img src="assets/img/testimonial_2.jpg" alt="" />
-                            </div>
+                        </div>
+                        <div className="inner">
+                          <div className="testimonial-client-img">
+                            <img src="assets/img/testimonial_2.jpg" alt="" />
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="single-testimonial">
-                        <p>
-                          Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                          donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
-                          magna at etiam aliquip venenatis.
-                          Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
-                        </p>
-                        <div className="testimonial">
-                          <div className="inner">
-                            <div className="client-info">
-                              <h2>Benjamin</h2>
-                              <h3>Ceo & Founder</h3>
-                            </div>
+                    <div className="single-testimonial">
+                      <p>
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                        donec, suscipit tortor et sapien donec ac nec.Lorem ipsum dolor sit amet, ligula
+                        magna at etiam aliquip venenatis.
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec.
+                      </p>
+                      <div className="testimonial">
+                        <div className="inner">
+                          <div className="client-info">
+                            <h2>Benjamin</h2>
+                            <h3>Ceo & Founder</h3>
                           </div>
-                          <div className="inner">
-                            <div className="testimonial-client-img">
-                              <img src="assets/img/testimonial_3.jpg" alt="" />
-                            </div>
+                        </div>
+                        <div className="inner">
+                          <div className="testimonial-client-img">
+                            <img src="assets/img/testimonial_3.jpg" alt="" />
                           </div>
                         </div>
                       </div>
-                    </OwlCarousel>
-                  </div>
+                    </div>
+                  </OwlCarousel>
                 </div>
                 <div className="col-md-2"></div>
               </div>

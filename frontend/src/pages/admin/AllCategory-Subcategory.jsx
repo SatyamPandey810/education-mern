@@ -114,7 +114,7 @@ export default function AllCategorySubcategory() {
                             onCategoryUploaded={() => handleCategoryUploaded()} />
                     )
                 }
-                <div className='all-cu'>
+                <div className='all-cu d-flex justify-content-between p-4'>
                     <div>
                         <h1 className='text-light'>All category</h1>
                     </div>
@@ -189,7 +189,7 @@ export default function AllCategorySubcategory() {
                         />
                     )
                 }
-                <div className='all-cu'>
+                <div className='all-cu d-flex justify-content-between p-4'>
                     <div>
                         <h1 className='text-light'>All Sub category</h1>
                     </div>
