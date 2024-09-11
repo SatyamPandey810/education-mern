@@ -7,12 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUserStart } from '../../redux/actions/logoutUser.action';
 import ROLE from '../../common/role';
 import AllCategorySubcategory from './AllCategory-Subcategory';
-// import Blog from './Blog';
 import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
 import { Link, useNavigate } from 'react-router-dom';
 import Review from './Review';
-// import CourseCurriculum from './CourseCurriculum';
 
 export default function AdminPanel() {
     const [activeComponent, setActiveComponent] = useState('');
