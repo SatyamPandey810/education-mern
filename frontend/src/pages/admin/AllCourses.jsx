@@ -12,7 +12,6 @@ import CourseUpdate from './updates/CourseUpdate';
 export default function AllCourses() {
   const [openUploadCourse, setOpenUploadCourse] = useState(false)
   const [editCourse, setEditCourse] = useState(null);
-
   const [formData, setFormData] = useState({
     category: '',
     subCategory: '',
@@ -29,7 +28,7 @@ export default function AllCourses() {
   const [imagePreview, setImagePreview] = useState('');
   const dispatch = useDispatch()
 
-  const allCourse = useSelector((state) => state.allCourse?.allCourse)
+  // const allCourse = useSelector((state) => state.allCourse?.allCourse)
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
@@ -59,11 +58,7 @@ export default function AllCourses() {
 
     return categorizedCourses;
   };
-
   const categorizedCourses = separateCoursesByCategory();
-
-
-
 
   const handleCourseClick = (course) => {
     setEditCourse(course)
@@ -96,7 +91,7 @@ export default function AllCourses() {
 
 
   return (
-    <div>
+    <div className='container'>
       {
         openUploadCourse && (
           <CoursesUpload onClose={() => setOpenUploadCourse(false)}

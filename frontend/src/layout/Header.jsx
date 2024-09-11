@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import ROLE from '../common/role';
-// import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 import { logoutUserStart } from '../redux/actions/logoutUser.action';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';

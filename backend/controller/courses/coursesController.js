@@ -5,19 +5,9 @@ const upload = require("../../middleware/fileUpload")
 async function coursesController(req, res) {
     try {
         const { name, price, sheet, instructor, duration, lectures, description, status, subCategoryIds } = req.body;
-
-
         const image = req.file ? req.file.filename : null;
 
         const suCategories = await subCategoryModel.find({ '_id': { $in: subCategoryIds } });
-        // if (suCategories.length !== subCategoryIds.length) {
-        //     return res.status(400).json({
-        //         message: 'One or more categories not found',
-        //         error: true,
-        //         success: false
-        //     });
-        // }
-
         const newCourse = new courseModel({
             name,
             image,
@@ -84,8 +74,7 @@ const getAllCourses = async (req, res) => {
 
 const updateCourseController = async (req, res) => {
     try {
-        // const { _id, name, price, sheet, description, status } = req.body;
-        // const resBody = { name, price, sheet, description, status };
+
         const { _id, ...resBody } = req.body
         if (req.file) {
             resBody.image = req.file.filename; // Store the filename or path in the database
@@ -106,9 +95,7 @@ const updateCourseController = async (req, res) => {
             success: false
         });
     }
-
-}
-
+};
 
 const courseDeleteController = async (req, res) => {
     try {
@@ -131,9 +118,6 @@ const courseDeleteController = async (req, res) => {
         })
     }
 }
-
-
-
 
 module.exports = {
     coursesController,

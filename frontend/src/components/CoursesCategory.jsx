@@ -20,7 +20,7 @@ export default function CoursesCategory() {
     const allCourse = useSelector((state) => state.allCourse?.allCourse)
     const initialFormData = {
         name: "",
-        lastName:"",
+        lastName: "",
         email: "",
         phone: "",
         courseId: '',
@@ -100,7 +100,6 @@ export default function CoursesCategory() {
         event.preventDefault()
         dispatch(uploadInquiryStart(inquiryData))
         setInquiryData(initialInquiryData);
-
     }
 
 
@@ -532,7 +531,7 @@ export default function CoursesCategory() {
                                                                 <input
                                                                     type="text"
                                                                     placeholder="Last Name"
-                                                                      name="lastName"
+                                                                    name="lastName"
                                                                     value={inquiryData.lastName}
                                                                     onChange={inputChanges}
                                                                 />
