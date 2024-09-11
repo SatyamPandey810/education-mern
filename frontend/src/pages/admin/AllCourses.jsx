@@ -206,7 +206,3 @@ export default function AllCourses() {
   )
 }
 
-//ARkQzdXFzZCnqdos
-//satyam
-//mongodb+srv://satyam:ARkQzdXFzZCnqdos@satyam.hxjb5.mongodb.net/?retryWrites=true&w=majority&appName=satyam
-//RthNgOvSFXuepccw

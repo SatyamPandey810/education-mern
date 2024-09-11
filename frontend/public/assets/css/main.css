@@ -266,6 +266,7 @@ input:focus {
 
 .logo {
     padding: 0px 0;
+    width: 100px;
 }
 
 .social-title {
@@ -4678,81 +4679,6 @@ footer.footer {
 
 
   /* Basic Styles for All Screens */
-header {
-    width: 100%;
-}
 
-.header-top, .hd-sec {
-    padding: 0px 0;
-}
-
-.logo img {
-    width: 100%;
-    max-width: 100px;
-}
-
-/* For Tablets and Desktops (Min-width: 768px) */
-@media (min-width: 768px) {
-    .header-left ul {
-        display: flex;
-    }
-
-    .menu-center {
-        display: block;
-        text-align: center;
-    }
-
-    .applay-button-area {
-        text-align: right;
-    }
-}
-
-/* For Large Screens (Min-width: 992px) */
-@media (min-width: 992px) {
-    .menu-center {
-        display: flex;
-        justify-content: center;
-        text-align: left;
-    }
-
-    .applay-button-area {
-        display: block;
-    }
-}
-
-/* For Mobile Screens (Max-width: 767px) */
-@media (max-width: 767px) {
-    .logo img {
-        max-width: 100px;
-    }
-
-    .header-top, .hd-sec {
-        padding: 10px 0;
-    }
-
-    .menu-center ul {
-        display: none; /* Hide menu on mobile */
-    }
-
-    .mobile-nav-menu {
-        display: block;
-    }
-
-    .applay-button {
-        text-align: center;
-    }
-}
-
-
-/* For mobile screens */
-@media (max-width: 767px) {
-    h1 {
-        font-size: 1.4rem; /* Smaller for mobile */
-    }
-
-    .container {
-        padding: 0 15px;
-    }
-}
 /* Adjust the Modal width for smaller screens */
 
