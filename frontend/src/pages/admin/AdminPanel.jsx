@@ -179,7 +179,7 @@ export default function AdminPanel() {
                             <h1 className='text-light'>Admin dashboard</h1>
                         </div>
                         <div>
-                        <button onClick={handleLogOutUser} className='btn btn-danger' style={{ padding: "6px" }}>Logout</button>
+                        <button onClick={handleLogOutUser} className='btn btn-warning' style={{ padding: "6px" }}>Logout</button>
 
                         </div>
 
