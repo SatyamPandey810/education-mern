@@ -7,7 +7,7 @@ import { getAllCategoryStart } from '../../../redux/actions/getCategory.action';
 import { getSubCategoryStart } from '../../../redux/actions/getSubCategory.action';
 import { courseUploadStart } from '../../../redux/actions/uploadCourse.action';
 
-export default function CoursesUpload({ onClose, onCourseUploaded}) {
+export default function CoursesUpload({ onClose, onCourseUploaded }) {
     const [formData, setFormData] = useState({
         category: '',
         subCategory: '',
@@ -33,10 +33,6 @@ export default function CoursesUpload({ onClose, onCourseUploaded}) {
         dispatch(getAllCategoryStart())
         dispatch(getSubCategoryStart())
     }, [dispatch])
-
-
-
-
     // console.log(allCategory);
 
     const handleCategoryChange = (event) => {
@@ -230,7 +226,7 @@ export default function CoursesUpload({ onClose, onCourseUploaded}) {
                                 onChange={inputChange}
                             ></textarea>
                         </div>
-                        <div className='row'>                           
+                        <div className='row'>
                             <div className='col-sm-3 mb-3'>
                                 <label htmlFor="duration" className="form-label text-light">Duration</label>
                                 <input
@@ -265,7 +261,6 @@ export default function CoursesUpload({ onClose, onCourseUploaded}) {
                     </div>
                 </form>
             </div>
-
         </>
     )
 }

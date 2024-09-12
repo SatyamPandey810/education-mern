@@ -13,13 +13,11 @@ import { getAllCategoryStart } from '../redux/actions/getCategory.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-// import { findBlogCategoryAndSubcategoryStart } from '../redux/actions/blogs/blogGetCategoryAndSubcategory.action';
 
 export default function Home() {
   const dispatch = useDispatch()
   const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
 
-  // const blogs = useSelector((state) => state.findBlog.blogs)
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -53,26 +51,19 @@ export default function Home() {
     dispatch(getAllCategoryStart())
   }, [dispatch])
 
-
-  const options = {
-    items: 3,
-    loop: true,
-    margin: 10,
-    nav: true,
-    navText: [
-      "<i class='fa fa-chevron-left'></i>",
-      "<i class='fa fa-chevron-right'></i>"
-    ],
-    dots: false,
-  };
-
   return (
     <>
-
       <div>
         <div className="slider">
           <div className="">
-            <OwlCarousel className='owl-theme all-slide owl-item' autoplay={true} autoplayHoverPause={true} items={1} loop margin={10} nav>
+            <OwlCarousel className='owl-theme all-slide owl-item'
+              autoplay={true}
+              autoplayHoverPause={true}
+              items={1}
+              loop margin={10}
+              nav
+              
+            >
               <div className="single-slide" style={{ backgroundImage: "url('assets/img/Banner 002.jpg')" }}>
                 <div className="slider-overlay"></div>
                 <div className="slider-wrapper">
@@ -158,8 +149,15 @@ export default function Home() {
 
             <div className="row">
               <div className="course-list-sec">
-                <OwlCarousel className=' all-course owl-theme' autoplay={true} items={3} loop margin={10} dots={false} nav
-                  navText={["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]} >
+                <OwlCarousel className=' all-course owl-theme' items={3} loop margin={10} dots={false} nav
+                  navText={["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]}
+                  responsive={{
+                    0: { items: 1 },
+                    600: { items: 2 },
+                    1000: { items: 3 }
+                  }}
+
+                >
                   <div>
                     {
                       (categorizedCourses[" Our Feature Course"] || []).map((course, index) => (
@@ -401,7 +399,14 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-12">
                   <div className="">
-                    <OwlCarousel className='owl-theme why-choose-all' items={3} loop margin={10} nav>
+                    <OwlCarousel className='owl-theme why-choose-all' items={3} loop margin={10} nav dots={false}
+                      responsive={{
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
+                      }}
+
+                    >
                       {
                         (categorizedCourses["Why Choose Us Course"] || []).map((course, index) => (
                           <div className="why-choose-inner" key={index}>
@@ -440,7 +445,13 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-12">
                   <div className="">
-                    <OwlCarousel className='owl-theme teams-all' autoPlay={true} nav items={4} loop margin={10} navText={false} dotClass='false'>
+                    <OwlCarousel className='owl-theme teams-all' autoPlay={true} nav items={4} loop margin={10} navText={false} dotClass='false'
+                      responsive={{
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
+                      }}
+                    >
                       <div className="col-md-12 col-sm-12 col-xs-12">
                         <div className="instructor-member">
                           <div className="instructor-member-thumb">
@@ -811,7 +822,12 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-12">
                   <div className="">
-                    <OwlCarousel className='owl-theme all-latest-news' items={3} loop margin={10} nav>
+                    <OwlCarousel className='owl-theme all-latest-news' items={3} loop margin={10} nav
+                      responsive={{
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
+                      }}>
                       {
                         (categorizedCourses["our latest post"] || []).map((course, index) => (
                           <div className="single-post" key={index}>

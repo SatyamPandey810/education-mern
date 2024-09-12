@@ -8,7 +8,7 @@ import Modal from '@mui/material/Modal';
 import { uploadInquiryStart } from '../redux/actions/addToInquiry.action';
 import { getAllCourseStart } from '../redux/actions/getCourses.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     const user = useSelector((state) => state.user.user);
@@ -19,6 +19,7 @@ export default function Header() {
 
     const courses = useSelector((state) => state.findCourseByCategoryAndSubcategory.courses);
     const [open, setOpen] = React.useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const initialInquiryData = {
         courseId: "",
         name: "",
@@ -29,7 +30,7 @@ export default function Header() {
     };
     const [inquiryData, setInquiryData] = useState(initialInquiryData)
 
-
+    const toggleMobileMenu = () => setMenuOpen(!menuOpen);
 
     const handleOpen = () => {
         setOpen(true);
@@ -94,7 +95,7 @@ export default function Header() {
         }, 2000)
     }
 
-    const onCloseModel=()=>{
+    const onCloseModel = () => {
         handleClose()
     }
 
@@ -142,15 +143,18 @@ export default function Header() {
                     <div className="row">
                         <div className="col-md-3 col-sm-12 col-xs-8">
                             <div className="logo">
-                                <Link to="/"><img src="/assets/img/logo.png" 
+                                <Link to="/"><img src="/assets/img/logo.png"
                                     className="mt-2" alt="img" /></Link>
                             </div>
                         </div>
 
-                        <div className="mobile-nav-menu"></div>
+                        <div className="mobile-nav-menu" onClick={toggleMobileMenu}>
+                            <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+                        </div>
+
                         <div className="col-md-7 col-sm-9 menu-center">
-                            <div className="menu">
-                                <nav id="main-menu" className="main-menu">
+                            <div className={`menu ${menuOpen ? 'mobile-menu active' : ''}`}>
+                                <nav id="main-menu" className="main-menu" >
                                     <ul>
                                         <li className="active">
                                             <Link to="/">Home</Link>
@@ -175,7 +179,6 @@ export default function Header() {
                                                 ) : (<Link to='/sign-in'>Login</Link>)
                                             }
 
-                                            {/* <Link to="/sign-in">Login</Link> */}
                                         </li>
                                         {isAdmin && (
                                             <li><Link to="/admin-dashboard">Admin panel</Link></li>
@@ -201,16 +204,16 @@ export default function Header() {
                                 <Box className="d-flex justify-content-between pay-shadow" >
                                     <section>
                                         <div className='pay-img'>
-                                            <img src='/assets/img/inquiry.jpg' alt='img'/>
+                                            <img src='/assets/img/inquiry.jpg' alt='img' />
                                         </div>
                                     </section>
                                     <section id="parent-modal-description" className='pay-form'>
                                         <div className="row">
-                                            <div className="col-md-12 text-dark ">
+                                            <div className="col-md-12 col-sm-12 text-dark ">
                                                 <div className='d-flex justify-content-between' >
                                                     <h1 className='text-center p-3'>Inquiry now</h1>
                                                     <FontAwesomeIcon className='x-mark p-2' icon={faXmark}
-                                                    onClick={onCloseModel}
+                                                        onClick={onCloseModel}
                                                     />
                                                 </div>
                                                 <form onSubmit={inquiryHandller}>
@@ -297,6 +300,7 @@ export default function Header() {
                     </div>
                 </div>
             </div>
+
         </header>
     )
 }

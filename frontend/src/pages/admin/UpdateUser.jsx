@@ -64,9 +64,7 @@ export default function UpdateUser({ onClose, name, email, role, userId, funcCal
                     {
                         Object.values(ROLE).map(el => (
                             <option value={el} key={el}>{el}</option>
-
                         ))
-
                     }
                 </select>
             </div>
