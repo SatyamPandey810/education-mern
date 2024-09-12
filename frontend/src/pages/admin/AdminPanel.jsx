@@ -11,10 +11,11 @@ import CourseUpdate from './updates/CourseUpdate';
 import TransactionOrder from './TransactionOrder';
 import { Link, useNavigate } from 'react-router-dom';
 import Review from './Review';
+import HomeDashboard from './HomeDashboard';
 
 export default function AdminPanel() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [activeComponent, setActiveComponent] = useState('');
+    const [activeComponent, setActiveComponent] = useState('HomeDashboard');
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -179,7 +180,7 @@ export default function AdminPanel() {
                             <h1 className='text-light'>Admin dashboard</h1>
                         </div>
                         <div>
-                        <button onClick={handleLogOutUser} className='btn btn-warning' style={{ padding: "6px" }}>Logout</button>
+                            <button onClick={handleLogOutUser} className='btn btn-warning' style={{ padding: "6px" }}>Logout</button>
 
                         </div>
 
@@ -187,8 +188,8 @@ export default function AdminPanel() {
                 </nav>
                 <div className="main-panel">
                     <div className="content-wrapper">
-
-                        {/* <h1>hello world</h1> */}
+                        {/* <ThankuPage /> */}
+                        {activeComponent === 'HomeDashboard' && <HomeDashboard />}
                         {activeComponent === 'TotalUser' && <TotalUser />}
                         {activeComponent === 'AllCourses' && <AllCourses handleMenuClick={() => handleMenuClick} />}
                         {activeComponent === 'AllCategorySubcategory' && <AllCategorySubcategory />}
