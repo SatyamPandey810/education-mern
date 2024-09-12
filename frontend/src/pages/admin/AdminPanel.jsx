@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faCalendarDays, faClipboard, faFolder, faList, faMoneyBill, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBookOpen, faCalendarDays, faClipboard, faFolder, faList, faMoneyBill, faPenToSquare, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Review from './Review';
 
 export default function AdminPanel() {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [activeComponent, setActiveComponent] = useState('');
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -39,14 +40,15 @@ export default function AdminPanel() {
     }, [user])
 
 
-
+    const toggleMobileMenu = () => setMenuOpen(!menuOpen);
     return (
         <div className="container-scroller">
-            <nav className="sidebar sidebar-offcanvas" id="sidebar">
+            <nav id="sidebar" className={`menus ${menuOpen ? 'sidebar-offcanvas' : ''}`}>
+                {/* className={`menu ${menuOpen ? 'mobile-menu active' : ''}`} */}
                 <ul className="nav">
                     <li className="nav-item profile">
                         <div className="profile-desc">
-                            <div className="profile-pic">
+                            <div className="profile-pic d-flex align-items-center mb-4">
                                 <div className="count-indicator">
                                     <img className="img-xs rounded-circle " src="assets/img/panel.png" alt="" />
                                     <span className="count bg-success"></span>
@@ -94,9 +96,7 @@ export default function AdminPanel() {
                             </div>
                         </div>
                     </li>
-                    <li className="nav-item nav-category">
-                        <span className="nav-link">Navigation</span>
-                    </li>
+
                     <li className="nav-item menu-items">
                         <Link className="nav-link" to="">
                             <span className="menu-icon">
@@ -106,63 +106,63 @@ export default function AdminPanel() {
                         </Link>
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick('TotalUser')}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick('TotalUser')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faUser} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>User</span>
-                        </span>
+                        </Link>
 
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faList} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Category-subcategory</span>
-                        </span>
+                        </Link>
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick('AllCourses')}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick('AllCourses')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faBookOpen} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Courses</span>
-                        </span>
+                        </Link>
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick('CourseCurriculum')}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick('CourseCurriculum')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faClipboard} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Course curriculum</span>
-                        </span>
+                        </Link>
                     </li>
 
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faMoneyBill} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Order-transactions</span>
-                        </span>
+                        </Link>
                     </li>
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick("Review")}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faPenToSquare} />
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>Inquires & review's</span>
-                        </span>
+                        </Link>
                     </li>
 
                     <li className="nav-item menu-items">
-                        <span className="nav-link" onClick={() => handleMenuClick("Review")}>
+                        <Link to='' className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
-                            <FontAwesomeIcon icon={ faFolder} />
+                                <FontAwesomeIcon icon={faFolder} />
                             </span>
                             <span className="menu-title">Documentation</span>
-                        </span>
+                        </Link>
                     </li>
                 </ul>
             </nav>
@@ -170,19 +170,19 @@ export default function AdminPanel() {
                 <nav className="navbar p-0 fixed-top d-flex flex-row">
 
                     <div className="navbar-menu-wrapper d-flex justify-content-between align-items-center">
+                        <div>
+                            <div className="mobile-nav-menu" onClick={toggleMobileMenu}>
+                                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+                            </div>
+                        </div>
                         <div >
                             <h1 className='text-light'>Admin dashboard</h1>
                         </div>
                         <div>
-                            <button onClick={handleLogOutUser} className='btn btn-danger' style={{ padding: "6px" }}>Logout</button>
+                        <button onClick={handleLogOutUser} className='btn btn-danger' style={{ padding: "6px" }}>Logout</button>
+
                         </div>
-                        <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                            <span className="mdi mdi-menu"></span>
-                        </button>
-                        <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                            data-toggle="offcanvas">
-                            <span className="mdi mdi-format-line-spacing"></span>
-                        </button>
+
                     </div>
                 </nav>
                 <div className="main-panel">

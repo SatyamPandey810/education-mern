@@ -10227,7 +10227,7 @@ div.tagsinput span.tag a {
 
 @media (max-width: 991px) {
   .navbar .navbar-menu-wrapper {
-    width: auto;
+    /* width: auto; */
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -10595,8 +10595,19 @@ div.tagsinput span.tag a {
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
 }
-
-.sidebar .sidebar-brand-wrapper {
+.menus {
+  min-height: calc(100vh - 70px);
+  background: #191c24;
+  font-weight: normal;
+  padding: 0;
+  width: 244px;
+  z-index: 11;
+  transition: width 0.25s ease, background 0.25s ease;
+  -webkit-transition: width 0.25s ease, background 0.25s ease;
+  -moz-transition: width 0.25s ease, background 0.25s ease;
+  -ms-transition: width 0.25s ease, background 0.25s ease;
+}
+.menus .sidebar-brand-wrapper {
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -10612,7 +10623,7 @@ div.tagsinput span.tag a {
   }
 }
 
-.sidebar .sidebar-brand-wrapper .sidebar-brand {
+.menus .sidebar-brand-wrapper .sidebar-brand {
   color: #38425e;
   font-size: 1.5rem;
   line-height: 48px;
@@ -10621,13 +10632,13 @@ div.tagsinput span.tag a {
   width: 100%;
 }
 
-.sidebar .sidebar-brand-wrapper .sidebar-brand:active,
-.sidebar .sidebar-brand-wrapper .sidebar-brand:focus,
-.sidebar .sidebar-brand-wrapper .sidebar-brand:hover {
+.menus .sidebar-brand-wrapper .sidebar-brand:active,
+.menus .sidebar-brand-wrapper .sidebar-brand:focus,
+.menus .sidebar-brand-wrapper .sidebar-brand:hover {
   color: #252b3e;
 }
 
-.sidebar .sidebar-brand-wrapper .sidebar-brand img {
+.menus .sidebar-brand-wrapper .sidebar-brand img {
   width: calc(244px - 120px);
   max-width: 100%;
   height: 28px;
@@ -10635,18 +10646,18 @@ div.tagsinput span.tag a {
   vertical-align: middle;
 }
 
-.sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
+.menus .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
   display: none;
 }
 
-.sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini img {
+.menus .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini img {
   width: calc(70px - 50px);
   max-width: 100%;
   height: 28px;
   margin: auto;
 }
 
-.sidebar .nav {
+.menus .nav {
   overflow: hidden;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -10660,7 +10671,7 @@ div.tagsinput span.tag a {
   }
 }
 
-.sidebar .nav .nav-item {
+.menus .nav .nav-item {
   -webkit-transition-duration: 0.25s;
   -moz-transition-duration: 0.25s;
   -o-transition-duration: 0.25s;
@@ -10670,18 +10681,18 @@ div.tagsinput span.tag a {
   padding-right: 20px;
 }
 
-.sidebar .nav .nav-item .collapse {
+.menus .nav .nav-item .collapse {
   z-index: 999;
 }
 
-.sidebar .nav .nav-item .nav-link {
+.menus .nav .nav-item .nav-link {
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
   align-items: center;
   white-space: nowrap;
   padding: 0.8rem 10px 0.8rem 1.188rem;
-  color: #6c7293;
+  color: white;
   -webkit-transition-duration: 0.45s;
   -moz-transition-duration: 0.45s;
   -o-transition-duration: 0.45s;
@@ -10690,29 +10701,34 @@ div.tagsinput span.tag a {
   -webkit-transition-property: color;
   height: 46px;
   border-radius: 0px 100px 100px 0px;
+  gap: 10px;
+  font-size: 20px;
+}
+.menus .nav .nav-item .nav-link:hover{
+  color: black !important;
 }
 
-.sidebar .nav .nav-item .nav-link i {
+.menus .nav .nav-item .nav-link i {
   color: inherit;
 }
 
-.sidebar .nav .nav-item .nav-link i.menu-icon {
+.menus .nav .nav-item .nav-link i.menu-icon {
   font-size: 1rem;
   line-height: 1;
   margin-left: auto;
   color: #bba8bff5;
 }
 
-.rtl .sidebar .nav .nav-item .nav-link i.menu-icon {
+.rtl .menus .nav .nav-item .nav-link i.menu-icon {
   margin-left: 0;
   margin-right: auto;
 }
 
-.sidebar .nav .nav-item .nav-link i.menu-icon:before {
+.menus .nav .nav-item .nav-link i.menu-icon:before {
   vertical-align: middle;
 }
 
-.sidebar .nav .nav-item .nav-link i.menu-arrow {
+.menus .nav .nav-item .nav-link i.menu-arrow {
   font: normal normal normal 24px/1 "Material Design Icons";
   line-height: 1;
   font-size: 1rem;
@@ -10720,36 +10736,36 @@ div.tagsinput span.tag a {
   color: rgba(108, 114, 147, 0.36);
 }
 
-.rtl .sidebar .nav .nav-item .nav-link i.menu-arrow {
+.rtl .menus .nav .nav-item .nav-link i.menu-arrow {
   margin-left: 0;
   margin-right: auto;
 }
 
-.sidebar .nav .nav-item .nav-link i.menu-arrow:before {
+.menus .nav .nav-item .nav-link i.menu-arrow:before {
   content: "\f140";
   font-size: inherit;
   color: inherit;
 }
 
-.sidebar .nav .nav-item .nav-link .menu-title {
-  color: inherit;
+.menus .nav .nav-item .nav-link .menu-title {
+  /* color: black; */
   display: inline-block;
-  font-size: 0.9375rem;
+  font-size:18px;
   line-height: 1;
   vertical-align: middle;
 }
 
-.sidebar .nav .nav-item .nav-link .badge {
+.menus .nav .nav-item .nav-link .badge {
   margin-right: auto;
   margin-left: 1rem;
 }
 
-.sidebar .nav .nav-item.active>.nav-link {
+.menus .nav .nav-item.active>.nav-link {
   background: #0f1015;
   position: relative;
 }
 
-.sidebar .nav .nav-item.active>.nav-link:before {
+.menus .nav .nav-item.active>.nav-link:before {
   content: "";
   width: 3px;
   height: 100%;
@@ -10760,47 +10776,47 @@ div.tagsinput span.tag a {
   top: 0;
 }
 
-.sidebar .nav .nav-item.active>.nav-link .menu-title {
+.menus .nav .nav-item.active>.nav-link .menu-title {
   color: #ffffff;
 }
 
-.sidebar .nav .nav-item.active>.nav-link i {
+.menus .nav .nav-item.active>.nav-link i {
   color: #ffffff;
 }
 
-.sidebar .nav .nav-item.nav-profile .nav-link {
+.menus .nav .nav-item.nav-profile .nav-link {
   height: auto;
   line-height: 1;
   border-top: 0;
   padding: 1.25rem 0;
 }
 
-.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-image {
+.menus .nav .nav-item.nav-profile .nav-link .nav-profile-image {
   width: 44px;
   height: 44px;
 }
 
-.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-image img {
+.menus .nav .nav-item.nav-profile .nav-link .nav-profile-image img {
   width: 44px;
   height: 44px;
   border-radius: 100%;
 }
 
-.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-text {
+.menus .nav .nav-item.nav-profile .nav-link .nav-profile-text {
   margin-left: 1rem;
 }
 
-.rtl .sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-text {
+.rtl .menus .nav .nav-item.nav-profile .nav-link .nav-profile-text {
   margin-left: auto;
   margin-right: 1rem;
 }
 
-.sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-badge {
+.menus .nav .nav-item.nav-profile .nav-link .nav-profile-badge {
   font-size: 1.125rem;
   margin-left: auto;
 }
 
-.rtl .sidebar .nav .nav-item.nav-profile .nav-link .nav-profile-badge {
+.rtl .menus .nav .nav-item.nav-profile .nav-link .nav-profile-badge {
   margin-left: 0;
   margin-right: auto;
 }
@@ -11036,22 +11052,64 @@ div.tagsinput span.tag a {
 
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {
-  .sidebar-offcanvas {
-    position: fixed;
-    max-height: calc(100vh - 70px);
-    top: 70px;
-    bottom: 0;
-    overflow: auto;
-    right: -244px;
-    -webkit-transition: all 0.25s ease-out;
-    -o-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-  }
+
 
   .sidebar-offcanvas.active {
     right: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .sidebar-offcanvas {
+    position: fixed;
+    z-index: 1000;
+    /* max-height: calc(100vh - 70px); */
+    width: min-content;
+    top: 70px !important;
+    bottom: 0;
+    display: block !important;
+    top: 0px;
+    overflow: auto;
+    display: none;
+    -webkit-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+
+  }
+
+  .menus {
+    display: none;
+    z-index: 100;
+    background-color: black;
+    width: max-content;
+    height: max-content;
+    /* padding: 16px 17px; */
+  }
+
+  .menus .nav li {
+    padding: 10px;
+  }
+
+  .profile-name {
+    text-align: center;
+  }
+
+  .img-xs {
+    width: 100%;
+    height: 57px;
+  }
+
+  .content-wrapper {
+    background: #000000;
+    padding: 0.875rem 0rem;
+    width: 100%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+  }
+
+}
+
+
 
 .sidebar-tinted .sidebar {
   background: #fa424a;
