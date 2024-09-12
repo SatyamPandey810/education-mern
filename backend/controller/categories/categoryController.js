@@ -4,27 +4,9 @@ const subCategoryModel = require("../../models/subCategory")
 
 async function uploadCategoryController(req, res) {
     try {
-        // const sessionUserId = req.userId;
-
-        // if (!uploadProductPermission(sessionUserId)) {
-        //     throw new Error("Permission denied");
-        // }
-
         const { name } = req.body;
         const category = new categoryModel({ name });
         await category.save();
-
-        // if (subCategories && subCategories.length > 0) {
-        //     const subCategoryDocs = await subCategoryModel.insertMany(
-        //         subCategories.map(subCat => ({
-        //             name: subCat,
-        //             category: category._id
-        //         }))
-        //     );
-
-        //     category.subCategories = subCategoryDocs.map(subCat => subCat._id);
-        //     await category.save();
-        // }
 
         res.json({
             data: category,
@@ -47,8 +29,6 @@ const getAllCategoriesController = async (req, res) => {
     try {
 
         const categories = await categoryModel.find()
-        // .populate('Subcategory');
-
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ message: 'Error retrieving categories', error });

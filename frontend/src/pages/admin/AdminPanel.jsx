@@ -99,7 +99,7 @@ export default function AdminPanel() {
                     </li>
 
                     <li className="nav-item menu-items">
-                        <Link className="nav-link" to="">
+                        <Link className="nav-link active" to=""  onClick={() => handleMenuClick('HomeDashboard')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faCalendarDays} className="text-primary" />
                             </span>

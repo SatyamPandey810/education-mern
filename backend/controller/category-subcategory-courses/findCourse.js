@@ -3,60 +3,6 @@ const findCoursesByCategoryAndSubcategory = async (req, res) => {
 
     try {
         const baseUrl = 'http://localhost:8080/uploads/';
-        // const courses = await courseModel.aggregate([
-        //     {
-        //         $lookup: {
-        //             from: 'subcategories', // Name of the subcategory collection
-        //             localField: 'subcategory',
-        //             foreignField: '_id',
-        //             as: 'subcategories'
-        //         }
-        //     },
-        //     {
-        //         $unwind: '$subcategories'
-        //     },
-        //     {
-        //         $lookup: {
-        //             from: 'categories', // Name of the category collection
-        //             localField: 'subcategories.category',
-        //             foreignField: '_id',
-        //             as: 'subcategories.categoryInfo'
-        //         }
-        //     },
-        //     {
-        //         $unwind: '$subcategories.categoryInfo'
-        //     },
-        //     {
-        //         $group: {
-        //             _id: {
-        //                 category: '$subcategories.categoryInfo.name',
-        //                 subcategory: '$subcategories.name'
-        //             },
-        //             courses: {
-        //                 $push: {
-        //                     _id: '$_id',
-        //                     name: '$name',
-        //                     image: '$image',
-        //                     price: '$price',
-        //                     sheet: '$sheet',
-        //                     description: '$description',
-        //                     status: '$status'
-        //                 }
-        //             }
-        //         }
-        //     },
-        //     {
-        //         $group: {
-        //             _id: '$_id.category',
-        //             subcategories: {
-        //                 $push: {
-        //                     subcategory: '$_id.subcategory',
-        //                     courses: '$courses'
-        //                 }
-        //             }
-        //         }
-        //     }
-        // ]);
         const courses = await courseModel.aggregate([
             {
                 $lookup: {
@@ -90,12 +36,12 @@ const findCoursesByCategoryAndSubcategory = async (req, res) => {
                         $push: {
                             _id: '$_id',
                             name: '$name',
-                            image: { $concat: [baseUrl, '$image'] }, 
+                            image: { $concat: [baseUrl, '$image'] },
                             price: '$price',
                             sheet: '$sheet',
-                            instructor:'$instructor',
-                            duration:'$duration',
-                            lectures:'$lectures',
+                            instructor: '$instructor',
+                            duration: '$duration',
+                            lectures: '$lectures',
                             description: '$description',
                             status: '$status'
                         }
@@ -114,7 +60,7 @@ const findCoursesByCategoryAndSubcategory = async (req, res) => {
                 }
             }
         ]);
-        
+
         courses.forEach(category => {
             category.subcategories.forEach(subcategory => {
                 subcategory.courses.forEach(course => {
@@ -128,13 +74,11 @@ const findCoursesByCategoryAndSubcategory = async (req, res) => {
             data: courses
         });
     } catch (error) {
-        console.error('Error fetching courses grouped by category and subcategory:', error);
         return res.status(500).json({
             success: false,
             message: 'Error fetching courses',
             error: error.message
         });
     }
-
 };
 module.exports = findCoursesByCategoryAndSubcategory;
