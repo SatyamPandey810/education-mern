@@ -120,16 +120,16 @@ export default function Header() {
                                     <span className="social-title">Follow Us</span>
                                     <ul>
                                         <li>
-                                            <Link to="/"><i className="fa fa-facebook"></i></Link>
+                                            <Link to="https://www.facebook.com/login/"><i className="fa fa-facebook"></i></Link>
                                         </li>
                                         <li>
-                                            <Link to="/"><i className="fa fa-twitter"></i></Link>
+                                            <Link to="https://x.com/i/flow/login"><i className="fa fa-twitter"></i></Link>
                                         </li>
                                         <li>
-                                            <Link to="/"><i className="fa fa-google"></i></Link>
+                                            <Link to="https://www.google.com/"><i className="fa fa-google"></i></Link>
                                         </li>
                                         <li>
-                                            <Link to="/"><i className="fa fa-skype"></i></Link>
+                                            <Link to="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=160&ct=1726204049&rver=7.5.2156.0&wp=MBI_SSL&wreply=https%3A%2F%2Flw.skype.com%2Flogin%2Foauth%2Fproxy%3Fclient_id%3D572381%26redirect_uri%3Dhttps%253A%252F%252Fweb.skype.com%252FAuth%252FPostHandler%26state%3Dd3788c19-c7b4-471b-b82a-c374f5cd512b&lc=1033&id=293290&mkt=en-US&psi=skype&lw=1&cobrandid=2befc4b5-19e3-46e8-8347-77317a16a5a5&client_flight=ReservedFlight33%2CReservedFlight67"><i className="fa fa-skype"></i></Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -147,11 +147,9 @@ export default function Header() {
                                     className="mt-2" alt="img" /></Link>
                             </div>
                         </div>
-
                         <div className="mobile-nav-menu" onClick={toggleMobileMenu}>
                             <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
                         </div>
-
                         <div className="col-md-7 col-sm-9 menu-center">
                             <div className={`menu ${menuOpen ? 'mobile-menu active' : ''}`}>
                                 <nav id="main-menu" className="main-menu" >
@@ -171,14 +169,12 @@ export default function Header() {
                                             </ul>
                                         </li>
                                         <li><Link to="/contact-us">Contact</Link></li>
-
                                         <li>
                                             {
                                                 user?._id ? (
                                                     <Link onClick={handleLogOutUser} to={'/sign-in'} >Logout</Link>
                                                 ) : (<Link to='/sign-in'>Login</Link>)
                                             }
-
                                         </li>
                                         {isAdmin && (
                                             <li><Link to="/admin-dashboard">Admin panel</Link></li>
@@ -200,7 +196,6 @@ export default function Header() {
                                 aria-labelledby="parent-modal-title"
                                 aria-describedby="parent-modal-description"
                             >
-
                                 <Box className="d-flex justify-content-between pay-shadow" >
                                     <section>
                                         <div className='pay-img'>
@@ -212,7 +207,9 @@ export default function Header() {
                                             <div className="col-md-12 col-sm-12 text-dark ">
                                                 <div className='d-flex justify-content-between' >
                                                     <h1 className='text-center p-3'>Inquiry now</h1>
-                                                    <FontAwesomeIcon className='x-mark p-2' icon={faXmark}
+                                                    <FontAwesomeIcon
+                                                        className='x-mark p-2'
+                                                        icon={faXmark}
                                                         onClick={onCloseModel}
                                                     />
                                                 </div>
@@ -229,7 +226,6 @@ export default function Header() {
                                                         />
                                                     </div>
                                                     <div className='col-md-12 mb-3'>
-
                                                         <input
                                                             placeholder='Enter email'
                                                             type="text"
@@ -241,7 +237,12 @@ export default function Header() {
                                                         />
                                                     </div>
                                                     <div className='col-md-12 mb-3'>
-                                                        <select name="gender" value={inquiryData.gender} onChange={inputChange} className='form-control'>
+                                                        <select
+                                                            name="gender"
+                                                            value={inquiryData.gender}
+                                                            onChange={inputChange}
+                                                            className='form-control'
+                                                        >
                                                             <option value="">Select Gender</option>
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
@@ -259,14 +260,15 @@ export default function Header() {
                                                             required
                                                         />
                                                     </div>
-
-
                                                     <div className='col-md-12 mb-3'>
-                                                        <select name="courseId" value={inquiryData.courseId} onChange={inputChange} className="form-control course-name form-control-lg">
+                                                        <select
+                                                            name="courseId"
+                                                            value={inquiryData.courseId}
+                                                            onChange={inputChange}
+                                                            className="form-control course-name form-control-lg">
                                                             {
                                                                 allCourse?.map((course) => (
                                                                     <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
-
                                                                 ))
                                                             }
                                                         </select>
@@ -277,7 +279,7 @@ export default function Header() {
                                                                 placeholder='Your message'
                                                                 className='form-control'
                                                                 type="text"
-                                                                rows={3}
+                                                                rows={6}
                                                                 name="message"
                                                                 value={inquiryData.message}
                                                                 onChange={inputChange}
@@ -287,7 +289,7 @@ export default function Header() {
                                                     </div>
                                                     <div className='col-md-12 mb-3'>
                                                         <div className="d-flex justify-content-center">
-                                                            <button className="btn btn-warning btn-lg">Inquiry now</button>
+                                                            <button className="btn btn-success btn-lg">Inquiry now</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -300,7 +302,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-
         </header>
     )
 }

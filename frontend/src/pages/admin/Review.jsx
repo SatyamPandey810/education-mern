@@ -8,12 +8,9 @@ export default function Review() {
     const dispatch = useDispatch()
     const inquires = useSelector((state) => state.allInquries?.inquires)
 
-    console.log(inquires);
-
     useEffect(() => {
         dispatch(getInquiryStart())
     }, [dispatch])
-
 
     // inqury deleted handller
     const deleteCourseHandle = (id) => {
@@ -25,7 +22,7 @@ export default function Review() {
     return (
         <div className='container'>
             <h1 className='text-light fs-1 mb-4 text-center'>Inquries</h1>
-            <table className="table table-bordered">
+            <table className="table table-bordered text-light">
                 <thead>
                     <tr className='text-light text-center'>
                         <th className='text-center'>S no.</th>

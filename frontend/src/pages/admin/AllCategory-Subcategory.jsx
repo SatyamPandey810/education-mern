@@ -123,7 +123,7 @@ export default function AllCategorySubcategory() {
                     </div>
                 </div>
                 <div className=''>
-                    <table className="table table-bordered">
+                    <table className="table table-bordered text-light">
                         <thead>
                             <tr>
                                 <th className='text-light'>No</th>
@@ -198,7 +198,7 @@ export default function AllCategorySubcategory() {
                     </div>
                 </div>
                 <div className=''>
-                    <table className="table table-bordered">
+                    <table className="table table-bordered text-light">
                         <thead>
                             <tr className='text-light'>
                                 <th>No</th>

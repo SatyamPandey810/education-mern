@@ -28,7 +28,7 @@ export default function TransactionOrder() {
             {Object.keys(groupedByUser).map((userName) => (
                 <div key={userName} className='user-tables'>
                     <h2 className='text-light mb-3'>Transactions by: {userName}</h2>
-                    <table className="table table-bordered">
+                    <table className="table table-bordered text-light">
                         <thead>
                             <tr style={{ fontSize: '14px' }}>
                                 <th className='text-nowrap text-light'>S.No</th>

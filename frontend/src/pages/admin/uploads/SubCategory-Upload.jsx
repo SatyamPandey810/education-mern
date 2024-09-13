@@ -52,9 +52,9 @@ export default function SubCategoryUpload({ onClose, onSubCategoryUploaded }) {
                                     value={subCategoryName}
                                     onChange={inputChange}
                                     aria-describedby="emailHelp"
+                                    required
                                 />
                             </div>
-
                             <div className="col-sm-6 mb-3">
                                 <label htmlFor="category" className="form-label">Category name</label>
                                 <select

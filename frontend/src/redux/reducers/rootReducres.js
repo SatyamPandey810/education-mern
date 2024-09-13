@@ -47,5 +47,4 @@ const rootReducers = combineReducers({
     allInquries: getInquriesReducer,
     deleteinqury: inquriesDeleteReducer
 })
-// console.log(userSlice);
 export default rootReducers

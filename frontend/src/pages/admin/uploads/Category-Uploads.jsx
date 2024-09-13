@@ -49,6 +49,7 @@ export default function CategoryUploads({ onClose, onCategoryUploaded }) {
                                     value={categoryName}
                                     onChange={inputChange}
                                     aria-describedby="emailHelp"
+                                    required
                                 />
                             </div>
                         </div>

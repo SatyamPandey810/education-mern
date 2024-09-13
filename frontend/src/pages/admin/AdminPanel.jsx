@@ -22,7 +22,6 @@ export default function AdminPanel() {
     const handleMenuClick = (TotalUser, AllCourses) => {
         setActiveComponent(TotalUser, AllCourses, AllCategorySubcategory, CourseUpdate, TransactionOrder, Review);
     }
-    // const message = useSelector((state) => state.message?.message)
     const user = useSelector((state) => state.user.user);
 
     // console.log(message);

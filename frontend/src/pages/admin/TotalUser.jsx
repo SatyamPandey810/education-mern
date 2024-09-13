@@ -26,15 +26,16 @@ export default function TotalUser() {
 
   return (
     <div className='container'>
+      <h1 className='text-light p-3 text-center'>Total user</h1>
       <table className="table table-bordered text-light">
         <thead>
           <tr>
-            <th scope="col">No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Active date</th>
-            <th scope="col">Action</th>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

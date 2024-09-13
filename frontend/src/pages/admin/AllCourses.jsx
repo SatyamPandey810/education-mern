@@ -127,7 +127,7 @@ export default function AllCourses() {
           Object.entries(categorizedCourses).map(([categoryName, courses], index) => (
             <div key={categoryName}>
               <h2 className='text-light mt-3 mb-3'>Category:-{categoryName}</h2>
-              <table className="table table-bordered">
+              <table className="table table-bordered text-light">
                 <thead>
                   <tr>
                     <th className='text-nowrap text-light'>No.</th>
