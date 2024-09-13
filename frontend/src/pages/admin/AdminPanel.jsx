@@ -58,11 +58,10 @@ export default function AdminPanel() {
                                 </div>
                             </div>
                             <Link to="" id="profile-dropdown" data-toggle="dropdown"><i className="mdi mdi-dots-vertical"></i></Link>
-                           
                         </div>
                     </li>
                     <li className="nav-item menu-items">
-                        <Link className="nav-link active" to=""  onClick={() => handleMenuClick('HomeDashboard')}>
+                        <Link className="nav-link active" to="" onClick={() => handleMenuClick('HomeDashboard')}>
                             <span className="menu-icon">
                                 <FontAwesomeIcon icon={faCalendarDays} className="text-primary" />
                             </span>
@@ -76,7 +75,6 @@ export default function AdminPanel() {
                             </span>
                             <span className="menu-title" style={{ cursor: "pointer" }}>User</span>
                         </Link>
-
                     </li>
                     <li className="nav-item menu-items">
                         <Link to='' className="nav-link" onClick={() => handleMenuClick('AllCategorySubcategory')}>
@@ -102,7 +100,6 @@ export default function AdminPanel() {
                             <span className="menu-title" style={{ cursor: "pointer" }}>Course curriculum</span>
                         </Link>
                     </li>
-
                     <li className="nav-item menu-items">
                         <Link to='' className="nav-link" onClick={() => handleMenuClick("TransactionOrder")}>
                             <span className="menu-icon">
@@ -119,7 +116,6 @@ export default function AdminPanel() {
                             <span className="menu-title" style={{ cursor: "pointer" }}>Inquires & review's</span>
                         </Link>
                     </li>
-
                     <li className="nav-item menu-items">
                         <Link to='' className="nav-link" onClick={() => handleMenuClick("Review")}>
                             <span className="menu-icon">
@@ -132,7 +128,6 @@ export default function AdminPanel() {
             </nav>
             <div className="container-fluid page-body-wrapper">
                 <nav className="navbar p-0 fixed-top d-flex flex-row">
-
                     <div className="navbar-menu-wrapper d-flex justify-content-between align-items-center">
                         <div>
                             <div className="mobile-nav-menu" onClick={toggleMobileMenu}>
@@ -144,9 +139,7 @@ export default function AdminPanel() {
                         </div>
                         <div>
                             <button onClick={handleLogOutUser} className='btn btn-success text-capitalize' style={{ padding: "6px" }}>logout <FontAwesomeIcon icon={faPowerOff} /></button>
-
                         </div>
-
                     </div>
                 </nav>
                 <div className="main-panel">
@@ -169,9 +162,7 @@ export default function AdminPanel() {
                             <span className="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Topseed Technology Pvt Ltd</span>
                         </div>
                     </footer>
-
                 </div>
-
             </div>
         </div>
     )
