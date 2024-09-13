@@ -671,7 +671,7 @@ export default function Home() {
                             Lorem ipsum dolor sit amet, mauris maecenas vel. Massa ultrices erat sit
                             dolore. Vestibulum nunc. Nec tellus vulputate facilisis. Congue nunc enim
                             platea, dolor lacinia arcu, vehicula nascetur
-                            purus penatibus ac pulvinar, sit ac faucibus. Vitae eros justo duis lacus
+                            purus penatibus ac pulvinar, sit ac . Vitae eros justo duis lacus
                             iaculis eu
                           </div>
                         </div>
@@ -691,7 +691,7 @@ export default function Home() {
                             Lorem ipsum dolor sit amet, mauris maecenas vel. Massa ultrices erat sit
                             dolore. Vestibulum nunc. Nec tellus vulputate facilisis. Congue nunc enim
                             platea, dolor lacinia arcu, vehicula nascetur
-                            purus penatibus ac pulvinar, sit ac faucibus. Vitae eros justo duis lacus
+                            purus penatibus ac pulvinar, sit ac . Vitae eros justo duis lacus
                             iaculis eu
                           </div>
                         </div>
@@ -711,7 +711,7 @@ export default function Home() {
                             Lorem ipsum dolor sit amet, mauris maecenas vel. Massa ultrices erat sit
                             dolore. Vestibulum nunc. Nec tellus vulputate facilisis. Congue nunc enim
                             platea, dolor lacinia arcu, vehicula nascetur
-                            purus penatibus ac pulvinar, sit ac faucibus. Vitae eros justo duis lacus
+                            purus penatibus ac pulvinar, sit ac . Vitae eros justo duis lacus
                             iaculis eu
                           </div>
                         </div>
@@ -731,7 +731,7 @@ export default function Home() {
                             Lorem ipsum dolor sit amet, mauris maecenas vel. Massa ultrices erat sit
                             dolore. Vestibulum nunc. Nec tellus vulputate facilisis. Congue nunc enim
                             platea, dolor lacinia arcu, vehicula nascetur
-                            purus penatibus ac pulvinar, sit ac faucibus. Vitae eros justo duis lacus
+                            purus penatibus ac pulvinar, sit ac . Vitae eros justo duis lacus
                             iaculis eu
                           </div>
                         </div>
@@ -751,7 +751,7 @@ export default function Home() {
                             Lorem ipsum dolor sit amet, mauris maecenas vel. Massa ultrices erat sit
                             dolore. Vestibulum nunc. Nec tellus vulputate facilisis. Congue nunc enim
                             platea, dolor lacinia arcu, vehicula nascetur
-                            purus penatibus ac pulvinar, sit ac faucibus. Vitae eros justo duis lacus
+                            purus penatibus ac pulvinar, sit ac . Vitae eros justo duis lacus
                             iaculis eu
                           </div>
                         </div>

@@ -106,82 +106,89 @@ export default function ContactUs() {
                         </div>
                         <div className="col-md-12">
                             <div className="contact-page-form">
-                                <h2>Send your message</h2>
+                                <h2 className='text-center mb-3'>Send your message</h2>
                                 <form onSubmit={inquiryHandller}>
-                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                        <div className="single-input-field">
-                                            <input
-                                                placeholder='Enter name'
-                                                type="text"
-                                                name="name"
-                                                onChange={inputChange}
-                                                value={inquiryData.name}
-                                                className="form-control form-control-lg border"
-                                                required
-                                            />
+                                    <div className='row'>
+                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                            <div className="single-input-field">
+                                                <input
+                                                    placeholder='Enter name'
+                                                    type="text"
+                                                    name="name"
+                                                    onChange={inputChange}
+                                                    value={inquiryData.name}
+                                                    className="form-control form-control-lg border"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                            <div className="single-input-field">
+                                                <input
+                                                    placeholder='Enter email'
+                                                    type="text"
+                                                    name="email"
+                                                    value={inquiryData.email}
+                                                    onChange={inputChange}
+                                                    className="form-control form-control-lg border"
+                                                    required
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className='col-md-6 col-sm-6 col-xs-12 mb-3'>
-                                        <div className="single-input-field">
-                                            <select name="gender" value={inquiryData.gender} onChange={inputChange} className='form-control border'>
-                                                <option value="">Select Gender</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
-                                            </select>
+                                    <div className='row'>
+                                        <div className="col-md-6 col-sm-6 col-xs-12">
+                                            <div className="single-input-field">
+                                                <input
+                                                    placeholder='Enter phone'
+                                                    type="number"
+                                                    name="phone"
+                                                    value={inquiryData.phone}
+                                                    onChange={inputChange}
+                                                    className="form-control form-control-lg border"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className='col-md-6 col-sm-6 col-xs-12 mb-3'>
+                                            <div className="single-input-field">
+                                                <select name="gender" value={inquiryData.gender} onChange={inputChange} className='form-control border'>
+                                                    <option value="">Select Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                        <div className="single-input-field">
-                                            <input
-                                                placeholder='Enter phone'
-                                                type="number"
-                                                name="phone"
-                                                value={inquiryData.phone}
-                                                onChange={inputChange}
-                                                className="form-control form-control-lg border"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                        <div className="single-input-field">
-                                            <input
-                                                placeholder='Enter email'
-                                                type="text"
-                                                name="email"
-                                                value={inquiryData.email}
-                                                onChange={inputChange}
-                                                className="form-control form-control-lg border"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
+                                    <div className='row'>
 
-                                    <div className="col-md-6  mb-3">
-                                        <div className="single-input-field">
-                                            <textarea
-                                                placeholder='Your message'
-                                                className='form-control form-control-lg border'
-                                                type="text"
-                                                name="message"
-                                                value={inquiryData.message}
-                                                onChange={inputChange}
-                                            >
-                                            </textarea>
+                                        <div className="col-md-6 col-sm-6 col-xs-12 mb-3">
+                                            <div className="single-input-field">
+                                                <textarea
+                                                    placeholder='Your message'
+                                                    className='form-control form-control-lg border'
+                                                    type="text"
+                                                    name="message"
+                                                    value={inquiryData.message}
+                                                    onChange={inputChange}
+                                                    cols={14}
+                                                >
+                                                </textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-6 col-sm-6 col-xs-12 mb-4">
-                                        <div className="single-input-field">
-                                            <select name="courseId" value={inquiryData.courseId} onChange={inputChange} className="form-control course-name form-control-lg border">
-                                                {
-                                                    allCourse?.map((course) => (
-                                                        <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
+                                        <div className="col-md-6 col-sm-6 col-xs-12 mb-4">
+                                            <div className="single-input-field">
+                                                <select name="courseId" value={inquiryData.courseId} onChange={inputChange} className="form-control course-name form-control-lg border">
+                                                    {
+                                                        allCourse?.map((course) => (
+                                                            <option key={course._id} value={course?._id} className='course-name'>{course?.name}</option>
 
-                                                    ))
-                                                }
-                                            </select>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="single-input-fieldsbtn">

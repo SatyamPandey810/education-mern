@@ -96,7 +96,6 @@ export default function AdminPanel() {
                             </div>
                         </div>
                     </li>
-
                     <li className="nav-item menu-items">
                         <Link className="nav-link active" to=""  onClick={() => handleMenuClick('HomeDashboard')}>
                             <span className="menu-icon">
@@ -196,8 +195,6 @@ export default function AdminPanel() {
                         {activeComponent === 'CourseUpdate' && <CourseUpdate />}
                         {activeComponent === 'Review' && <Review />}
                         {/* {activeComponent === 'CourseCurriculum' && <CourseCurriculum />} */}
-
-
                     </div>
 
                     <footer className="footer">
