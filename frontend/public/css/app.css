@@ -11080,16 +11080,22 @@ div.tagsinput span.tag a {
   .menus {
     display: none;
     z-index: 100;
-    background-color: black;
+    background-color: #000000e3;
     width: max-content;
     height: max-content;
     /* padding: 16px 17px; */
   }
 
-  .menus .nav li {
+  /* .menus .nav li {
     padding: 10px;
-  }
-
+  } */
+  .menus .nav {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-bottom: 60px;
+    padding-top: 10px;
+}
   .profile-name {
     text-align: center;
   }
@@ -11420,7 +11426,7 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #000000;
+  background: #262626;
   padding: 0.875rem 0.75rem;
   width: 100%;
   -webkit-flex-grow: 1;

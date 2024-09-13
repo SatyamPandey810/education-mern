@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBookOpen, faCalendarDays, faClipboard, faFolder, faList, faMoneyBill, faPenToSquare, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBookOpen, faCalendarDays, faClipboard, faFolder, faList, faMoneyBill, faPenToSquare, faPowerOff, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import TotalUser from './TotalUser';
 import AllCourses from './AllCourses';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +44,6 @@ export default function AdminPanel() {
     return (
         <div className="container-scroller">
             <nav id="sidebar" className={`menus ${menuOpen ? 'sidebar-offcanvas' : ''}`}>
-                {/* className={`menu ${menuOpen ? 'mobile-menu active' : ''}`} */}
                 <ul className="nav">
                     <li className="nav-item profile">
                         <div className="profile-desc">
@@ -54,46 +53,12 @@ export default function AdminPanel() {
                                     <span className="count bg-success"></span>
                                 </div>
                                 <div className="profile-name">
-                                    <h5 className="text-light text-capitalize">{user?.name}</h5>
-                                    <span>Admin</span>
+                                    <h4 className="text-light text-capitalize">{user?.name}</h4>
+                                    <span>{user?.role}</span>
                                 </div>
                             </div>
                             <Link to="" id="profile-dropdown" data-toggle="dropdown"><i className="mdi mdi-dots-vertical"></i></Link>
-                            <div className="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-                                aria-labelledby="profile-dropdown">
-                                <Link to="" className="dropdown-item preview-item">
-                                    <div className="preview-thumbnail">
-                                        <div className="preview-icon bg-dark rounded-circle">
-                                            <i className="mdi mdi-settings text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div className="preview-item-content">
-                                        <p className="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                                    </div>
-                                </Link>
-                                <div className="dropdown-divider"></div>
-                                <Link to="" className="dropdown-item preview-item">
-                                    <div className="preview-thumbnail">
-                                        <div className="preview-icon bg-dark rounded-circle">
-                                            <i className="mdi mdi-onepassword  text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div className="preview-item-content">
-                                        <p className="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                                    </div>
-                                </Link>
-                                <div className="dropdown-divider"></div>
-                                <Link to="" className="dropdown-item preview-item">
-                                    <div className="preview-thumbnail">
-                                        <div className="preview-icon bg-dark rounded-circle">
-                                            <i className="mdi mdi-calendar-today text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div className="preview-item-content">
-                                        <p className="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                                    </div>
-                                </Link>
-                            </div>
+                           
                         </div>
                     </li>
                     <li className="nav-item menu-items">
@@ -178,7 +143,7 @@ export default function AdminPanel() {
                             <h1 className='text-light'>Admin dashboard</h1>
                         </div>
                         <div>
-                            <button onClick={handleLogOutUser} className='btn btn-warning' style={{ padding: "6px" }}>Logout</button>
+                            <button onClick={handleLogOutUser} className='btn btn-success text-capitalize' style={{ padding: "6px" }}>logout <FontAwesomeIcon icon={faPowerOff} /></button>
 
                         </div>
 
@@ -197,9 +162,9 @@ export default function AdminPanel() {
                         {/* {activeComponent === 'CourseCurriculum' && <CourseCurriculum />} */}
                     </div>
 
-                    <footer className="footer">
+                    <footer className="footer text-light">
                         <div className="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span className="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © topseedtech.com
+                            <span className="d-block text-center text-sm-left d-sm-inline-block">Copyright © topseedtech.com
                                 2024</span>
                             <span className="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Topseed Technology Pvt Ltd</span>
                         </div>

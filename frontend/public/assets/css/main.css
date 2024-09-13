@@ -4726,8 +4726,11 @@ footer.footer {
     right: 0;
     width: 100%;
   }
+  .profile-name span{
+    text-transform: capitalize;
+    font-size: 14px;
+  }
   
-  /* Media queries for responsiveness */
   @media (max-width: 768px) {
     .menu {
         display: none;
