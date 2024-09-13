@@ -27,7 +27,10 @@ export default function TransactionOrder() {
         <div className='container'>
             {Object.keys(groupedByUser).map((userName) => (
                 <div key={userName} className='user-tables'>
-                    <h2 className='text-light mb-3'>Transactions by: {userName}</h2>
+                    <div className='d-flex align-items-center'>
+                        <h2 className='text-light mb-3'>Transactions by: {userName}</h2>
+                        <button className='btn btn-danger mb-1 mx-2'>Delete</button>
+                    </div>
                     <table className="table table-bordered text-light">
                         <thead>
                             <tr style={{ fontSize: '14px' }}>

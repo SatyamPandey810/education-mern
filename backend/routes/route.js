@@ -20,60 +20,61 @@ const findTransactionController = require('../controller/transactions/findTransa
 const { courseCurriculumController } = require('../controller/course-curriculum/courseCurriculumController')
 const getInquiriesController = require('../controller/addToInquiries/getInquiry')
 const deleteinquriesController = require('../controller/addToInquiries/deleteInquries')
+const deleteTransactionController = require('../controller/transactions/deleteTransactions')
 
 
-// user signup route
+//user signup route
 router.post('/signup', userSignUpController)
-// user login route
+//user login route
 router.post('/login', userLoginController);
-// user logout route
+//user logout route
 router.get('/logout', userLogOutController)
 
-
-// user details route
+//user details route
 router.get("/user-details", authToken, userDetailsController);
-// all user find route
+//all user find route
 router.get("/all-user", authToken, getAlluserController);
 //update user role
 router.post("/update-user", authToken, updateUserController)
-
-// category upload route
+//category upload route
 router.post("/category", uploadCategoryController)
-// category find route
+//category find route
 router.get("/get-category", getAllCategoriesController)
-// update category
+//update category
 router.post('/update-category', updateCategoriesController)
 //delete category
 router.post('/delete-category', deleteCategoryController)
-// subCategory upload route
+//subCategory upload route
 router.post("/subcategory", subCategoryController)
-// subCategory find route
+//subCategory find route
 router.get("/get-subcategories", getAllSubcategories)
-// subCategory update route
+//subCategory update route
 router.post('/update-subcategory', updateSubCategory)
-// delete SubCategory
+//delete SubCategory
 router.post("/delete-subcategory", deleteSubCategory)
-// courses upload route
+//courses upload route
 router.post("/course", upload.single('image'), coursesController)
-// courses find route
+//courses find route
 router.get("/get-course", getAllCourses)
-// course update route
+//course update route
 router.post("/update-course", upload.single('image'), updateCourseController)
-// course delete route
+//course delete route
 router.post("/delete-course", courseDeleteController)
-// course find category and subcategory wise route
+//course find category and subcategory wise route
 router.get('/courses', findCoursesByCategoryAndSubcategory)
 //single-course find route
 router.get("/single-course/:id", singleCourseController)
-// addtoinquiry upload route
+//addtoinquiry upload route
 router.post("/upload-inquiry", addToInquiryController)
-// blog upload route
+//blog upload route
 router.post("/courseCurriculum-upload", courseCurriculumController)
-// payment request route
+//payment request route
 router.post("/payment-handller", paymentController)
-// total payment find route
+//total payment find route
 router.get("/get-payment", findTransactionController)
-// inquires get route
+//payment delete route
+router.post("/delete-payment", deleteTransactionController)
+//inquires get route
 router.get("/get-inquries", getInquiriesController)
 //inquries delete route
 router.post("/delete-inquries", deleteinquriesController)
