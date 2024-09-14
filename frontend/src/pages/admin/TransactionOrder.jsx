@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 export default function TransactionOrder() {
     const dispatch = useDispatch()
     const transaction = useSelector((state) => state.allTransaction.allPayment)
-    // const allSubCategory = useSelector((state) => state.allSubCategory.allSubCategory)
+ 
 
     useEffect(() => {
         dispatch(getAllPaymentStart())
@@ -30,10 +30,7 @@ export default function TransactionOrder() {
         dispatch(deletePaymentStart(id))
         dispatch(getAllPaymentStart())
         toast.success("Transaction deleted")
-
     }
-
-
 
     return (
         <div className='container'>
@@ -41,7 +38,6 @@ export default function TransactionOrder() {
                 <div key={userName} className='user-tables'>
                     <div className='d-flex align-items-center'>
                         <h2 className='text-light mb-3'>Transactions by: {userName}</h2>
-
                     </div>
                     <table className="table table-bordered text-light">
                         <thead>
