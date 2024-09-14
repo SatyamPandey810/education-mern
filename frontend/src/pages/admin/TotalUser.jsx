@@ -47,7 +47,6 @@ export default function TotalUser() {
                 <td>{user?.email}</td>
                 <td className='text-capitalize'>{user?.role}</td>
                 <td>{moment(user?.createdAt).format('ll')}</td>
-                {/* <td><button className='btn btn-warning'>Edit</button></td> */}
                 <td> <FontAwesomeIcon icon={faPenToSquare}
                   onClick={() => {
                     setOpenUpdateUser(true)
@@ -55,7 +54,7 @@ export default function TotalUser() {
                   }}
                 /></td>
               </tr>
-            )) : <span>no user</span>
+            )) : <tbody><tr><td>No user</td></tr></tbody>
           }
         </tbody>
       </table>

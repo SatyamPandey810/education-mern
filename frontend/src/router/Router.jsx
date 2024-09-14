@@ -12,7 +12,6 @@ import AdminPanel from '../pages/admin/AdminPanel'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 import CoursesCategory from '../components/CoursesCategory'
-import ApplyNow from '../pages/ApplyNow'
 import ThankuPage from '../pages/ThankuPage'
 
 export default function Router() {
@@ -30,7 +29,6 @@ export default function Router() {
                 <Route path='/sign-in' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/category/:id' element={<CoursesCategory />} />
-                <Route path='/applying' element={<ApplyNow/>}/>
                 <Route path="/success" element={<ThankuPage/>}/>
 
                 <Route path='/admin-dashboard'>

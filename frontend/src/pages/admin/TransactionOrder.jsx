@@ -74,7 +74,7 @@ export default function TransactionOrder() {
                                                 </div>
                                             ))
                                         ) : (
-                                            <div>No courses available</div>
+                                            <div>No coursesavailable</div>
                                         )}
                                     </td>
                                     <td>
