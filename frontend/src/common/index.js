@@ -121,9 +121,13 @@ const summaryApi = {
         url: `${backendDomain}/api/get-inquries`,
         method: "get"
     },
-    deleteInquries:{
-        url:`${backendDomain}/api/delete-inquries`,
-        method:"post"
+    deleteInquries: {
+        url: `${backendDomain}/api/delete-inquries`,
+        method: "post"
+    },
+    deleteTransactions: {
+        url: `${backendDomain}/api/delete-payment`,
+        method: "post"
     }
 }
 export default summaryApi

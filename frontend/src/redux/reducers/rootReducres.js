@@ -21,6 +21,7 @@ import allPaymentReducer from "./transaction/getAllTransaction.reducer"
 import deleteCourseReducer from "./courseDelete.reducer"
 import getInquriesReducer from "./getInquries.reducer"
 import inquriesDeleteReducer from "./inquriesDelete.reducer"
+import deleteTransactionReducer from "./transaction/deleteTransaction.reducer"
 
 
 const rootReducers = combineReducers({
@@ -45,6 +46,7 @@ const rootReducers = combineReducers({
     transactionUpload: transactionInitiateReducer,
     allTransaction: allPaymentReducer,
     allInquries: getInquriesReducer,
-    deleteinqury: inquriesDeleteReducer
+    deleteinqury: inquriesDeleteReducer,
+    deleteTransaction: deleteTransactionReducer
 })
 export default rootReducers

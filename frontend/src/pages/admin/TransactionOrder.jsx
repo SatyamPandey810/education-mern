@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllPaymentStart } from '../../redux/actions/transactions/getAllTransactions.action'
+import { deletePaymentStart, getAllPaymentStart } from '../../redux/actions/transactions/getAllTransactions.action'
 import moment from "moment"
 import { getSubCategoryStart } from '../../redux/actions/getSubCategory.action'
+import { toast } from 'react-toastify';
 
 export default function TransactionOrder() {
     const dispatch = useDispatch()
@@ -21,7 +22,18 @@ export default function TransactionOrder() {
         }
         acc[userName].push(transaction);
         return acc;
-    }, {});
+    }, {})
+
+
+    // transaction delete
+    const transactionDeleteHandller = (id) => {
+        dispatch(deletePaymentStart(id))
+        dispatch(getAllPaymentStart())
+        toast.success("Transaction deleted")
+
+    }
+
+
 
     return (
         <div className='container'>
@@ -29,7 +41,7 @@ export default function TransactionOrder() {
                 <div key={userName} className='user-tables'>
                     <div className='d-flex align-items-center'>
                         <h2 className='text-light mb-3'>Transactions by: {userName}</h2>
-                        <button className='btn btn-danger mb-1 mx-2'>Delete</button>
+
                     </div>
                     <table className="table table-bordered text-light">
                         <thead>
@@ -44,6 +56,7 @@ export default function TransactionOrder() {
                                 <th className='text-nowrap text-light'>Course</th>
                                 <th className='text-nowrap text-light'>Course Sub-Category</th>
                                 <th className='text-nowrap text-light'>Course Category</th>
+                                <th className='text-nowrap text-light'>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,6 +127,7 @@ export default function TransactionOrder() {
                                             <div>No categories available</div>
                                         )}
                                     </td>
+                                    <td>  <button className='btn btn-danger mb-1 mx-2' onClick={() => transactionDeleteHandller(transaction._id)}>Delete</button></td>
                                 </tr>
                             ))}
                         </tbody>

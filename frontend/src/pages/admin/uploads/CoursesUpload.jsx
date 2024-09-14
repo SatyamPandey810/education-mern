@@ -238,11 +238,12 @@ export default function CoursesUpload({ onClose, onCourseUploaded }) {
                                     onChange={inputChange}
                                 />
                             </div>
-                            <div className='col-sm-2'>
+                            <div className='col-sm-3'>
                                 <label htmlFor="status" className="form-label text-light">Status</label><br />
                                 <select
                                     className='form-control'
                                     name="status"
+                                    // cols={}
                                     value={formData.status}
                                     onChange={inputChange}
                                 >
