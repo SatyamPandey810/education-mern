@@ -16,7 +16,7 @@ export default function ThankuPage() {
         <div className="text-center">
           <h1>Thank You !</h1>
           <p>We've send the link to your inbox. Lorem ipsum dolor sit,lorem lorem </p>
-          <Link to="/" className="btn btn-success mt-3">Back Home</Link>
+          <Link to="/" className="btn btn-primary mt-3">Back Home</Link>
         </div>
       </div>
     </div>
